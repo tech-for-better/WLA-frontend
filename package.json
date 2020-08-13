@@ -3,7 +3,11 @@
   "description": "A TypeScript starter for Gatsby that includes all you need to build amazing projects",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <oi@joaopedro.cc> (joaopedro.cc)",
+  "author": {
+    "name": "João Pedro Schmitz",
+    "email": "oi@joaopedro.cc",
+    "url": "joaopedro.cc"
+  },
   "license": "MIT",
   "keywords": [
     "gatsby",
@@ -61,11 +65,14 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.1.2",
     "prettier": "^2.0.4",
+    "transparent-commitizen": "^0.5.1",
     "typescript": "^3.8.3"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./.commitconfig/"
     }
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "gatsby-starter-ts@1.0.0"
 }
