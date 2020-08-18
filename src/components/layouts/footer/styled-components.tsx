@@ -34,6 +34,7 @@ export const Logo = styled.img`
 `;
 
 export const Strapline = styled.h3`
+  margin-top: 0;
   color: #fff;
   font-size: ${styles.font[1]};
 `;

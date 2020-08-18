@@ -22,7 +22,7 @@
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "husky": {
