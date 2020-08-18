@@ -50,6 +50,7 @@
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
+        "quotes": "off",
         "@typescript-eslint/quotes": [
           2,
           "backtick",
@@ -63,9 +64,9 @@
   "settings": {
     "import/resolver": {
       "root-import": {
-        "rootPathPrefix": "@",
-        "rootPathSuffix": "src",
-        "extensions": [".js", ".ts", ".tsx", ".jsx", ".mdx"]
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "",
+        "extensions": [".js", ".ts", ".tsx", ".jsx", ".mdx", ".d.ts"]
       }
     }
   }

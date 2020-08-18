@@ -2,7 +2,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import Title from '@/components/Title';
+import Title from '~/src/components/Title';
 
 const Home: React.FC<PageProps> = () => (
   <main>
