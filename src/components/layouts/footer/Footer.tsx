@@ -3,7 +3,8 @@ import React from 'react';
 import * as SC from './styled-components';
 import logo from '../../../assets/SkillsWest.London.png';
 
-import Pages from './Pages';
+import ExternalLinks from './ExternalLinks';
+import InternalLinks from './InternalLinks';
 
 const Footer: React.FC<{}> = () => (
   <SC.StyledFooter>
@@ -18,11 +19,8 @@ const Footer: React.FC<{}> = () => (
       <SC.Logo alt="SkillsWest.London logo" src={logo} />
     </SC.FirstSection>
     <SC.SecondSection>
-      <SC.LinksList>
-        <p>WLA</p>
-        <p>WLB</p>
-      </SC.LinksList>
-      <Pages />
+      <ExternalLinks />
+      <InternalLinks />
     </SC.SecondSection>
   </SC.StyledFooter>
 );

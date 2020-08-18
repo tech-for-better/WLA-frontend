@@ -28,10 +28,21 @@ export const SecondSection = styled.section`
   display: flex;
 `;
 
-export const BlockLink = styled(Link)`
-  display: block;
+const linkStyling = `
+display: block;
+color: #fff;
+font-size: ${styles.font[0]};
+:hover {
   color: #fff;
-  font-size: ${styles.font[0]};
+}
+`;
+
+export const InternalLink = styled(Link)`
+  ${linkStyling}
+`;
+
+export const ExternalLink = styled.a`
+  ${linkStyling}
 `;
 
 export const LinksList = styled.div`

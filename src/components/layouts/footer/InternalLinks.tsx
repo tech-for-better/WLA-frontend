@@ -15,12 +15,12 @@ const reducer = (arr, page) => {
     return arr;
   }
 
-  return [...arr, <SC.BlockLink to={path}>{getName(path)}</SC.BlockLink>];
+  return [...arr, <SC.InternalLink to={path}>{getName(path)}</SC.InternalLink>];
 };
 
-const Pages: React.FC<{}> = () => {
+const InternalLinks: React.FC<{}> = () => {
   const pages = useStaticQuery(graphql`
-    query MyQuery {
+    query {
       allSitePage {
         edges {
           node {
@@ -35,4 +35,4 @@ const Pages: React.FC<{}> = () => {
   return <SC.LinksList>{newPages}</SC.LinksList>;
 };
 
-export default Pages;
+export default InternalLinks;
