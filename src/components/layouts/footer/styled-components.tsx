@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import styles from '../../../styles';
-
-const mediaQuery = (content) => `
-@media only screen and (max-width: ${styles.breakpoint}) {
-${content}
-}
-`;
+import styles, { mediaQuery } from '../../../styles';
 
 export const StyledFooter = styled.footer`
   padding: 2em;

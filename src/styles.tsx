@@ -13,4 +13,10 @@ const styles = {
   },
 };
 
+export const mediaQuery = (content) => `
+@media only screen and (max-width: ${styles.breakpoint}) {
+${content}
+}
+`;
+
 export default styles;
