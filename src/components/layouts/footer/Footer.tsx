@@ -18,6 +18,7 @@ const Footer: React.FC<{}> = () => (
       </p>
       <SC.Logo alt="SkillsWest.London logo" src={logo} />
     </SC.FirstSection>
+    <SC.Separator />
     <SC.SecondSection>
       <ExternalLinks />
       <InternalLinks />
