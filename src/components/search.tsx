@@ -11,7 +11,7 @@ const Search: React.FC<{}> = () => (
       <Form.Row>
         {/* search button needs to go next to the bar and maybe make it bigger */}
         <Form.Control type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-primary">Search</Button>
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridState">
