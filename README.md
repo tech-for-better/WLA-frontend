@@ -1,3 +1,6 @@
+
+
+
 <p align="center">
   <img src="https://www.joaopedro.cc/img/github/typescript-gatsby-starter.png" alt="Gatsby and TypeScript">
 </p>
