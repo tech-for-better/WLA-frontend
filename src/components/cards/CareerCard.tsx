@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import styles from '../../styles';
+import * as SC from './shared-styles';
 
 interface CareerProps {
   colour: string;
@@ -15,13 +15,6 @@ const Image = styled.img`
   width: 3em;
   height: auto;
   float: right;
-`;
-
-const InvisibleLink = styled(Link)`
-  color: ${styles.white};
-  :hover {
-    color: ${styles.white};
-  }
 `;
 
 const Subtitle = styled(Card.Subtitle)`
@@ -43,13 +36,13 @@ const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
     color: ${styles.white};
     background-color: ${colour};
     padding: 1em;
-    -webkit-box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: ${SC.cardShadow};
+    -moz-box-shadow: ${SC.cardShadow};
+    box-shadow: ${SC.cardShadow};
   `;
 
   return (
-    <InvisibleLink to={link}>
+    <SC.InvisibleLink to={link}>
       <StyledCard>
         <Subtitle>Career path</Subtitle>
         <Body>
@@ -57,7 +50,7 @@ const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
           <Image src={image} />
         </Body>
       </StyledCard>
-    </InvisibleLink>
+    </SC.InvisibleLink>
   );
 };
 
