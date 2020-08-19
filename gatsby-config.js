@@ -10,13 +10,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-strapi",
+      resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: "http://localhost:1337",
-        contentTypes: [
-          "restaurant",
-          "category",
-        ],
+        apiURL: 'http://localhost:1337',
+        contentTypes: ['course'],
         queryLimit: 1000,
       },
     },
