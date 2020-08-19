@@ -26,12 +26,7 @@ const Search: React.FC<{}> = () => (
 
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Type:</Form.Label>
-          <Form.Control
-            as="select"
-            className="mr-sm-2"
-            id="inlineFormCustomSelect"
-            custom
-          >
+          <Form.Control as="select" className="mr-sm-2" custom>
             <option value="0">Full-Time Campus</option>
             <option value="1">Part-Time Campus</option>
             <option value="2">Online - Full-Time</option>
