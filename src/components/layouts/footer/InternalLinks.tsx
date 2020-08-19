@@ -2,29 +2,41 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import * as SC from './styled-components';
 
-const getName = (path) => {
+type page = {
+  node: {
+    path: string;
+  };
+};
+
+const getName = (path: string) => {
   if (path === `/`) {
     return `Home`;
   }
   return path.replace(/-/g, ` `).replace(/\//g, ``);
 };
 
-const reducer = (arr, page) => {
+const reducer = (arr: Element[], page: page) => {
   const path = page?.node?.path;
   if (path.includes(`404`)) {
     return arr;
   }
-
-  return [...arr, <SC.InternalLink to={path}>{getName(path)}</SC.InternalLink>];
+  const name = getName(path);
+  return [
+    ...arr,
+    <SC.InternalLink key={name} to={path}>
+      {name}
+    </SC.InternalLink>,
+  ];
 };
 
 const InternalLinks: React.FC<{}> = () => {
   const pages = useStaticQuery(graphql`
     query {
-      allSitePage {
+      allSitePage(sort: { fields: path, order: ASC }) {
         edges {
           node {
             path
+            componentChunkName
           }
         }
       }

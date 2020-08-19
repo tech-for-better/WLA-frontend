@@ -31,7 +31,8 @@
         "js": "never",
         "jsx": "never"
       }
-    ]
+    ],
+    "object-curly-newline": "off",
   },
   "overrides": [
     {

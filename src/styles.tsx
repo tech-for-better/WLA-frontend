@@ -1,5 +1,13 @@
 const styles = {
-  grey: `#363636`,
+  sage: `#95AB00`,
+  lightBlue: `#0082FA`,
+  aqua: `#006574`,
+  orange: `#FF5200`,
+  gold: `#FFB300`,
+  claret: `#95122C`,
+  white: `#FFF`,
+  grey: `#666`,
+  darkGrey: `#2e2e2e`,
   breakpoint: `600px`,
   font: {
     // This is an implementation of the modular scale
