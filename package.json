@@ -22,7 +22,7 @@
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "husky": {
@@ -37,6 +37,7 @@
     ]
   },
   "dependencies": {
+    "@storybook/react": "^6.0.12",
     "babel-plugin-root-import": "^6.5.0",
     "bootstrap": "^4.5.2",
     "gatsby": "^2.22.5",
@@ -44,8 +45,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "@storybook/react": "^6.0.12"
+    "styled-components": "^5.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -61,6 +62,7 @@
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
     "commitizen": "^4.0.4",
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",

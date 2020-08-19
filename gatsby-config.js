@@ -1,4 +1,7 @@
+const siteMetadata = require('./site-metadata.js');
+
 module.exports = {
+  siteMetadata,
   plugins: [
     {
       resolve: 'gatsby-plugin-layout',
@@ -7,4 +10,4 @@ module.exports = {
       },
     },
   ],
-}
+};
