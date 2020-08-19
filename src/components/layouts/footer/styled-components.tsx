@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr;
-  background-color: ${styles.grey};
+  background-color: ${styles.darkGrey};
   color: #fff;
 
   ${mediaQuery(`{
