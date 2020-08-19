@@ -1,3 +1,16 @@
+## Changing content
+
+- Two kinds of content
+  - Dynamic content -> Strapi
+  - Static content -> This code, in particular site-metadata.js
+
+- Career path data
+  - Information to be uploaded to strapi admin site
+  - Supply a 70x70 .png image for the card/link
+  - It should have a white forefront and a transparent background. We recommend getting images from https://www.flaticon.com/
+
+
+
 <p align="center">
   <img src="https://www.joaopedro.cc/img/github/typescript-gatsby-starter.png" alt="Gatsby and TypeScript">
 </p>
