@@ -32,10 +32,11 @@ const reducer = (arr: Element[], page: page) => {
 const InternalLinks: React.FC<{}> = () => {
   const pages = useStaticQuery(graphql`
     query {
-      allSitePage {
+      allSitePage(sort: { fields: path, order: ASC }) {
         edges {
           node {
             path
+            componentChunkName
           }
         }
       }
