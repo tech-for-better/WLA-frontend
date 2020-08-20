@@ -41,12 +41,12 @@ const Home: React.FC<PageProps> = ({ data }) => {
         <Row>
           {incomingData.map((course) => (
             <Col>
-              <CareerCard
+              <CourseCard
                 key={course.node.strapiId}
-                colour="blue"
+                colour="red"
                 name={course.node.name}
-                link="random"
-                image="linkstopic"
+                description={course.node.description}
+                link=""
               />
             </Col>
           ))}
