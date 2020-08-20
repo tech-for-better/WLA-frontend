@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const careers = result.data.careers.edges;
   const courses = result.data.courses.edges;
 
-  careers.forEach((career, index) => {
+  careers.forEach((career) => {
     createPage({
       path: `/career/${career.node.name.replace(/ /g, '-')}`,
       component: require.resolve('./src/templates/CareerPath.tsx'),
@@ -51,13 +51,14 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-  courses.forEach((course, index) => {
+  courses.forEach((course) => {
     createPage({
       path: `/course/${course.node.name.replace(/ /g, '-') + course.node.strapiId}`,
       component: require.resolve('./src/templates/CourseDetail.tsx'),
       context: {
         name: course.node.name,
         id: course.node.strapiId,
+        course,
       },
     });
   });
