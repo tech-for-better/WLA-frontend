@@ -9,5 +9,13 @@ module.exports = {
         component: require.resolve('./src/components/layouts/layout.tsx'),
       },
     },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        contentTypes: ['course'],
+        queryLimit: 1000,
+      },
+    },
   ],
 };
