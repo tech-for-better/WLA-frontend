@@ -39,8 +39,8 @@ const Home: React.FC<PageProps> = ({ data }) => {
       <h2>Courses</h2>
       <Container fluid>
         <Row noGutters={true}>
-          {incomingData.map((course, index) => (
-            <Col>
+          {incomingData.map((course, index) => {
+            return <Col>
               <CourseCard
                 key={course.node.strapiId}
                 colour="red"
@@ -48,8 +48,8 @@ const Home: React.FC<PageProps> = ({ data }) => {
                 description={course.node.description}
                 link=""
               />
-            </Col>
-          ))}
+            </Col>;
+          })}
         </Row>
       </Container>
     </main>
