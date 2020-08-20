@@ -22,12 +22,7 @@ export const gold: Story = () => (
   <CareerCard colour={styles.gold} name="Plumber" link="" image={insulation} />
 );
 export const sage: Story = () => (
-  <CareerCard
-    colour={styles.sage}
-    name="Electrician"
-    link=""
-    image={insulation}
-  />
+  <CareerCard colour={styles.sage} name="Electrician" link="" image={insulation} />
 );
 export const aqua: Story = () => (
   <CareerCard colour={styles.aqua} name="Gardener" link="" image={insulation} />
