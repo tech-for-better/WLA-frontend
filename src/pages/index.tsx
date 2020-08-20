@@ -9,28 +9,28 @@ import CareerCard from '../components/cards/CareerCard';
 import CourseCard from '../components/cards/CourseCard';
 
 const Home: React.FC<PageProps> = ({ data }) => {
-  const [incomingData, updateData] = useState(data.allStrapiCourse.edges);
-  const [currentSearch, updateSearch] = useState(``);
+  const [incomingData, setData] = useState(data.allStrapiCourse.edges);
+  const [incomingCareerData, setCareerData] = useState(data.allStrapiCareerPath.edges);
+  const [currentSearch, setSearch] = useState(``);
   useEffect(() => {
-    const filterdData = incomingData.filter((a) =>
-      a.node.name.includes(currentSearch),
-    );
-    updateData(filterdData);
+    const filterdCareerData = incomingCareerData.filter((a) => a.node.name.includes(currentSearch));
+    const filterdData = incomingData.filter((a) => a.node.name.includes(currentSearch));
+    setCareerData(filterdCareerData);
+    setData(filterdData);
   }, [currentSearch]);
   return (
     <main>
-      <Search updateSearch={updateSearch} />
+      <Search setSearch={setSearch} />
       <h2>Career Path</h2>
-      <Container>
-        <Row>
-          {incomingData.map((course) => (
-            <Col>
+      <Container fluid>
+        <Row noGutters>
+          {incomingCareerData.map((career) => (
+            <Col key={career.node.strapiId}>
               <CareerCard
-                key={course.node.strapiId}
-                colour="blue"
-                name={course.node.name}
-                link="random"
-                image="linkstopic"
+                colour={career.node.color}
+                name={career.node.name}
+                link={`/career/${career.node.name.replace(/ /g, `-`)}`}
+                image={career.node.icon_url}
               />
             </Col>
           ))}
@@ -38,18 +38,17 @@ const Home: React.FC<PageProps> = ({ data }) => {
       </Container>
       <h2>Courses</h2>
       <Container fluid>
-        <Row noGutters={true}>
-          {incomingData.map((course, index) => {
-            return <Col>
+        <Row noGutters>
+          {incomingData.map((course) => (
+            <Col key={course.node.strapiId}>
               <CourseCard
-                key={course.node.strapiId}
                 colour="red"
                 name={course.node.name}
                 description={course.node.description}
-                link=""
+                link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
               />
-            </Col>;
-          })}
+            </Col>
+          ))}
         </Row>
       </Container>
     </main>
@@ -60,13 +59,28 @@ export default Home;
 
 export const query = graphql`
   query {
+    allStrapiCareerPath {
+      edges {
+        node {
+          color
+          name
+          strapiId
+          icon_url
+        }
+      }
+    }
     allStrapiCourse {
       edges {
         node {
-          strapiId
           name
-          description
+          link
           price
+          start_date
+          strapiId
+          description
+          career_paths {
+            color
+          }
         }
       }
     }

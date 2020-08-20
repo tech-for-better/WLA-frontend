@@ -21,12 +21,7 @@ const Description = styled.p`
   color: ${styles.grey};
 `;
 
-const CourseCard: React.FC<CourseProps> = ({
-  colour,
-  name,
-  description,
-  link,
-}) => {
+const CourseCard: React.FC<CourseProps> = ({ colour, name, description, link }) => {
   const StyledCard = styled(Card)`
     width: 15em;
     height: 11em;
@@ -47,11 +42,7 @@ const CourseCard: React.FC<CourseProps> = ({
       right: 0;
       width: 100%;
       height: 3em;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 1) 70%
-      );
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
     }
   `;
 

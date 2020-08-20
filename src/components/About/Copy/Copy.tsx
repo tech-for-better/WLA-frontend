@@ -35,14 +35,7 @@ const Copy: React.FC<{}> = () => {
     <section>
       {refinedCopy.map((article: article, index: number) => {
         const { image, text, title } = article;
-        return (
-          <Article
-            alignment={Boolean(index % 2)}
-            title={title}
-            image={image}
-            text={text}
-          />
-        );
+        return <Article alignment={Boolean(index % 2)} title={title} image={image} text={text} />;
       })}
     </section>
   );
