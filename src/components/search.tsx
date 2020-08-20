@@ -45,10 +45,10 @@ const Search: React.FC<{}> = ({ updateSearch }) => {
           </Form.Group>
         </Form.Row>
 
-        <Form.Group as={Col} controlId="formBasicRange">
+        {/* <Form.Group as={Col} controlId="formBasicRange">
           <Form.Label>Dificulty Range</Form.Label>
           <Form.Control type="range" />
-        </Form.Group>
+        </Form.Group> */}
       </Form>
     </>
   );

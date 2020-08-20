@@ -37,9 +37,9 @@ const Home: React.FC<PageProps> = ({ data }) => {
         </Row>
       </Container>
       <h2>Courses</h2>
-      <Container>
-        <Row>
-          {incomingData.map((course) => (
+      <Container fluid>
+        <Row noGutters={true}>
+          {incomingData.map((course, index) => (
             <Col>
               <CourseCard
                 key={course.node.strapiId}

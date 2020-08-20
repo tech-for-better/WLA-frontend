@@ -58,7 +58,7 @@ const CourseCard: React.FC<CourseProps> = ({
   return (
     <SC.InvisibleLink to={link}>
       <StyledCard>
-        <Subtitle>course</Subtitle>
+        <Subtitle className="mb-1">course</Subtitle>
         <Card.Title>{name}</Card.Title>
         <Description>{description}</Description>
       </StyledCard>

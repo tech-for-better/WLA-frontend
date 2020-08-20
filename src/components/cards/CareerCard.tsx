@@ -40,12 +40,11 @@ const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
     -moz-box-shadow: ${SC.cardShadow};
     box-shadow: ${SC.cardShadow};
   `;
-  console.log(colour, name, link, image)
-  
+
   return (
     <SC.InvisibleLink to={link}>
       <StyledCard>
-        <Subtitle>Career path</Subtitle>
+        <Subtitle className="mb-1">Career path</Subtitle>
         <Body>
           <Title>{name}</Title>
           <Image src={image} />
