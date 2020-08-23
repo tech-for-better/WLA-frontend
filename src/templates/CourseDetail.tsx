@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 
 const CourseDetail: React.FC<PageProps> = ({ data }) => {
   const {
@@ -18,11 +19,11 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
       <ul>
         <li>{price}</li>
         <li>{link}</li>
-        <li>{description}</li>
         <li>{id}</li>
         <li>{postcode}</li>
         <li>Online: {onlineOnly ? `yes` : `no`}</li>
       </ul>
+      <ReactMarkdown source={description} />
     </section>
   );
 };
