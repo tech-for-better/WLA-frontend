@@ -21,40 +21,36 @@ const Description = styled.p`
   color: ${styles.grey};
 `;
 
-const CourseCard: React.FC<CourseProps> = ({ colour, name, description, link }) => {
-  const StyledCard = styled(Card)`
-    width: 15em;
-    height: 11em;
-    padding: 1em;
-    overflow: hidden;
-    position: relative;
-    -webkit-box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    border-left: 10px solid ${colour};
+const StyledCard = styled(Card)`
+  width: 15em;
+  height: 11em;
+  padding: 1em;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border-left: 10px solid ${(props) => props.colour};
 
-    :after {
-      content: '';
-      text-align: right;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 3em;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
-    }
-  `;
+  :after {
+    content: '';
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3em;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
+  }
+`;
 
-  return (
-    <SC.InvisibleLink to={link}>
-      <StyledCard>
-        <Subtitle className="mb-1">course</Subtitle>
-        <Card.Title>{name}</Card.Title>
-        <Description>{description}</Description>
-      </StyledCard>
-    </SC.InvisibleLink>
-  );
-};
+const CourseCard: React.FC<CourseProps> = ({ colour, name, description, link }) => (
+  <SC.InvisibleLink to={link}>
+    <StyledCard colour={colour}>
+      <Subtitle className="mb-1">course</Subtitle>
+      <Card.Title>{name}</Card.Title>
+      <Description>{description}</Description>
+    </StyledCard>
+  </SC.InvisibleLink>
+);
 
 export default CourseCard;
