@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Search from '../components/search';
+import SearchHeader from '../components/Search/SearchHeader';
 import CareerCard from '../components/cards/CareerCard';
 import CourseCard from '../components/cards/CourseCard';
 
@@ -44,7 +44,7 @@ const Home: React.FC<PageProps> = ({ data }) => {
 
   return (
     <main>
-      <Search setSearch={setSearchTerm} />
+      <SearchHeader setSearch={setSearchTerm} />
       <h2>Career Path</h2>
       <Container fluid>
         <Row noGutters>

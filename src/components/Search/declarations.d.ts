@@ -1,0 +1,3 @@
+interface SearchInterface {
+  setSearch: string;
+}

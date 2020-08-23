@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-const Search: React.FC<{}> = ({ setSearch }) => {
+const Search: React.FC<SearchInterface> = ({ setSearch }) => {
   return (
     <>
       <Form>
