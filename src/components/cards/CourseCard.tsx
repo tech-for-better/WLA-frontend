@@ -5,10 +5,12 @@ import styles from '../../styles';
 import * as SC from './shared-styles';
 
 interface CourseProps {
-  colour: string;
+  colour: string[];
   name: string;
   description: string;
   link: string;
+  postcode: string;
+  onlineOnly: boolean;
 }
 
 const Subtitle = styled(Card.Subtitle)`
@@ -43,11 +45,19 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const CourseCard: React.FC<CourseProps> = ({ colour, name, description, link }) => (
+const CourseCard: React.FC<CourseProps> = ({
+  colour,
+  name,
+  description,
+  link,
+  onlineOnly,
+  postcode,
+}) => (
   <SC.InvisibleLink to={link}>
     <StyledCard colour={colour}>
       <Subtitle className="mb-1">course</Subtitle>
       <Card.Title>{name}</Card.Title>
+      <Subtitle className="mb-1">{onlineOnly ? `Online` : postcode}</Subtitle>
       <Description>{description}</Description>
     </StyledCard>
   </SC.InvisibleLink>

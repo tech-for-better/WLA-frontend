@@ -9,14 +9,14 @@ import CareerCard from '../components/cards/CareerCard';
 import CourseCard from '../components/cards/CourseCard';
 
 const Home: React.FC<PageProps> = ({ data }) => {
-  const [incomingData, setData] = useState(data.allStrapiCourse.edges);
+  const [incomingCourseData, setIncomingCourseData] = useState(data.allStrapiCourse.edges);
   const [incomingCareerData, setCareerData] = useState(data.allStrapiCareerPath.edges);
   const [currentSearch, setSearch] = useState(``);
   useEffect(() => {
     const filterdCareerData = incomingCareerData.filter((a) => a.node.name.includes(currentSearch));
-    const filterdData = incomingData.filter((a) => a.node.name.includes(currentSearch));
+    const filterdData = incomingCourseData.filter((a) => a.node.name.includes(currentSearch));
     setCareerData(filterdCareerData);
-    setData(filterdData);
+    setIncomingCourseData(filterdData);
   }, [currentSearch]);
   return (
     <main>
@@ -39,10 +39,12 @@ const Home: React.FC<PageProps> = ({ data }) => {
       <h2>Courses</h2>
       <Container fluid>
         <Row noGutters>
-          {incomingData.map((course) => (
+          {incomingCourseData.map((course) => (
             <Col key={course.node.strapiId}>
               <CourseCard
-                colour="red"
+                colour={course.node.career_paths[0]?.colour}
+                postcode={course.node.postcode}
+                onlineOnly={course.node.online_only}
                 name={course.node.name}
                 description={course.node.description}
                 link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
@@ -72,15 +74,17 @@ export const query = graphql`
     allStrapiCourse {
       edges {
         node {
-          name
-          link
-          price
-          start_date
-          strapiId
           description
+          link
+          name
           career_paths {
             color
           }
+          postcode
+          price
+          start_date(locale: "gb")
+          strapiId
+          online_only
         }
       }
     }
