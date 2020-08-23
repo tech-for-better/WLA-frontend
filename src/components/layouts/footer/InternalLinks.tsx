@@ -32,11 +32,13 @@ const reducer = (arr: Element[], page: page) => {
 const InternalLinks: React.FC<{}> = () => {
   const pages = useStaticQuery(graphql`
     query {
-      allSitePage(sort: { fields: path, order: ASC }) {
+      allSitePage(
+        sort: { fields: path, order: ASC }
+        filter: { pluginCreator: { name: { eq: "gatsby-plugin-page-creator" } } }
+      ) {
         edges {
           node {
             path
-            componentChunkName
           }
         }
       }
