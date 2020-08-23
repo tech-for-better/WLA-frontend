@@ -33,21 +33,25 @@ const StyledCard = styled(Card)`
   width: 15em;
   height: 7em;
   color: ${styles.white};
-  background-color: ${(props) => props.colour};
+  background-color: ${(props) => {
+    return props.colour;
+  }};
   padding: 1em;
   box-shadow: ${SC.cardShadow};
 `;
 
-const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => (
-  <SC.InvisibleLink to={link}>
-    <StyledCard colour={colour}>
-      <Subtitle className="mb-1">Career path</Subtitle>
-      <Body>
-        <Title>{name}</Title>
-        <Image src={image} />
-      </Body>
-    </StyledCard>
-  </SC.InvisibleLink>
-);
+const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
+  return (
+    <SC.InvisibleLink to={link}>
+      <StyledCard colour={colour}>
+        <Subtitle className="mb-1">Career path</Subtitle>
+        <Body>
+          <Title>{name}</Title>
+          <Image src={image} />
+        </Body>
+      </StyledCard>
+    </SC.InvisibleLink>
+  );
+};
 
 export default CareerCard;

@@ -32,7 +32,8 @@
         "jsx": "never"
       }
     ],
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "arrow-body-style": ["error", "always"]
   },
   "overrides": [
     {

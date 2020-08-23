@@ -61,7 +61,9 @@ const ColourBandContainer = styled.div`
 `;
 
 const ColourBandItem = styled.div`
-  background-color: ${(props) => props.colour};
+  background-color: ${(props) => {
+    return props.colour;
+  }};
   flex-grow: 1;
 `;
 
@@ -72,23 +74,25 @@ const CourseCard: React.FC<CourseProps> = ({
   link,
   onlineOnly,
   postcode,
-}) => (
-  <SC.InvisibleLink to={link}>
-    <StyledCard colour={colours}>
-      <ColourBandContainer>
-        {colours.map((colour) => (
-          <ColourBandItem key={colour} colour={colour} />
-        ))}
-      </ColourBandContainer>
+}) => {
+  return (
+    <SC.InvisibleLink to={link}>
+      <StyledCard colour={colours}>
+        <ColourBandContainer>
+          {colours.map((colour) => {
+            return <ColourBandItem key={colour} colour={colour} />;
+          })}
+        </ColourBandContainer>
 
-      <StyledBody>
-        <Subtitle className="mb-1">course</Subtitle>
-        <Card.Title>{name}</Card.Title>
-        <Subtitle className="mb-1">{onlineOnly ? `Online` : postcode}</Subtitle>
-        <Description>{description}</Description>
-      </StyledBody>
-    </StyledCard>
-  </SC.InvisibleLink>
-);
+        <StyledBody>
+          <Subtitle className="mb-1">course</Subtitle>
+          <Card.Title>{name}</Card.Title>
+          <Subtitle className="mb-1">{onlineOnly ? `Online` : postcode}</Subtitle>
+          <Description>{description}</Description>
+        </StyledBody>
+      </StyledCard>
+    </SC.InvisibleLink>
+  );
+};
 
 export default CourseCard;

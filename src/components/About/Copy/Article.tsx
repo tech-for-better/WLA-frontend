@@ -19,8 +19,12 @@ const Title = styled.h1`
 
 const Image = styled.img`
   object-fit: cover;
-  float: ${(props) => (props.alignment ? `right` : `left`)};
-  ${(props) => props.alignment || `margin-right: 1em;`}
+  float: ${(props) => {
+    return props.alignment ? `right` : `left`;
+  }};
+  ${(props) => {
+    return props.alignment || `margin-right: 1em;`;
+  }}
 `;
 
 const Article: React.FC<ArticleProps> = ({ alignment, title, text, image }) => {
@@ -29,9 +33,9 @@ const Article: React.FC<ArticleProps> = ({ alignment, title, text, image }) => {
     <article>
       <Image src={link} alt={description} width={200} height={200} alignment={alignment} />
       <Title>{title}</Title>
-      {text.map((p) => (
-        <p>{p}</p>
-      ))}
+      {text.map((p) => {
+        return <p>{p}</p>;
+      })}
     </article>
   );
 };
