@@ -2,6 +2,7 @@ import React from 'react';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import CareerPathDetail from '../components/careerPath/CareerPathDetail';
 
 const CareerPaths: React.FC<PageProps> = () => {
   const {
@@ -32,6 +33,7 @@ const CareerPaths: React.FC<PageProps> = () => {
           const { name } = careerPath.node;
           return (
             <Tab key={name} eventKey={name} title={name}>
+              <CareerPathDetail path={careerPath.node} />
               <p>{name}</p>
             </Tab>
           );
