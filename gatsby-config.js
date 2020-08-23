@@ -17,5 +17,11 @@ module.exports = {
         queryLimit: 1000,
       },
     },
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        // Add any options here
+      },
+    },
   ],
 };
