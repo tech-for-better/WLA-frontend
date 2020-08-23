@@ -1,8 +1,44 @@
 import React from 'react';
-import { PageProps } from 'gatsby';
+import { PageProps, graphql, useStaticQuery } from 'gatsby';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 const CareerPaths: React.FC<PageProps> = () => {
-  return <h1>CareerPaths details</h1>;
+  const {
+    allStrapiCareerPath: { edges: careerPaths },
+  } = useStaticQuery(graphql`
+    {
+      allStrapiCareerPath {
+        edges {
+          node {
+            color
+            description
+            icon_url
+            lmi_code
+            name
+            strapiId
+            video_url
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <main>
+      <h1>Career Paths</h1>
+      <Tabs defaultActiveKey={careerPaths[0].node.name}>
+        {careerPaths.map((careerPath) => {
+          const { name } = careerPath.node;
+          return (
+            <Tab key={name} eventKey={name} title={name}>
+              <p>{name}</p>
+            </Tab>
+          );
+        })}
+      </Tabs>
+    </main>
+  );
 };
 
 export default CareerPaths;
