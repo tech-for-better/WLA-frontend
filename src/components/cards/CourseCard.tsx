@@ -5,7 +5,7 @@ import styles from '../../styles';
 import * as SC from './shared-styles';
 
 interface CourseProps {
-  colour: string[];
+  colours: string[];
   name: string;
   description: string;
   link: string;
@@ -26,13 +26,20 @@ const Description = styled.p`
 const StyledCard = styled(Card)`
   width: 15em;
   height: 11em;
-  padding: 1em;
+  display: flex;
+  flex-direction: row;
+
   overflow: hidden;
   position: relative;
   box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  border-left: 10px solid ${(props) => props.colour};
+`;
 
+const StyledBody = styled.div`
+  padding: 1em;
+  width: 100%;
+  overflow: hidden;
+  /* this psuedo element is a fade for overflowing text */
   :after {
     content: '';
     text-align: right;
@@ -45,8 +52,21 @@ const StyledCard = styled(Card)`
   }
 `;
 
+const ColourBandContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 10px;
+  min-height: 100%;
+  z-index: 2;
+`;
+
+const ColourBandItem = styled.div`
+  background-color: ${(props) => props.colour};
+  flex-grow: 1;
+`;
+
 const CourseCard: React.FC<CourseProps> = ({
-  colour,
+  colours,
   name,
   description,
   link,
@@ -54,11 +74,19 @@ const CourseCard: React.FC<CourseProps> = ({
   postcode,
 }) => (
   <SC.InvisibleLink to={link}>
-    <StyledCard colour={colour}>
-      <Subtitle className="mb-1">course</Subtitle>
-      <Card.Title>{name}</Card.Title>
-      <Subtitle className="mb-1">{onlineOnly ? `Online` : postcode}</Subtitle>
-      <Description>{description}</Description>
+    <StyledCard colour={colours}>
+      <ColourBandContainer>
+        {colours.map((colour) => (
+          <ColourBandItem key={colour} colour={colour} />
+        ))}
+      </ColourBandContainer>
+
+      <StyledBody>
+        <Subtitle className="mb-1">course</Subtitle>
+        <Card.Title>{name}</Card.Title>
+        <Subtitle className="mb-1">{onlineOnly ? `Online` : postcode}</Subtitle>
+        <Description>{description}</Description>
+      </StyledBody>
     </StyledCard>
   </SC.InvisibleLink>
 );

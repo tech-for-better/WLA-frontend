@@ -42,7 +42,7 @@ const Home: React.FC<PageProps> = ({ data }) => {
           {incomingCourseData.map((course) => (
             <Col key={course.node.strapiId}>
               <CourseCard
-                colour={course.node.career_paths[0]?.colour}
+                colours={course.node.career_paths?.map((path: { color: string }) => path.color)}
                 postcode={course.node.postcode}
                 onlineOnly={course.node.online_only}
                 name={course.node.name}
