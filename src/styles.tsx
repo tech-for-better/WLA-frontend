@@ -8,7 +8,7 @@ const styles = {
   white: `#FFF`,
   grey: `#666`,
   darkGrey: `#2e2e2e`,
-  breakpoint: `600px`,
+  breakpoint: `769px`,
   font: {
     // This is an implementation of the modular scale
     0: `0.66em`,
@@ -19,6 +19,7 @@ const styles = {
     5: `5.063em`,
     6: `7.594em`,
   },
+  cardShadow: `0px 0px 14px -3px rgba(0, 0, 0, 0.5)`,
 };
 
 export const mediaQuery = (content) => {
