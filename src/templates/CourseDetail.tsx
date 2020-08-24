@@ -27,11 +27,11 @@ const StyledCard = styled(Card)`
 `;
 const BigStyledText = styled(Card.Text)`
   margin-bottom: 0;
-  font-size: 1.2rem;
+  font-size: ${styles.font[2]};
   font-weight: 800;
 `;
 const SubStyledText = styled(Card.Text)`
-  font-size: ${styles.font[0]};
+  font-size: ${styles.font[1]};
 `;
 
 const CardBodyStyle = styled(Card.Body)`
@@ -41,9 +41,25 @@ const CardBodyStyle = styled(Card.Body)`
   justify-items: start;
   align-content: space-between;
 `;
-
-const ModuleListItem = styled(ListGroup.Item)`
+const ListGroupWrapper = styled(ListGroup)`
+  border-left: 6px solid blue;
+  border
+`;
+const ModuleListItem = styled(ListGroupWrapper.Item)`
   width: 80%;
+  display: flex;
+`;
+
+const ModuleOrder = styled.h3`
+  font-family: Regular Bold;
+  font-size: 3rem;
+  letter-spacing: 0.15rem;
+  color: #646466;
+  width: 8rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 0;
 `;
 
 const CourseDetail: React.FC<PageProps> = ({ data }) => {
@@ -79,15 +95,15 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
                 <SubStyledText>Online: {onlineOnly ? `yes` : `no`}</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{startDate}</BigStyledText>
+                <BigStyledText>{startDate.toUpperCase()}</BigStyledText>
                 <SubStyledText>Start Date</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{postcode}</BigStyledText>
+                <BigStyledText>{postcode.toUpperCase()}</BigStyledText>
                 <SubStyledText>The Postcode</SubStyledText>
               </div>
               <div>
-                <BigStyledText>6</BigStyledText>
+                <BigStyledText>{modules.length}</BigStyledText>
                 <SubStyledText>Modules to Cover</SubStyledText>
               </div>
             </CardBodyStyle>
@@ -99,12 +115,23 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
       </CardGroupStyle>
       <h2 className="mt-5 mb-3">Modules To Cover</h2>
       <Card style={{ width: `80%`, margin: `0 auto` }}>
-        <ListGroup variant="flush">
+        <ListGroupWrapper variant="flush">
           {modules.map((module) => {
-            return <ModuleListItem>{module.name}</ModuleListItem>;
+            return (
+              <ModuleListItem>
+                <ModuleOrder>{module.order}</ModuleOrder>
+                <div>
+                  <BigStyledText style={{ color: `blue` }} className="mb-2">
+                    {module.name}
+                  </BigStyledText>
+                  <SubStyledText>{module.description}</SubStyledText>
+                </div>
+              </ModuleListItem>
+            );
           })}
-        </ListGroup>
+        </ListGroupWrapper>
       </Card>
+      <h2 className="mt-5 mb-3">Similar Courses To {name}</h2>
     </section>
   );
 };
