@@ -5,7 +5,11 @@ import ReactMarkdown from 'react-markdown';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row';
+import { Container } from 'react-bootstrap';
 import styles, { mediaQuery } from '../styles';
+import CourseCard from '../components/cards/CourseCard';
 
 const CardGroupStyle = styled.div`
   display: grid;
@@ -81,6 +85,9 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
     start_date: startDate,
     modules,
   } = data.course.edges[0].node;
+
+  const similarCourses = data.similarCourses.edges;
+
   return (
     <section>
       <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
@@ -140,6 +147,26 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
         </ListGroupWrapper>
       </Card>
       <h2 className="mt-5 mb-3">Similar Courses To {name}</h2>
+      <Container fluid className="mb-5">
+        <Row noGutters>
+          {similarCourses.map((course) => {
+            return (
+              <Col key={course.node.strapiId}>
+                <CourseCard
+                  colours={course.node.career_paths?.map((path: { color: string }) => {
+                    return path.color;
+                  })}
+                  postcode={course.node.postcode}
+                  onlineOnly={course.node.online_only}
+                  name={course.node.name}
+                  description={course.node.description}
+                  link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
+                />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </section>
   );
 };
@@ -164,6 +191,23 @@ export const query = graphql`
             name
             order
           }
+        }
+      }
+    }
+    similarCourses: allStrapiCourse(filter: { name: { regex: "design/gi" } }) {
+      edges {
+        node {
+          career_paths {
+            color
+          }
+          name
+          online_only
+          postcode
+          price
+          start_date(locale: "gb")
+          strapiId
+          link
+          description
         }
       }
     }
