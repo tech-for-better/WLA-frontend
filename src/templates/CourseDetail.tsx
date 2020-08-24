@@ -1,19 +1,29 @@
 import React from 'react';
-import { PageProps, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import { Container } from 'react-bootstrap';
+
 import styles, { mediaQuery } from '../styles';
-import CourseCard from '../components/cards/CourseCard';
+
+import CoursesWrapper from '../components/cards/CoursesWrapper';
+
+interface CourseDetails {
+  data: {
+    course: {
+      edges: [{}];
+    };
+    similarCourse: {
+      edges: [{}];
+    };
+  };
+}
 
 const CardGroupStyle = styled.div`
   display: grid;
-  grid-template-columns: 50% 35%;
+  grid-template-columns: 60% 35%;
   column-gap: 10%;
   justify-items: start;
   justify-content: space-between;
@@ -21,7 +31,7 @@ const CardGroupStyle = styled.div`
   ${mediaQuery(`{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
-    row-gap: 10vh;
+    row-gap: 5vh;
   }`)}
 `;
 
@@ -41,7 +51,8 @@ const SubStyledText = styled(Card.Text)`
 const CardBodyStyle = styled(Card.Body)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 30%;
+  column-gap: 10%;
+  row-gap: 10%;
   justify-items: start;
   align-content: space-between;
 `;
@@ -74,7 +85,7 @@ const ModuleOrder = styled.h3`
   }`)}
 `;
 
-const CourseDetail: React.FC<PageProps> = ({ data }) => {
+const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
   const {
     name,
     price,
@@ -117,10 +128,14 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
                 <BigStyledText>{postcode.toUpperCase()}</BigStyledText>
                 <SubStyledText>The Postcode</SubStyledText>
               </div>
-              <div>
-                <BigStyledText>{modules.length}</BigStyledText>
-                <SubStyledText>Modules to Cover</SubStyledText>
-              </div>
+              {modules.length > 0 ? (
+                <div>
+                  <BigStyledText>{modules.length}</BigStyledText>
+                  <SubStyledText>Modules to Cover</SubStyledText>
+                </div>
+              ) : (
+                ``
+              )}
             </CardBodyStyle>
           </StyledCard>
           <Button block variant="primary" className="mt-5" href={link} target="blank">
@@ -128,45 +143,36 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
           </Button>
         </div>
       </CardGroupStyle>
-      <h2 className="mt-5 mb-3">Modules To Cover</h2>
-      <Card style={{ width: `80%`, margin: `0 auto` }}>
-        <ListGroupWrapper variant="flush">
-          {modules.map((module) => {
-            return (
-              <ModuleListItem>
-                <ModuleOrder>{module.order}</ModuleOrder>
-                <div>
-                  <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
-                    {module.name}
-                  </BigStyledText>
-                  <SubStyledText>{module.description}</SubStyledText>
-                </div>
-              </ModuleListItem>
-            );
-          })}
-        </ListGroupWrapper>
-      </Card>
-      <h2 className="mt-5 mb-3">Similar Courses To {name}</h2>
-      <Container fluid className="mb-5">
-        <Row noGutters>
-          {similarCourses.map((course) => {
-            return (
-              <Col key={course.node.strapiId}>
-                <CourseCard
-                  colours={course.node.career_paths?.map((path: { color: string }) => {
-                    return path.color;
-                  })}
-                  postcode={course.node.postcode}
-                  onlineOnly={course.node.online_only}
-                  name={course.node.name}
-                  description={course.node.description}
-                  link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      {modules.length > 0 ? (
+        <div>
+          <h2 className="mt-5 mb-3">Modules To Cover</h2>
+          <Card style={{ width: `80%`, margin: `0 auto` }}>
+            <ListGroupWrapper variant="flush">
+              {modules.map((module) => {
+                return (
+                  <ModuleListItem key={`module${module.order}`}>
+                    <ModuleOrder>{module.order}</ModuleOrder>
+                    <div>
+                      <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
+                        {module.name}
+                      </BigStyledText>
+                      <SubStyledText>{module.description}</SubStyledText>
+                    </div>
+                  </ModuleListItem>
+                );
+              })}
+            </ListGroupWrapper>
+          </Card>
+        </div>
+      ) : (
+        ``
+      )}
+      <div>
+        <h2 className="mt-5 mb-3">
+          Similar Courses To <strong>{name}</strong>
+        </h2>
+      </div>
+      <CoursesWrapper courseData={similarCourses} />
     </section>
   );
 };
@@ -208,6 +214,7 @@ export const query = graphql`
           strapiId
           link
           description
+          id
         }
       }
     }
