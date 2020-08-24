@@ -3,6 +3,7 @@ import { PageProps, graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import styles, { mediaQuery } from '../styles';
 
@@ -15,7 +16,7 @@ const CardGroupStyle = styled.div`
 
   ${mediaQuery(`{
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto 1fr;
+    grid-template-rows: 1fr auto;
     row-gap: 10vh;
   }`)}
 `;
@@ -41,6 +42,10 @@ const CardBodyStyle = styled(Card.Body)`
   align-content: space-between;
 `;
 
+const ModuleListItem = styled(ListGroup.Item)`
+  width: 80%;
+`;
+
 const CourseDetail: React.FC<PageProps> = ({ data }) => {
   const {
     name,
@@ -50,6 +55,7 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
     postcode,
     online_only: onlineOnly,
     start_date: startDate,
+    modules,
   } = data.course.edges[0].node;
   return (
     <section>
@@ -91,6 +97,14 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
           </Button>
         </div>
       </CardGroupStyle>
+      <h2 className="mt-5 mb-3">Modules To Cover</h2>
+      <Card style={{ width: `80%`, margin: `0 auto` }}>
+        <ListGroup variant="flush">
+          {modules.map((module) => {
+            return <ModuleListItem>{module.name}</ModuleListItem>;
+          })}
+        </ListGroup>
+      </Card>
     </section>
   );
 };
@@ -109,6 +123,12 @@ export const query = graphql`
           postcode
           online_only
           start_date
+          modules {
+            description
+            link
+            name
+            order
+          }
         }
       }
     }
