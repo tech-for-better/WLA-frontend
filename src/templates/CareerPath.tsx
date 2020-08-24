@@ -1,12 +1,13 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 
 const CareerPath: React.FC<PageProps> = ({ data }) => {
   const { description, name } = data?.careers?.edges[0]?.node;
   return (
     <main>
       <h1>{name}</h1>
-      <p>{description}</p>
+      <ReactMarkdown source={description} />
     </main>
   );
 };

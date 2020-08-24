@@ -22,11 +22,13 @@ const InternalLinks: React.FC<{}> = () => {
   `);
 
   const pagesData = pages?.site?.siteMetadata?.footerLinks;
-  const newPages = pagesData.map((page: page) => (
-    <SC.ExternalLink key={page.name} href={page.link}>
-      {page.name}
-    </SC.ExternalLink>
-  ));
+  const newPages = pagesData.map((page: page) => {
+    return (
+      <SC.ExternalLink key={page.name} href={page.link}>
+        {page.name}
+      </SC.ExternalLink>
+    );
+  });
   return <SC.LinksList>{newPages}</SC.LinksList>;
 };
 

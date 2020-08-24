@@ -29,21 +29,21 @@ const Body = styled(Card.Body)`
   padding: 0;
 `;
 
-const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
-  const StyledCard = styled(Card)`
-    width: 15em;
-    height: 7em;
-    color: ${styles.white};
-    background-color: ${colour};
-    padding: 1em;
-    -webkit-box-shadow: ${SC.cardShadow};
-    -moz-box-shadow: ${SC.cardShadow};
-    box-shadow: ${SC.cardShadow};
-  `;
+const StyledCard = styled(Card)`
+  width: 15em;
+  height: 7em;
+  color: ${styles.white};
+  background-color: ${(props) => {
+    return props.colour;
+  }};
+  padding: 1em;
+  box-shadow: ${SC.cardShadow};
+`;
 
+const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
   return (
     <SC.InvisibleLink to={link}>
-      <StyledCard>
+      <StyledCard colour={colour}>
         <Subtitle className="mb-1">Career path</Subtitle>
         <Body>
           <Title>{name}</Title>

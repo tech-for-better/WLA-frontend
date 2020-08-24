@@ -4,51 +4,83 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Search from '../components/search';
+import SearchHeader from '../components/Search/SearchHeader';
 import CareerCard from '../components/cards/CareerCard';
 import CourseCard from '../components/cards/CourseCard';
 
+type career = {
+  color: string;
+  icon_url: string;
+  name: string;
+  strapiId: number;
+};
+
+type course = {
+  link: string;
+  name: string;
+  postCode: string;
+  price: string;
+  start_date: string;
+  onlineOnly: boolean;
+  strapiId: number;
+};
+
 const Home: React.FC<PageProps> = ({ data }) => {
-  const [incomingData, setData] = useState(data.allStrapiCourse.edges);
-  const [incomingCareerData, setCareerData] = useState(data.allStrapiCareerPath.edges);
-  const [currentSearch, setSearch] = useState(``);
+  const [courseDataBank] = useState(data.allStrapiCourse.edges);
+  const [careerDataBank] = useState(data.allStrapiCareerPath.edges);
+  const [courseResults, setCourseResults] = useState(courseDataBank);
+  const [careerResults, setCareerResults] = useState(careerDataBank);
+  const [searchTerm, setSearchTerm] = useState(``);
   useEffect(() => {
-    const filterdCareerData = incomingCareerData.filter((a) => a.node.name.includes(currentSearch));
-    const filterdData = incomingData.filter((a) => a.node.name.includes(currentSearch));
-    setCareerData(filterdCareerData);
-    setData(filterdData);
-  }, [currentSearch]);
+    const filterdCareerData = careerDataBank.filter((a: career) => {
+      return a.node.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    const filterdData = courseDataBank.filter((a: course) => {
+      return a.node.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setCareerResults(filterdCareerData);
+    setCourseResults(filterdData);
+  }, [searchTerm]);
+
   return (
     <main>
-      <Search setSearch={setSearch} />
+      <SearchHeader setSearch={setSearchTerm} />
       <h2>Career Path</h2>
       <Container fluid>
         <Row noGutters>
-          {incomingCareerData.map((career) => (
-            <Col key={career.node.strapiId}>
-              <CareerCard
-                colour={career.node.color}
-                name={career.node.name}
-                link={`/career/${career.node.name.replace(/ /g, `-`)}`}
-                image={career.node.icon_url}
-              />
-            </Col>
-          ))}
+          {careerResults.map((career) => {
+            return (
+              <Col key={career.node.strapiId}>
+                <CareerCard
+                  colour={career.node.color}
+                  name={career.node.name}
+                  link={`/career/${career.node.name.replace(/ /g, `-`)}`}
+                  image={career.node.icon_url}
+                />
+              </Col>
+            );
+          })}
         </Row>
       </Container>
       <h2>Courses</h2>
       <Container fluid>
         <Row noGutters>
-          {incomingData.map((course) => (
-            <Col key={course.node.strapiId}>
-              <CourseCard
-                colour="red"
-                name={course.node.name}
-                description={course.node.description}
-                link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
-              />
-            </Col>
-          ))}
+          {courseResults.map((course) => {
+            return (
+              <Col key={course.node.strapiId}>
+                <CourseCard
+                  colours={course.node.career_paths?.map((path: { color: string }) => {
+                    return path.color;
+                  })}
+                  postcode={course.node.postcode}
+                  onlineOnly={course.node.online_only}
+                  name={course.node.name}
+                  description={course.node.description}
+                  link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
+                />
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </main>
@@ -72,15 +104,17 @@ export const query = graphql`
     allStrapiCourse {
       edges {
         node {
-          name
-          link
-          price
-          start_date
-          strapiId
           description
+          link
+          name
           career_paths {
             color
           }
+          postcode
+          price
+          start_date(locale: "gb")
+          strapiId
+          online_only
         }
       }
     }

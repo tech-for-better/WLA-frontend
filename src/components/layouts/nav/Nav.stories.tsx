@@ -7,4 +7,6 @@ export default {
   component: CustomNav,
 } as Meta;
 
-export const CustomNavDesktop: Story = () => <CustomNav />;
+export const CustomNavDesktop: Story = () => {
+  return <CustomNav />;
+};

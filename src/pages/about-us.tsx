@@ -12,13 +12,15 @@ const Title = styled.h1`
   font-size: ${styles.font[4]};
 `;
 
-const AboutUs: React.FC<PageProps> = () => (
-  <main>
-    <Title>About</Title>
-    <Copy />
-    <Partners />
-    <ContactUs />
-  </main>
-);
+const AboutUs: React.FC<PageProps> = () => {
+  return (
+    <main>
+      <Title>About</Title>
+      <Copy />
+      <Partners />
+      <ContactUs />
+    </main>
+  );
+};
 
 export default AboutUs;

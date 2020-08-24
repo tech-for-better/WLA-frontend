@@ -8,5 +8,9 @@ export default {
   component: Footer,
 } as Meta;
 
-export const WholeFooter: Story = () => <Footer />;
-export const FooterCopy: Story = () => <Copy />;
+export const WholeFooter: Story = () => {
+  return <Footer />;
+};
+export const FooterCopy: Story = () => {
+  return <Copy />;
+};
