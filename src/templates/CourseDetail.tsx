@@ -42,24 +42,32 @@ const CardBodyStyle = styled(Card.Body)`
   align-content: space-between;
 `;
 const ListGroupWrapper = styled(ListGroup)`
-  border-left: 6px solid blue;
-  border
+  width: 100%;
+  border-left: 6px solid ${styles.lightBlue};
 `;
 const ModuleListItem = styled(ListGroupWrapper.Item)`
   width: 80%;
   display: flex;
+  ${mediaQuery(`{
+    width: 100%
+  }`)}
 `;
 
 const ModuleOrder = styled.h3`
   font-family: Regular Bold;
   font-size: 3rem;
   letter-spacing: 0.15rem;
-  color: #646466;
+  color: ${styles.grey};
   width: 8rem;
   padding: 1rem 0.5rem;
   text-align: center;
   flex-shrink: 0;
   flex-grow: 0;
+  ${mediaQuery(`{
+    padding: 0.4rem 0.4rem;
+    font-size: 3rem;
+    width: 3rem;
+  }`)}
 `;
 
 const CourseDetail: React.FC<PageProps> = ({ data }) => {
@@ -92,7 +100,7 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
             <CardBodyStyle>
               <div className="mb-4">
                 <BigStyledText>{price.toUpperCase()}</BigStyledText>
-                <SubStyledText>Online: {onlineOnly ? `yes` : `no`}</SubStyledText>
+                <SubStyledText>{onlineOnly ? `Online` : `On Campus`}</SubStyledText>
               </div>
               <div>
                 <BigStyledText>{startDate.toUpperCase()}</BigStyledText>
@@ -121,7 +129,7 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
               <ModuleListItem>
                 <ModuleOrder>{module.order}</ModuleOrder>
                 <div>
-                  <BigStyledText style={{ color: `blue` }} className="mb-2">
+                  <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
                     {module.name}
                   </BigStyledText>
                   <SubStyledText>{module.description}</SubStyledText>
