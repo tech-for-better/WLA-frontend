@@ -8,8 +8,8 @@ import styles, { mediaQuery } from '../styles';
 
 const CardGroupStyle = styled.div`
   display: grid;
-  grid-template-columns: 50% 30%;
-  column-gap: 10vw;
+  grid-template-columns: 50% 35%;
+  column-gap: 10%;
   justify-items: start;
   justify-content: space-between;
 
@@ -24,6 +24,22 @@ const StyledCard = styled(Card)`
   padding: 1em;
   box-shadow: ${styles.cardShadow};
 `;
+const BigStyledText = styled(Card.Text)`
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+`;
+const SubStyledText = styled(Card.Text)`
+  font-size: ${styles.font[0]};
+`;
+
+const CardBodyStyle = styled(Card.Body)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30%;
+  justify-items: start;
+  align-content: space-between;
+`;
 
 const CourseDetail: React.FC<PageProps> = ({ data }) => {
   const {
@@ -31,44 +47,50 @@ const CourseDetail: React.FC<PageProps> = ({ data }) => {
     price,
     link,
     description,
-    id,
     postcode,
     online_only: onlineOnly,
+    start_date: startDate,
   } = data.course.edges[0].node;
   return (
     <section>
-      <h1 className="mt-3 mb-2">{name}</h1>
+      <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
       <CardGroupStyle>
         <StyledCard>
           <Card.Body>
-            <Card.Title>Description</Card.Title>
+            <Card.Title className="mb-4">
+              <strong>Description</strong>
+            </Card.Title>
             <Card.Text>
               <ReactMarkdown source={description} />
             </Card.Text>
           </Card.Body>
         </StyledCard>
-        <div>
+        <div style={{ width: `100%` }}>
           <StyledCard>
-            <Card.Body>
-              <Card.Title>Description</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the
-                content.
-              </Card.Text>
-            </Card.Body>
+            <CardBodyStyle>
+              <div className="mb-4">
+                <BigStyledText>{price.toUpperCase()}</BigStyledText>
+                <SubStyledText>Online: {onlineOnly ? `yes` : `no`}</SubStyledText>
+              </div>
+              <div>
+                <BigStyledText>{startDate}</BigStyledText>
+                <SubStyledText>Start Date</SubStyledText>
+              </div>
+              <div>
+                <BigStyledText>{postcode}</BigStyledText>
+                <SubStyledText>The Postcode</SubStyledText>
+              </div>
+              <div>
+                <BigStyledText>6</BigStyledText>
+                <SubStyledText>Modules to Cover</SubStyledText>
+              </div>
+            </CardBodyStyle>
           </StyledCard>
-          <Button variant="primary" className="mt-5">
-            Go to The course
+          <Button block variant="primary" className="mt-5" href={link} target="blank">
+            Get The course
           </Button>
         </div>
       </CardGroupStyle>
-      <ul>
-        <li>{price}</li>
-        <li>{link}</li>
-        <li>{id}</li>
-        <li>{postcode}</li>
-        <li>Online: {onlineOnly ? `yes` : `no`}</li>
-      </ul>
     </section>
   );
 };
@@ -86,6 +108,7 @@ export const query = graphql`
           id
           postcode
           online_only
+          start_date
         }
       }
     }
