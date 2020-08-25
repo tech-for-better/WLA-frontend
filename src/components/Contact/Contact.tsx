@@ -1,34 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
-import styles, { mediaQuery } from '../../styles';
 import Form from './Form';
-
-const OverallBox = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  ${mediaQuery(`{
-grid-template-columns: 1fr;
-}`)}
-`;
-
-const FirstBox = styled.div`
-  background-color: ${styles.lightBlue};
-  color: ${styles.white};
-`;
-
-const SecondBox = styled.div``;
+import * as SC from './styled-components';
 
 const Contact: React.FC<{}> = () => {
   return (
-    <OverallBox>
-      <FirstBox>
-        <p>Talk to us.</p>
-        <h2>Let us know if you also have courses to offer.</h2>
-      </FirstBox>
-      <SecondBox>
+    <SC.OverallBox>
+      <SC.FirstBox>
+        <SC.TextOne>Talk to us.</SC.TextOne>
+        <SC.TextTwo>Let us know if you also have courses to offer.</SC.TextTwo>
+        <SC.TextThree>Looking to partner up?</SC.TextThree>
+      </SC.FirstBox>
+      <SC.SecondBox>
         <Form />
-      </SecondBox>
-    </OverallBox>
+      </SC.SecondBox>
+    </SC.OverallBox>
   );
 };
 
