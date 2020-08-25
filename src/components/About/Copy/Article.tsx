@@ -12,6 +12,13 @@ interface ArticleProps {
   };
 }
 
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: ${(props) => {
+    return props.alignment ? `row-reverse` : `row`;
+  }};
+`;
+
 const Title = styled.h1`
   text-align: center;
   font-size: ${styles.font[3]};
@@ -19,9 +26,6 @@ const Title = styled.h1`
 
 const Image = styled.img`
   object-fit: cover;
-  float: ${(props) => {
-    return props.alignment ? `right` : `left`;
-  }};
   ${(props) => {
     return props.alignment || `margin-right: 1em;`;
   }}
@@ -30,13 +34,15 @@ const Image = styled.img`
 const Article: React.FC<ArticleProps> = ({ alignment, title, text, image }) => {
   const { link, description } = image;
   return (
-    <article>
-      <Image src={link} alt={description} width={200} height={200} alignment={alignment} />
-      <Title>{title}</Title>
-      {text.map((p) => {
-        return <p>{p}</p>;
-      })}
-    </article>
+    <StyledArticle alignment={alignment}>
+      <Image src={link} alt={description} width={300} height={300} alignment={alignment} />
+      <div>
+        <Title>{title}</Title>
+        {text.map((p) => {
+          return <p>{p}</p>;
+        })}
+      </div>
+    </StyledArticle>
   );
 };
 
