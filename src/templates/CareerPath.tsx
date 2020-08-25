@@ -8,6 +8,10 @@ import { mediaQuery } from '../styles';
 import { CardGroupStyle, StyledCard } from './sharedStyles.styles';
 import CoursesWrapper from '../components/cards/CoursesWrapper';
 
+import Graph1 from '../assets/temp/lc1.png';
+import Graph2 from '../assets/temp/lc2.png';
+import Graph3 from '../assets/temp/dc.png';
+
 const ReverseCardGroupStyle = styled(CardGroupStyle)`
   grid-template-columns: 35% 60%;
 `;
@@ -20,6 +24,10 @@ const Video = styled.iframe`
   ${mediaQuery(`{
     width: 100%;
   }`)}
+`;
+
+const GraphImg = styled.img`
+  width: 100%;
 `;
 
 const CareerPath: React.FC<PageProps> = ({ data }) => {
@@ -89,6 +97,39 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
       <div className="mb-5">
         <h2 className="mb-4">Career Path Courses:</h2>
         <CoursesWrapper courseData={courses} />
+      </div>
+      <div className="mb-5">
+        <h2 className="mb-4">
+          Statistical Data About <strong>{name}</strong>
+        </h2>
+        <ReverseCardGroupStyle className="mb-5 mt-5">
+          <div style={{ width: `100%` }}>
+            <StyledCard className="mb-3">
+              <Card.Body>
+                <Card.Title className="mb-4">
+                  <strong>Average Salary</strong>
+                </Card.Title>
+                <GraphImg src={Graph1} />
+              </Card.Body>
+            </StyledCard>
+            <StyledCard>
+              <Card.Body>
+                <Card.Title className="mb-4">
+                  <strong>Employment ratio</strong>
+                </Card.Title>
+                <GraphImg src={Graph2} />
+              </Card.Body>
+            </StyledCard>
+          </div>
+          <StyledCard>
+            <Card.Body>
+              <Card.Title className="mb-4">
+                <strong>Success Ratio</strong>
+              </Card.Title>
+              <GraphImg src={Graph3} />
+            </Card.Body>
+          </StyledCard>
+        </ReverseCardGroupStyle>
       </div>
     </main>
   );
