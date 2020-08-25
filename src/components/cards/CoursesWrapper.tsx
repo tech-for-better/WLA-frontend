@@ -6,7 +6,11 @@ import Col from 'react-bootstrap/esm/Col';
 import CourseCard from './CourseCard';
 
 interface CourseWrapperProps {
-  courseData: [];
+  courseData: [
+    {
+      node: {};
+    },
+  ];
 }
 
 const CoursesWrapper: React.FC<CourseWrapperProps> = ({ courseData }) => {
