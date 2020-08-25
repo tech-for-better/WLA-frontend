@@ -19,7 +19,7 @@ const CoursesWrapper: React.FC<CourseWrapperProps> = ({ courseData }) => {
       <Row noGutters>
         {courseData.map((course) => {
           return (
-            <Col key={course.node.strapiId || course.id}>
+            <Col key={course.node.strapiId}>
               <CourseCard
                 colours={course.node.career_paths?.map((path: { color: string }) => {
                   return path.color;

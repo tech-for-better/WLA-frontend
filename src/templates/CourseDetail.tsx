@@ -65,7 +65,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
                 <SubStyledText>{onlineOnly ? `Online` : `On Campus`}</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{startDate ? startDate.toUpperCase() : `Unknown`}</BigStyledText>
+                <BigStyledText>{startDate || `Unknown`}</BigStyledText>
                 <SubStyledText>Start Date</SubStyledText>
               </div>
               <div>
@@ -134,7 +134,7 @@ export const query = graphql`
           id
           postcode
           online_only
-          start_date(formatString: "DD MMM, YYYY")
+          start_date(formatString: "DD MMM, YY")
           modules {
             description
             link

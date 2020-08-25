@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import Card from 'react-bootstrap/esm/Card';
 import { mediaQuery } from '../styles';
 import { CardGroupStyle, StyledCard } from './sharedStyles.styles';
-// import CoursesWrapper from '../components/cards/CoursesWrapper';
+import CoursesWrapper from '../components/cards/CoursesWrapper';
 
 const ReverseCardGroupStyle = styled(CardGroupStyle)`
   grid-template-columns: 35% 60%;
@@ -25,12 +25,18 @@ const Video = styled.iframe`
 const CareerPath: React.FC<PageProps> = ({ data }) => {
   const {
     description,
+    color,
     name,
     video_url: videoUrl,
     lmi_code: lmiCode,
   } = data?.careers?.edges[0]?.node;
 
-  // const courses = data?.careers?.edges[0]?.node.courses;
+  const courses = (data?.careers?.edges[0]?.node.courses).map((a) => {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    Object.assign(a, { career_paths: [{ color }] });
+    return { node: a };
+  });
+
   return (
     <main>
       <ReverseCardGroupStyle className="mb-5 mt-5">
@@ -42,13 +48,11 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
                 <strong>Skills You will acquire:</strong>
               </Card.Title>
               <Card.Text>
-                <ul>
-                  <li>User research</li>
-                  <li>Finding the Colors in Nature</li>
-                  <li>Time Managment</li>
-                  <li>{lmiCode}</li>
-                  <li>This section is hardcoded we need to update schema on the backend</li>
-                </ul>
+                <li>User research</li>
+                <li>Finding the Colors in Nature</li>
+                <li>Time Managment</li>
+                <li>{lmiCode}</li>
+                <li>This section is hardcoded we need to update schema on the backend</li>
               </Card.Text>
             </Card.Body>
           </StyledCard>
@@ -84,8 +88,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
       )}
       <div className="mb-5">
         <h2 className="mb-4">Career Path Courses:</h2>
-        <h3 className="mb-4">Career Path Courses:</h3>
-        {/* <CoursesWrapper courseData={courses} /> */}
+        <CoursesWrapper courseData={courses} />
       </div>
     </main>
   );
@@ -105,7 +108,7 @@ export const query = graphql`
           lmi_code
           courses {
             name
-            id
+            strapiId: id
             link
             description
           }
