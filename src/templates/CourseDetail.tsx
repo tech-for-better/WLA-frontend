@@ -134,7 +134,7 @@ export const query = graphql`
           id
           postcode
           online_only
-          start_date
+          start_date(formatString: "DD MMM, YYYY")
           modules {
             description
             link
