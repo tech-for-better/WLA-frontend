@@ -73,3 +73,7 @@ export const Submit = styled.button`
   align-self: center;
   padding: 0.5em 1.5em;
 `;
+
+export const FormError = styled.p`
+  color: ${styles.errorRed};
+`;
