@@ -21,9 +21,10 @@ interface FormSubmission {
   setNumberError: Function;
   setOrganisationError: Function;
   setMessageError: Function;
+  setFormState: Function;
 }
 
-export default function submitForm({
+export default function useFormSubmission({
   name,
   setNameError,
   email,
@@ -34,6 +35,7 @@ export default function submitForm({
   setOrganisationError,
   message,
   setMessageError,
+  setFormState,
 }: FormSubmission) {
   let exitCode = 0;
 
@@ -67,7 +69,24 @@ export default function submitForm({
   }
 
   if (!exitCode) {
-    console.log(`good form`);
+    const payload = new FormData();
+    payload.append(`name`, name);
+    payload.append(`email`, email);
+    payload.append(`number`, number);
+    payload.append(`organisation`, organisation);
+    payload.append(`message`, message);
+    const options = {
+      method: `POST`,
+      body: payload,
+    };
+    // the FORM_URL is a getform form
+    fetch(process.env.FORM_URL, options)
+      .then(() => {
+        setFormState({ error: false, message: `form submitted successfully` });
+      })
+      .catch(() => {
+        setFormState({ error: true, message: `form could not be submitted` });
+      });
   }
   // if !exitCode, send form
 }

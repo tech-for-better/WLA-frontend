@@ -77,3 +77,10 @@ export const Submit = styled.button`
 export const FormError = styled.p`
   color: ${styles.errorRed};
 `;
+
+export const FormState = styled.p`
+  color: ${(props) => {
+    return props.error ? styles.errorRed : styles.confirmationGreen;
+  }};
+  text-align: center;
+`;

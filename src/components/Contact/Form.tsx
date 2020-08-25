@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as SC from './styled-components';
-import submitForm from './submitForm';
+import useFormSubmission from './useFormSubmission';
 
 const Form: React.FC = () => {
   const [name, setName] = useState(``);
-  const [nameError, setNameError] = useState(`big error`);
+  const [nameError, setNameError] = useState(``);
   const [email, setEmail] = useState(``);
   const [emailError, setEmailError] = useState(``);
   const [number, setNumber] = useState(``);
@@ -13,6 +13,7 @@ const Form: React.FC = () => {
   const [organisationError, setOrganisationError] = useState(``);
   const [message, setMessage] = useState(``);
   const [messageError, setMessageError] = useState(``);
+  const [formState, setFormState] = useState({ message: ``, error: true });
 
   return (
     <>
@@ -85,9 +86,10 @@ const Form: React.FC = () => {
         <SC.FormError>{messageError}</SC.FormError>
       </SC.Label>
       <SC.Submit
+        type="submit"
         onClick={(e) => {
           e.preventDefault();
-          submitForm({
+          useFormSubmission({
             name,
             setNameError,
             email,
@@ -98,11 +100,13 @@ const Form: React.FC = () => {
             setOrganisationError,
             message,
             setMessageError,
+            setFormState,
           });
         }}
       >
         submit
       </SC.Submit>
+      <SC.FormState error={formState.error}>{formState.message}</SC.FormState>
     </>
   );
 };
