@@ -6,7 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SearchHeader from '../components/Search/SearchHeader';
 import CareerCard from '../components/cards/CareerCard';
-import CourseCard from '../components/cards/CourseCard';
+
+import CoursesWrapper from '../components/cards/CoursesWrapper';
 
 type career = {
   color: string;
@@ -45,8 +46,8 @@ const Home: React.FC<PageProps> = ({ data }) => {
   return (
     <main>
       <SearchHeader setSearch={setSearchTerm} />
-      <h2>Career Path</h2>
-      <Container fluid>
+      <h2 className="mt-5">Career Path</h2>
+      <Container fluid className="mb-5">
         <Row noGutters>
           {careerResults.map((career) => {
             return (
@@ -63,26 +64,7 @@ const Home: React.FC<PageProps> = ({ data }) => {
         </Row>
       </Container>
       <h2>Courses</h2>
-      <Container fluid>
-        <Row noGutters>
-          {courseResults.map((course) => {
-            return (
-              <Col key={course.node.strapiId}>
-                <CourseCard
-                  colours={course.node.career_paths?.map((path: { color: string }) => {
-                    return path.color;
-                  })}
-                  postcode={course.node.postcode}
-                  onlineOnly={course.node.online_only}
-                  name={course.node.name}
-                  description={course.node.description}
-                  link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <CoursesWrapper courseData={courseResults} />
     </main>
   );
 };
