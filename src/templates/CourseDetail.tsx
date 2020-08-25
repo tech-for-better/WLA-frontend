@@ -121,11 +121,11 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
                 <SubStyledText>{onlineOnly ? `Online` : `On Campus`}</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{startDate.toUpperCase()}</BigStyledText>
+                <BigStyledText>{startDate ? startDate.toUpperCase() : `Unknown`}</BigStyledText>
                 <SubStyledText>Start Date</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{postcode.toUpperCase()}</BigStyledText>
+                <BigStyledText>{postcode ? postcode.toUpperCase() : `Unknown`}</BigStyledText>
                 <SubStyledText>The Postcode</SubStyledText>
               </div>
               {modules.length > 0 ? (
