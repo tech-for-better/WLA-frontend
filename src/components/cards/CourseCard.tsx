@@ -28,7 +28,7 @@ const StyledCard = styled(Card)`
   height: 11em;
   display: flex;
   flex-direction: row;
-
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.5);
@@ -77,7 +77,7 @@ const CourseCard: React.FC<CourseProps> = ({
 }) => {
   return (
     <SC.InvisibleLink to={link}>
-      <StyledCard colour={colours}>
+      <StyledCard colour={colours} className="mb-3">
         <ColourBandContainer>
           {colours.map((colour) => {
             return <ColourBandItem key={colour} colour={colour} />;

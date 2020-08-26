@@ -44,7 +44,7 @@ const Home: React.FC<PageProps> = ({ data }) => {
   }, [searchTerm]);
 
   return (
-    <main>
+    <main className="mt-5">
       <SearchHeader setSearch={setSearchTerm} />
       <h2 className="mt-5">Career Path</h2>
       <Container fluid className="mb-5">

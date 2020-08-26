@@ -32,6 +32,7 @@ const Body = styled(Card.Body)`
 const StyledCard = styled(Card)`
   width: 15em;
   height: 7em;
+  margin: 0 auto;
   color: ${styles.white};
   background-color: ${(props) => {
     return props.colour;
@@ -43,7 +44,7 @@ const StyledCard = styled(Card)`
 const CareerCard: React.FC<CareerProps> = ({ colour, name, link, image }) => {
   return (
     <SC.InvisibleLink to={link}>
-      <StyledCard colour={colour}>
+      <StyledCard colour={colour} className="mb-3">
         <Subtitle className="mb-1">Career path</Subtitle>
         <Body>
           <Title>{name}</Title>
