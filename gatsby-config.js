@@ -12,8 +12,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: 'http://localhost:1337',
-        contentTypes: ['Course', 'career-path'],
+        apiURL:
+          'http://localhost:1337' || 'http://ec2-35-178-24-30.eu-west-2.compute.amazonaws.com:1337',
+        contentTypes: ['Course', 'Career-Path'],
         queryLimit: 1000,
       },
     },
