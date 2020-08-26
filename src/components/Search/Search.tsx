@@ -16,6 +16,7 @@ const FormWrapper = styled.div`
   gap: 5%;
   justify-content: center;
   align-items: center;
+
   ${mediaQuery(`{
     width: 90%
   }`)}
