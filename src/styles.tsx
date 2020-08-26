@@ -8,6 +8,8 @@ const styles = {
   white: `#FFF`,
   grey: `#666`,
   darkGrey: `#2e2e2e`,
+  errorRed: `#ed3737`,
+  confirmationGreen: `#0cc92b`,
   breakpoint: `769px`,
   font: {
     // This is an implementation of the modular scale
