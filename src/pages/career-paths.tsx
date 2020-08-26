@@ -27,7 +27,7 @@ const CareerPaths: React.FC<PageProps> = () => {
 
   return (
     <main>
-      <h1>Career Paths</h1>
+      <h1 className="mt-5">Career Paths</h1>
       <Tabs defaultActiveKey={careerPaths[0].node.name}>
         {careerPaths.map((careerPath) => {
           const { name } = careerPath.node;

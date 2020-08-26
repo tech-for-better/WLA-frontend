@@ -14,7 +14,7 @@ const Title = styled.h1`
 
 const AboutUs: React.FC<PageProps> = () => {
   return (
-    <main>
+    <main className="mt-5">
       <Title>About</Title>
       <Copy />
       <Partners />
