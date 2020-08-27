@@ -45,4 +45,5 @@ interface SearchResults {
 
 interface SearchInputProps {
   setSearchTerm: Function;
+  setOnlineOnly: Function;
 }

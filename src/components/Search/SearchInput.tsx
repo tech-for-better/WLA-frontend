@@ -27,7 +27,7 @@ const DropDowns = styled.div`
   display: flex;
 `;
 
-const SearchInput: React.FC<SearchInputProps> = ({ setSearchTerm }) => {
+const SearchInput: React.FC<SearchInputProps> = ({ setSearchTerm, setOnlineOnly }) => {
   return (
     <>
       <FormWrapper>
@@ -62,7 +62,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ setSearchTerm }) => {
             </Form.Control>
           </Form.Group>
         </DropDowns>
-        <Form.Check type="switch" id="custom-switch" label="Remote" />
+        <Form.Check
+          type="switch"
+          id="custom-switch"
+          label="Remote"
+          onChange={(e) => {
+            setOnlineOnly(e.currentTarget.checked);
+          }}
+        />
       </FormWrapper>
     </>
   );
