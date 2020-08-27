@@ -10,7 +10,10 @@ const styles = {
   darkGrey: `#2e2e2e`,
   errorRed: `#ed3737`,
   confirmationGreen: `#0cc92b`,
-  breakpoint: `769px`,
+  breakpoints: {
+    mobileMainWidth: `769px`,
+    desktopMainWidth: `1140px`,
+  },
   font: {
     // This is an implementation of the modular scale
     0: `0.66em`,
@@ -26,7 +29,7 @@ const styles = {
 
 export const mediaQuery = (content) => {
   return `
-@media only screen and (max-width: ${styles.breakpoint}) {
+@media only screen and (max-width: ${styles.breakpoints.mobileMainWidth}) {
 ${content}
 }
 `;

@@ -2,14 +2,18 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import styles, { mediaQuery } from '../../../styles';
 
-export const StyledFooter = styled.footer`
+export const StyledFooterBox = styled.div`
   padding: 2em;
+  background-color: ${styles.darkGrey};
+  color: #fff;
+`;
+
+export const StyledFooterContent = styled.footer`
+  max-width: ${styles.breakpoints.desktopMainWidth};
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr;
-  background-color: ${styles.darkGrey};
-  color: #fff;
-
+  margin: 0 auto;
   ${mediaQuery(`{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto 1fr;

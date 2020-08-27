@@ -9,17 +9,19 @@ import InternalLinks from './InternalLinks';
 
 const Footer: React.FC<{}> = () => {
   return (
-    <SC.StyledFooter>
-      <SC.FirstSection>
-        <SC.Logo alt="SkillsWest.London logo" src={logo} />
-        <Copy />
-      </SC.FirstSection>
-      <SC.Separator />
-      <SC.SecondSection>
-        <ExternalLinks />
-        <InternalLinks />
-      </SC.SecondSection>
-    </SC.StyledFooter>
+    <SC.StyledFooterBox>
+      <SC.StyledFooterContent>
+        <SC.FirstSection>
+          <SC.Logo alt="SkillsWest.London logo" src={logo} />
+          <Copy />
+        </SC.FirstSection>
+        <SC.Separator />
+        <SC.SecondSection>
+          <ExternalLinks />
+          <InternalLinks />
+        </SC.SecondSection>
+      </SC.StyledFooterContent>
+    </SC.StyledFooterBox>
   );
 };
 
