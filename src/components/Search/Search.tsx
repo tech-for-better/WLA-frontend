@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchInput from './SearchInput';
-import SearchOutput from './SearchOutput';
+import SearchOutput from './SearchOutput/SearchOutput';
 import useSearchParameters from './useSearchParameters';
 
 const Search: React.FC<Catalogues> = ({ courseCatalogue = [], careerCatalogue = [] }) => {

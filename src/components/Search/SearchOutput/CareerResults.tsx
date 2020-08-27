@@ -1,14 +1,13 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import CoursesWrapper from '../cards/CoursesWrapper';
-import CareerCard from '../cards/CareerCard';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CareerCard from '../../cards/CareerCard';
 
-const SearchOutput: React.FC<SearchResults> = ({ courseResults, careerResults }) => {
+const CareerResults: React.FC<{ careerResults: CareerPathCatalogue }> = ({ careerResults }) => {
   return (
-    <main className="mt-5">
+    <>
       <h2 className="mt-5">Career Path</h2>
       <Container fluid className="mb-5">
         <Row noGutters>
@@ -26,10 +25,8 @@ const SearchOutput: React.FC<SearchResults> = ({ courseResults, careerResults })
           })}
         </Row>
       </Container>
-      <h2>Courses</h2>
-      <CoursesWrapper courseData={courseResults} />
-    </main>
+    </>
   );
 };
 
-export default SearchOutput;
+export default CareerResults;

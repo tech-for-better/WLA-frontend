@@ -21,7 +21,13 @@ const useSearchParameters = ({
       });
       setCourseResults(filteredData);
     }
-  }, [searchTerm, careerCatalogue, courseCatalogue, setCareerResults, setCourseResults]);
+  }, [
+    searchTerm,
+    // careerCatalogue,
+    // courseCatalogue,
+    // setCareerResults,
+    // setCourseResults,
+  ]);
 };
 
 export default useSearchParameters;
