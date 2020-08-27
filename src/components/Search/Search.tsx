@@ -40,7 +40,7 @@ const Search: React.FC<SearchInterface> = ({ setSearch }) => {
           }}
         />
 
-        <Button variant="outline-primary">Search</Button>
+        <Button variant="primary">Search</Button>
         <DropDowns>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Sort By:</Form.Label>

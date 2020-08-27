@@ -12,18 +12,25 @@ const Header = styled.header`
   background-size: 100%;
   object-fit: cover;
   background-repeat: no-repeat;
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
-const MainLine = styled.div`
-  width: 80%;
-  height: 30vh;
-  color: ${styles.white};
-  // background-color: rgba(0, 0, 0, 0.5);
+const Filter = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
-  margin: 0 auto;
-  padding: 10%;
+  flex-direction: column;
+  align-content: space-between;
+  > * {
+    margin: 1em auto;
+  }
+`;
+
+const Strapline = styled.h2`
+  color: ${styles.white};
+  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
+  width: 100%;
 `;
 
 interface SearchInterface {
@@ -46,10 +53,10 @@ const SearchHeader: React.FC<SearchInterface> = ({ setSearch }) => {
   const { strapline, bannerImage } = metaData?.site?.siteMetadata?.about;
   return (
     <Header bannerImage={bannerImage}>
-      <MainLine>
-        <h2>{strapline}</h2>
-      </MainLine>
-      <Search setSearch={setSearch} />
+      <Filter>
+        <Strapline>{strapline}</Strapline>
+        <Search setSearch={setSearch} />
+      </Filter>
     </Header>
   );
 };
