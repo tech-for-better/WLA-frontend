@@ -42,8 +42,8 @@ const Form: React.FC = () => {
               setEmail(e.currentTarget.value);
             }}
           />
+          <SC.FormError>{emailError}</SC.FormError>
         </SC.Label>
-        <SC.FormError>{emailError}</SC.FormError>
       </SC.SmallInputs>
       <SC.SmallInputs>
         <SC.Label htmlFor="number">
