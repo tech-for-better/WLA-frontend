@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import styled from 'styled-components';
 import Nav from './nav/Nav';
 import Footer from './footer/Footer';
+import styles from '../../styles';
 
 const Page = styled.div`
   min-height: 100vh;
@@ -12,6 +13,9 @@ const Page = styled.div`
 
 const Main = styled(Container)`
   flex-grow: 1;
+  max-width: ${styles.breakpoints.desktopMainWidth};
+  margin: 0 auto;
+  padding: 0;
 `;
 
 export default function Layout({ children }) {
