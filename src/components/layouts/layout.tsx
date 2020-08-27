@@ -5,10 +5,12 @@ import Footer from './footer/Footer';
 
 export default function Layout({ children }) {
   return (
-    <Container fluid="xl" className="mt-3">
-      <Nav />
-      <div>{children}</div>
+    <>
+      <Container fluid="xl" className="mt-3">
+        <Nav />
+        <div>{children}</div>
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 }
