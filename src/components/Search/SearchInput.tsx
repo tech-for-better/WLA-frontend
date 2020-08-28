@@ -27,7 +27,13 @@ const DropDowns = styled.div`
   display: flex;
 `;
 
-const SearchInput: React.FC<SearchInputProps> = ({ setSearchTerm, setOnlineOnly }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  setSearchTerm,
+  setOnlineOnly,
+  careers,
+  setSelectedCareer,
+  setSortParam,
+}) => {
   return (
     <>
       <FormWrapper>
@@ -44,21 +50,35 @@ const SearchInput: React.FC<SearchInputProps> = ({ setSearchTerm, setOnlineOnly 
         <DropDowns>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Sort By:</Form.Label>
-            <Form.Control as="select" defaultValue="Relevance">
-              <option value="0">Start Date</option>
-              <option value="1">Price: Low to High</option>
-              <option value="2">Price: High to Low</option>
-              <option value="3">Relevance</option>
+            <Form.Control
+              as="select"
+              onChange={(e) => {
+                setSortParam(e.currentTarget.value);
+              }}
+            >
+              <option> </option>
+              <option>Start Date</option>
+              <option>Price</option>
             </Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Type:</Form.Label>
-            <Form.Control as="select" className="mr-sm-2" custom>
-              <option value="0">Full-Time Campus</option>
-              <option value="1">Part-Time Campus</option>
-              <option value="2">Online - Full-Time</option>
-              <option value="3">Online - Part-Time</option>
+            <Form.Label>Career path:</Form.Label>
+            <Form.Control
+              as="select"
+              className="mr-sm-2"
+              custom
+              onChange={(e) => {
+                setSelectedCareer(e.currentTarget.value);
+              }}
+            >
+              {[{ node: { id: ``, name: `` } }, ...careers].map((career) => {
+                return (
+                  <option key={career.node.id} value={career.node.id}>
+                    {career.node.name}
+                  </option>
+                );
+              })}
             </Form.Control>
           </Form.Group>
         </DropDowns>

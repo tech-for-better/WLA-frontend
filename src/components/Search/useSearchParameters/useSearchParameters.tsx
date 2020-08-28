@@ -9,6 +9,7 @@ const useSearchParameters = ({
   setCourseResults,
   sortParam,
   onlineOnly,
+  selectedCareer,
 }) => {
   useEffect(() => {
     if (careerCatalogue.length) {
@@ -19,12 +20,12 @@ const useSearchParameters = ({
     }
 
     if (courseCatalogue.length) {
-      let filteredCourses = courseCatalogue.filter((a: CourseEntry) => {
-        return a.node.name.toLowerCase().includes(searchTerm.toLowerCase());
-      });
+      let filteredCourses = [...courseCatalogue];
 
-      if (sortParam) {
-        filteredCourses = sortCourses(filteredCourses, sortParam);
+      if (searchTerm) {
+        filteredCourses = courseCatalogue.filter((a: CourseEntry) => {
+          return a.node.name.toLowerCase().includes(searchTerm.toLowerCase());
+        });
       }
 
       if (onlineOnly) {
@@ -33,16 +34,30 @@ const useSearchParameters = ({
         });
       }
 
+      if (selectedCareer) {
+        filteredCourses = filteredCourses.filter((course: CourseEntry) => {
+          return course?.node?.career_paths.some((career) => {
+            return `Career-path_${career?.id}` === selectedCareer;
+          });
+        });
+      }
+
+      if (sortParam) {
+        // do sorting after filtering to reduce cost
+        filteredCourses = sortCourses(filteredCourses, sortParam);
+      }
+
       setCourseResults(filteredCourses);
     }
   }, [
     searchTerm,
     onlineOnly,
-    // default arguments seem to be causing an infinite re-render
-    // careerCatalogue,
-    // courseCatalogue,
-    // setCareerResults,
-    // setCourseResults,
+    selectedCareer,
+    sortParam,
+    // careerCatalogue,  // it looks like default props are causing an infinite rerender
+    courseCatalogue,
+    setCareerResults,
+    setCourseResults,
   ]);
 };
 

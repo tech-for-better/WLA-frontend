@@ -33,6 +33,7 @@ export const query = graphql`
           name
           career_paths {
             color
+            id
           }
           provider {
             postcode

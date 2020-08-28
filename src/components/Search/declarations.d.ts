@@ -13,8 +13,8 @@ type Course = {
   name: string;
   online_only: boolean;
   postcode: string;
-  total_price: string;
   start_date: string;
+  total_price: number;
   strapiId: number;
   career_paths: courseCareerPaths[];
   provider: Provider | null;
@@ -41,15 +41,25 @@ type CareerPathCatalogue = CareerPathEntry[];
 
 interface Catalogues {
   careerCatalogue: CareerPathCatalogue;
-  courseCatalogue: CourseCatalogue;
+  courseCatalogue: CourseCatalogue | [];
 }
 
 interface SearchResults {
   careerResults: CareerPathCatalogue;
-  courseResults: CourseCatalogue;
+  courseResults: CourseCatalogue | [];
+}
+
+interface CareerPathForFilter {
+  node: {
+    id: number;
+    name: string;
+  };
 }
 
 interface SearchInputProps {
   setSearchTerm: Function;
   setOnlineOnly: Function;
+  setSelectedCareer: Function;
+  setSortParam: Function;
+  careers: CareerPathForFilter[];
 }
