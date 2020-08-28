@@ -27,6 +27,7 @@ export const query = graphql`
           online_only
           career_paths {
             color
+            id
           }
           provider {
             postcode

@@ -9,6 +9,7 @@ const useSearchParameters = ({
   setCourseResults,
   sortParam,
   onlineOnly,
+  selectedCareer,
 }) => {
   useEffect(() => {
     if (careerCatalogue.length) {
@@ -33,16 +34,24 @@ const useSearchParameters = ({
         });
       }
 
+      if (selectedCareer) {
+        filteredCourses = filteredCourses.filter((course: CourseEntry) => {
+          return course?.node?.career_paths.some((career) => {
+            return `Career-path_${career?.id}` === selectedCareer;
+          });
+        });
+      }
+
       setCourseResults(filteredCourses);
     }
   }, [
     searchTerm,
     onlineOnly,
-    // default arguments seem to be causing an infinite re-render
-    // careerCatalogue,
+    selectedCareer,
+    // careerCatalogue,  // default arguments seem to be causing an infinite re-render
     // courseCatalogue,
-    // setCareerResults,
-    // setCourseResults,
+    setCareerResults,
+    setCourseResults,
   ]);
 };
 

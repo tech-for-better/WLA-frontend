@@ -49,7 +49,16 @@ interface SearchResults {
   courseResults: CourseCatalogue;
 }
 
+interface CareerPathForFilter {
+  node: {
+    id: number;
+    name: string;
+  };
+}
+
 interface SearchInputProps {
   setSearchTerm: Function;
   setOnlineOnly: Function;
+  setSelectedCareer: Function;
+  careers: CareerPathForFilter[];
 }
