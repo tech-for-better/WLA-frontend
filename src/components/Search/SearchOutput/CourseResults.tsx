@@ -11,17 +11,18 @@ const CourseResults: React.FC<{ courseResults: CourseCatalogue }> = ({ courseRes
       <h2>Course results</h2>
       <Row noGutters>
         {courseResults.map((course) => {
+          const { strapiId, career_paths, online_only, name, description, provider } = course.node;
           return (
-            <Col key={course.node.strapiId}>
+            <Col key={strapiId}>
               <CourseCard
-                colours={course.node.career_paths?.map((path: { color: string }) => {
+                colours={career_paths?.map((path: { color: string }) => {
                   return path.color;
                 })}
-                postcode={course.node.postcode}
-                onlineOnly={course.node.online_only}
-                name={course.node.name}
-                description={course.node.description}
-                link={`/course/${course.node.name.replace(/ /g, `-`) + course.node.strapiId}`}
+                postcode={provider?.postcode}
+                onlineOnly={online_only}
+                name={name}
+                description={description}
+                link={`/course/${name.replace(/ /g, `-`) + strapiId}`}
               />
             </Col>
           );

@@ -21,14 +21,17 @@ export const query = graphql`
           description
           link
           name
-          career_paths {
-            color
-          }
-          postcode
-          price
+          total_price
           start_date(locale: "gb")
           strapiId
           online_only
+          career_paths {
+            color
+          }
+          provider {
+            postcode
+            name
+          }
         }
       }
     }

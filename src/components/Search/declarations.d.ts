@@ -2,16 +2,22 @@ type courseCareerPaths = {
   color: string;
 };
 
+type Provider = {
+  postcode: string;
+  name: string;
+};
+
 type Course = {
   description: string;
   link: string;
   name: string;
   online_only: boolean;
   postcode: string;
-  price: string;
+  total_price: string;
   start_date: string;
   strapiId: number;
   career_paths: courseCareerPaths[];
+  provider: Provider | null;
 };
 
 type CourseEntry = {
