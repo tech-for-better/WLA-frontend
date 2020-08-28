@@ -34,7 +34,10 @@ export const query = graphql`
           career_paths {
             color
           }
-          postcode
+          provider {
+            postcode
+            name
+          }
           price
           start_date(locale: "gb")
           strapiId

@@ -35,7 +35,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     price,
     link,
     description,
-    postcode,
+    provider,
     online_only: onlineOnly,
     start_date: startDate,
     modules,
@@ -69,7 +69,9 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
                 <SubStyledText>Start Date</SubStyledText>
               </div>
               <div>
-                <BigStyledText>{postcode ? postcode.toUpperCase() : `Unknown`}</BigStyledText>
+                <BigStyledText>
+                  {provider?.postcode ? provider.postcode.toUpperCase() : `Unknown`}
+                </BigStyledText>
                 <SubStyledText>The Postcode</SubStyledText>
               </div>
               {modules.length > 0 ? (
@@ -132,7 +134,6 @@ export const query = graphql`
           link
           description
           id
-          postcode
           online_only
           start_date(formatString: "DD MMM, YY")
           modules {
@@ -141,24 +142,36 @@ export const query = graphql`
             name
             order
           }
+          provider {
+            postcode
+            name
+          }
         }
       }
     }
     similarCourses: allStrapiCourse(filter: { name: { regex: "design/gi" } }) {
       edges {
         node {
-          career_paths {
-            color
-          }
           name
-          online_only
-          postcode
           price
-          start_date(locale: "gb")
-          strapiId
           link
           description
           id
+          provider {
+            postcode
+            name
+          }
+          online_only
+          start_date(formatString: "DD MMM, YY")
+          modules {
+            description
+            link
+            name
+            order
+          }
+          career_paths {
+            color
+          }
         }
       }
     }
