@@ -6,7 +6,7 @@ const CourseDetails: React.FC<PageProps> = ({ data }) => {
   return (
     <main className="mt-5">
       <h1>Find Your Course</h1>
-      <Search courseCatalogue={data.allStrapiCourse.edges} />
+      <Search courseCatalogue={data.allStrapiCourse.edges} careerCatalogue={[]} />
     </main>
   );
 };

@@ -32,6 +32,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   setOnlineOnly,
   careers,
   setSelectedCareer,
+  setSortParam,
 }) => {
   return (
     <>
@@ -49,11 +50,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
         <DropDowns>
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Sort By:</Form.Label>
-            <Form.Control as="select" defaultValue="Relevance">
-              <option value="0">Start Date</option>
-              <option value="1">Price: Low to High</option>
-              <option value="2">Price: High to Low</option>
-              <option value="3">Relevance</option>
+            <Form.Control
+              as="select"
+              onChange={(e) => {
+                setSortParam(e.currentTarget.value);
+              }}
+            >
+              <option> </option>
+              <option>Start Date</option>
+              <option>Price</option>
             </Form.Control>
           </Form.Group>
 
