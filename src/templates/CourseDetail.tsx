@@ -32,7 +32,7 @@ interface CourseDetails {
 const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
   const {
     name,
-    price,
+    total_price,
     link,
     description,
     provider,
@@ -42,7 +42,6 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
   } = data.course.edges[0].node;
 
   const similarCourses = data.similarCourses.edges;
-
   return (
     <section>
       <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
@@ -61,7 +60,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
           <StyledCard>
             <CardBodyStyle>
               <div className="mb-4">
-                <BigStyledText>{price.toUpperCase()}</BigStyledText>
+                <BigStyledText>{total_price ? `£${total_price}` : `Free`}</BigStyledText>
                 <SubStyledText>{onlineOnly ? `Online` : `On Campus`}</SubStyledText>
               </div>
               <div>
@@ -130,7 +129,7 @@ export const query = graphql`
       edges {
         node {
           name
-          price
+          total_price
           link
           description
           id
@@ -153,7 +152,7 @@ export const query = graphql`
       edges {
         node {
           name
-          price
+          total_price
           link
           description
           id

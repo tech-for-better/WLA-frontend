@@ -38,7 +38,7 @@ export const query = graphql`
             postcode
             name
           }
-          price
+          total_price
           start_date(locale: "gb")
           strapiId
           online_only

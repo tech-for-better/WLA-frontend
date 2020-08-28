@@ -13,7 +13,7 @@ type Course = {
   name: string;
   online_only: boolean;
   postcode: string;
-  price: string;
+  total_price: string;
   start_date: string;
   strapiId: number;
   career_paths: courseCareerPaths[];

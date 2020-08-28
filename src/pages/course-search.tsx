@@ -21,7 +21,7 @@ export const query = graphql`
           description
           link
           name
-          price
+          total_price
           start_date(locale: "gb")
           strapiId
           online_only
