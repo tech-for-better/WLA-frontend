@@ -80,7 +80,7 @@ export default function useFormSubmission({
       body: payload,
     };
     // the FORM_URL is a getform form
-    fetch(process.env.FORM_URL, options)
+    fetch(process.env.GATSBY_FORM_URL, options)
       .then(() => {
         setFormState({ error: false, message: `form submitted successfully` });
       })
