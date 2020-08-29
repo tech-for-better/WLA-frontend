@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { PageProps, graphql } from 'gatsby';
 
 import Card from 'react-bootstrap/esm/Card';
 
+import lmi4AllData from '../utils/lmi4all';
+
 import { CardGroupStyle, StyledCard } from './sharedStyles.styles';
 import CoursesWrapper from '../components/cards/CoursesWrapper';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
+
 import Graph1 from '../assets/temp/lc1.png';
 import Graph2 from '../assets/temp/lc2.png';
 import Graph3 from '../assets/temp/dc.png';
@@ -21,6 +24,7 @@ const GraphImg = styled.img`
 `;
 
 const CareerPath: React.FC<PageProps> = ({ data }) => {
+  const [lmiData, setLmiData] = useState({ loading: true, lmiData: {} });
   const {
     description,
     color,
@@ -34,6 +38,10 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
     Object.assign(a, { career_paths: [{ color }] });
     return { node: a };
   });
+
+  useEffect(() => {
+    return setLmiData({ loading: false, lmiData: lmi4AllData(lmiCode, name) });
+  }, []);
 
   return (
     <main>
