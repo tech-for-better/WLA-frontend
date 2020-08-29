@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Container from 'react-bootstrap/Container';
 import styled from 'styled-components';
 import Nav from './nav/Nav';
@@ -21,6 +22,10 @@ const Main = styled(Container)`
 export default function Layout({ children }) {
   return (
     <Page>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Skills West London</title>
+      </Helmet>
       <Main fluid="xl" className="mt-3">
         <Nav />
         <div>{children}</div>
