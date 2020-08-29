@@ -53,7 +53,6 @@ function lmi4AllData(lmiCode, name) {
     .catch((errors) => {
       throw new Error(errors);
     });
-
   return lmiData;
 }
 
