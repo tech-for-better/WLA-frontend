@@ -5,7 +5,7 @@ const WorkingFutures: React.FC<{ soc: string }> = ({ soc }) => {
   const [, setWfData] = useState(``);
   const [, setError] = useState(``);
 
-  useSOC({ soc, endpoint: `/wf/predict`, setWfData, setError });
+  useSOC({ soc, endpoint: `/wf/predict`, setter: setWfData, setError });
   return <p>{soc}</p>;
 };
 

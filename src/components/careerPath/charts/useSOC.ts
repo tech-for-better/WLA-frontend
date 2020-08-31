@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const apiBaseUrl = `http://api.lmiforall.org.uk/api/v1`;
 
-export default function useSOC({ endpoint, soc, setWfData }) {
+export default function useSOC({ endpoint, soc, setter, setError }) {
   useEffect(() => {
     axios.get(`${apiBaseUrl + endpoint}?soc=${soc}`).then((res) => {
-      setWfData(res);
+      setter(res);
     });
-  }, [soc, setWfData]);
+  }, [endpoint, soc, setter, setError]);
 }
