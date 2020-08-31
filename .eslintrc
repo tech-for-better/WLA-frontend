@@ -35,7 +35,7 @@
     "object-curly-newline": "off",
     "arrow-body-style": ["error", "always"],
     "camelcase": "off",
-    "@typescript-eslint/camelcase": ["error", {"allow": ["online_only", "career_paths", "soc_code", "total_price"]}]
+    "@typescript-eslint/camelcase": ["error", {"allow": ["online_only", "career_paths", "soc_code", "total_price", "icon_url"]}]
   },
   "overrides": [
     {
