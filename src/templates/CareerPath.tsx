@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { PageProps, graphql } from 'gatsby';
 
 import Card from 'react-bootstrap/esm/Card';
 
+import lmi4AllData from '../utils/lmi4all';
+
 import { CardGroupStyle, StyledCard } from './sharedStyles.styles';
 import CoursesWrapper from '../components/cards/CoursesWrapper';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
+
 import Graph1 from '../assets/temp/lc1.png';
 import Graph2 from '../assets/temp/lc2.png';
 import Graph3 from '../assets/temp/dc.png';
+import DonutChart from '../components/d3charts/d3donutChart';
+import SparklineChart from '../components/d3charts/d3areaChart';
 
 const ReverseCardGroupStyle = styled(CardGroupStyle)`
   grid-template-columns: 35% 60%;
@@ -21,6 +26,7 @@ const GraphImg = styled.img`
 `;
 
 const CareerPath: React.FC<PageProps> = ({ data }) => {
+  const [lmiData, setLmiData] = useState({ loading: true, lmiData: {} });
   const {
     description,
     color,
@@ -34,6 +40,12 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
     Object.assign(a, { career_paths: [{ color }] });
     return { node: a };
   });
+
+  useEffect(() => {
+    return setLmiData({ loading: false, lmiData: lmi4AllData(lmiCode, name) });
+  }, []);
+
+  console.log(lmiData.lmiData.estimatePay);
 
   return (
     <main>
@@ -54,12 +66,17 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
                   <strong>Average Salary</strong>
                 </Card.Title>
                 <GraphImg src={Graph1} />
+                {lmiData.loading ? (
+                  `loading`
+                ) : (
+                  <SparklineChart estimatePay={lmiData.lmiData.estimatePay} />
+                )}
               </Card.Body>
             </StyledCard>
             <StyledCard>
               <Card.Body>
                 <Card.Title className="mb-4">
-                  <strong>Employment ratio</strong>
+                  <strong>Employment Rate</strong>
                 </Card.Title>
                 <GraphImg src={Graph2} />
               </Card.Body>
@@ -68,12 +85,36 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
           <StyledCard>
             <Card.Body>
               <Card.Title className="mb-4">
-                <strong>Success Ratio</strong>
+                <strong>Courses taken to become {name}</strong>
               </Card.Title>
               <GraphImg src={Graph3} />
             </Card.Body>
           </StyledCard>
         </ReverseCardGroupStyle>
+        <p>
+          <StyledCard>
+            <Card.Body>
+              <Card.Title className="mb-4">
+                <strong>
+                  Another card that has infomration about current number of vacancies, replacemenet
+                  demand with a number over ceratin time of years. top skills in demand to become
+                  {` `}
+                  {name}.
+                </strong>
+              </Card.Title>
+            </Card.Body>
+          </StyledCard>
+        </p>
+        <p>
+          <StyledCard>
+            <Card.Body>
+              <Card.Title className="mb-4">
+                <strong>predicted Employment</strong>
+                <DonutChart />
+              </Card.Title>
+            </Card.Body>
+          </StyledCard>
+        </p>
       </div>
     </main>
   );
