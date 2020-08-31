@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 import EstimatedPay from './EstimatedPay';
 import WorkingFuturesPrediction from './WorkingFuturesPrediction';
+import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
 
 // const ReverseCardGroupStyle = styled(CardGroupStyle)`
 //   grid-template-columns: 35% 60%;
@@ -22,6 +23,7 @@ const Charts: React.FC<{ soc: string; name: string }> = ({ soc, name }) => {
   return (
     <div>
       <WorkingFuturesPrediction soc={soc} />
+      <WorkingFuturesReplacemendDemand soc={soc} />
       <EstimatedPay soc={soc} />
     </div>
   );

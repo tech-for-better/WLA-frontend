@@ -11,7 +11,7 @@ const EstimatedPay: React.FC<{ soc: string }> = ({ soc }) => {
     <p>
       {estimatedPay?.data?.series?.reduce((acc, year) => {
         return acc + year.estpay;
-      }, 0) / estimatedPay?.data?.series?.length}
+      }, 0) / estimatedPay?.data?.series?.length || null}
     </p>
   );
 };
