@@ -3,7 +3,7 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
 import useONET from '../hooks/useONET';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
-const Abilities: React.FC<ONETChart> = ({ onetCode, name }) => {
+const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
   const [skills, setSkills] = useState(``);
   const [, setError] = useState(false);
   const data = skills?.data?.scales[0]?.abilities;
@@ -22,7 +22,7 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name }) => {
         <XAxis dataKey="name" hide />
         <YAxis domain={[0, upperBound]} />
         <Tooltip />
-        <Bar dataKey="value" fill="#8884d8" />
+        <Bar dataKey="value" fill={color} />
       </BarChart>
     </>
   );

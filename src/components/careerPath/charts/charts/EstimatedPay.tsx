@@ -3,7 +3,7 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
 import useSOC from '../hooks/useSOC';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
-const EstimatedPay: React.FC<SOCChart> = ({ soc, name }) => {
+const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);
   const [, setError] = useState(``);
 
@@ -18,7 +18,7 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, name }) => {
         <XAxis dataKey="year" />
         <YAxis dataKey="estpay" />
         <Tooltip />
-        <Bar dataKey="estpay" fill="#8884d8" />
+        <Bar dataKey="estpay" fill={color} />
       </BarChart>
     </>
   );

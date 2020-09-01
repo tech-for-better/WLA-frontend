@@ -3,7 +3,7 @@ import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 import useSOC from '../hooks/useSOC';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
-const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name }) => {
+const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [wfData, setWfData] = useState(``);
   const [, setError] = useState(false);
   useSOC({ soc, endpoint: `/wf/predict`, setter: setWfData, setError });
@@ -24,8 +24,7 @@ const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name }) => {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            <stop stopColor={color} />
           </linearGradient>
         </defs>
         <XAxis dataKey="year" />

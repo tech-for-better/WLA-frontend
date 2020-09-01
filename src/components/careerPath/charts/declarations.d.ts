@@ -1,11 +1,13 @@
 interface SOCChart {
   name: string;
   soc: string;
+  color: string;
 }
 
 interface ONETChart {
   name: string;
   onetCode: string;
+  color: string;
 }
 
-type GenericChart = SOCChart & ONETChart;
+type MotherChart = SOCChart & ONETChart;
