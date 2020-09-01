@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
-import useSOC from './hooks/useSOC';
-import correctVowelGrammar from '../../../utils/correctVowelGrammar';
+import useSOC from '../hooks/useSOC';
+import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const EstimatedPay: React.FC<SOCChart> = ({ soc, name }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);

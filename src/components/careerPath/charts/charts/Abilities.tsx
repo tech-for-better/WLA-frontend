@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
-import useONET from './hooks/useONET';
-import correctVowelGrammar from '../../../utils/correctVowelGrammar';
+import useONET from '../hooks/useONET';
+import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const Abilities: React.FC<ONETChart> = ({ onetCode, name }) => {
   const [skills, setSkills] = useState(``);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import useSOC from './hooks/useSOC';
-import correctVowelGrammar from '../../../utils/correctVowelGrammar';
+import useSOC from '../hooks/useSOC';
+import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const WorkingFuturesReplacementDemand: React.FC<SOCChart> = ({ soc, name }) => {
   const [wfData, setWfData] = useState(``);

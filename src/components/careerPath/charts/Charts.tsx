@@ -1,9 +1,9 @@
 import React from 'react';
 
-import EstimatedPay from './EstimatedPay';
-import WorkingFuturesPrediction from './WorkingFuturesPrediction';
-import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
-import Abilities from './Abilities';
+import EstimatedPay from './charts/EstimatedPay';
+import WorkingFuturesPrediction from './charts/WorkingFuturesPrediction';
+import WorkingFuturesReplacemendDemand from './charts/WorkingFuturesReplacementDemand';
+import Abilities from './charts/Abilities';
 
 const Charts: React.FC<MotherChart> = ({ soc, name }) => {
   const onetCode = `15-1133.00`;

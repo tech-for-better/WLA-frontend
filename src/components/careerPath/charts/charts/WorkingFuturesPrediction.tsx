@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
-import useSOC from './hooks/useSOC';
-import correctVowelGrammar from '../../../utils/correctVowelGrammar';
+import useSOC from '../hooks/useSOC';
+import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name }) => {
   const [wfData, setWfData] = useState(``);
