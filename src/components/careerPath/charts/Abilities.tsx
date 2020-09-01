@@ -3,7 +3,7 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
 import useONET from './hooks/useONET';
 import correctVowelGrammar from '../../../utils/correctVowelGrammar';
 
-const Abilities: React.FC<{ onetCode: string; name: string }> = ({ onetCode, name }) => {
+const Abilities: React.FC<ONETChart> = ({ onetCode, name }) => {
   const [skills, setSkills] = useState(``);
   const [, setError] = useState(false);
   const data = skills?.data?.scales[0]?.abilities;
@@ -16,7 +16,7 @@ const Abilities: React.FC<{ onetCode: string; name: string }> = ({ onetCode, nam
   const upperBound = Math.round(highestValue) + 1;
   return (
     <>
-      <h3>Average skills of {correctVowelGrammar(name)}</h3>
+      <h3>Average abilities of {correctVowelGrammar(name)}</h3>
       <BarChart width={730} height={250} data={data}>
         <CartesianGrid strokeDasharray="0" />
         <XAxis dataKey="name" hide />
