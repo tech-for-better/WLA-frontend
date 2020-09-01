@@ -7,42 +7,24 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import styled from 'styled-components';
 import styles, { mediaQuery } from '../../styles';
 import LandingPageBg from '../../assets/lpbg.svg';
-
-const LandingWrapper = styled.div`
-  background-image: url(${LandingPageBg});
-  background-repeat: no-repeat;
-  height: 50vh;
-`;
-
-const LandingText = styled.h1`
-  color: #2d2d2d;
-  font-weight: bold;
-  font-size: ${styles.font[4]};
-  width: 60%;
-  float: right;
-  margin-top: 10%;
-  align-items: center;
-  text-align: right;
-  ${mediaQuery(`{
-  font-size: ${styles.font[2]};
-  margin-right: 10%;
-  // width: %;
-  }`)}
-`;
+import PageBackground from '../layouts/PageBackground';
 
 const FormWrapper = styled.div`
   display: grid;
+  position: relative;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 0.2fr;
   width: 50%;
-  margin: 0 auto;
   gap: 5%;
   justify-content: center;
   align-items: start;
   border: none;
   ${mediaQuery(`{
     width: 90%;
-    height: 40%
+    height: 40%;
   }`)}
 `;
 
@@ -70,10 +52,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
   setSortParam,
 }) => {
   return (
-    <LandingWrapper>
-      <LandingText>
-        Find local training that will help you develop a career in construction
-      </LandingText>
+    <div>
+      <PageBackground
+        imgsrc={LandingPageBg}
+        text="Find local training that will help you develop a career in construction"
+      />
       <FormWrapper>
         <SearchBar className="mb-3">
           <Form.Control
@@ -154,7 +137,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           />
         </Form.Group>
       </FormWrapper>
-    </LandingWrapper>
+    </div>
   );
 };
 
