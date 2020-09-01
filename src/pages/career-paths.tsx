@@ -1,11 +1,12 @@
 import React from 'react';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
 import Button from 'react-bootstrap/Button';
-import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import Nav from 'react-bootstrap/Nav';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
 import PageBackground from '../components/layouts/PageBackground';
 import Careersbg from '../assets/pagebackgrounds/careersbg.svg';
+import CareerCard from '../components/cards/CareerCard';
 
 const CareerPaths: React.FC<PageProps> = () => {
   const {
@@ -17,6 +18,7 @@ const CareerPaths: React.FC<PageProps> = () => {
           node {
             color
             description
+            career_progression
             icon_url
             name
             strapiId
@@ -30,24 +32,45 @@ const CareerPaths: React.FC<PageProps> = () => {
   return (
     <main>
       <PageBackground text="Explore Our Career options for you" imgsrc={Careersbg} />
-      <Tabs defaultActiveKey={careerPaths[0].node.name}>
-        {careerPaths.map((careerPath) => {
-          const { name } = careerPath.node;
-          return (
-            <Tab key={name} eventKey={name} title={name}>
-              <CareerPathDetail path={careerPath.node} />
-              <Button
-                variant="primary"
-                className="mt-5 mb-5"
-                href={`/career/${careerPath.node.name.replace(/ /g, `-`)}`}
-                style={{ marginLeft: `50%`, transform: `translateX(-50%)` }}
+      <Tab.Container defaultActiveKey={careerPaths[0]?.node?.strapiId}>
+        <Nav>
+          {careerPaths.map((edge) => {
+            const { strapiId, name, icon_url, color } = edge?.node;
+            return (
+              <Nav.Item key={strapiId}>
+                <Nav.Link eventKey={strapiId}>
+                  <CareerCard colour={color} name={name} link={`#${name}`} image={icon_url} />
+                </Nav.Link>
+              </Nav.Item>
+            );
+          })}
+        </Nav>
+        <Tab.Content>
+          {careerPaths.map((careerPath) => {
+            return (
+              <Tab.Pane
+                key={careerPath.node.strapiId}
+                eventKey={careerPath.node.strapiId}
+                id={`#${careerPath.node.name}`}
               >
-                Find Out More
-              </Button>
-            </Tab>
-          );
-        })}
-      </Tabs>
+                <CareerPathDetail path={careerPath.node} />
+                <Button
+                  className="mt-5 mb-5"
+                  href={`/career/${careerPath.node.name.replace(/ /g, `-`)}`}
+                  style={{
+                    marginLeft: `50%`,
+                    transform: `translateX(-50%)`,
+                    backgroundColor: `#006574`,
+                    borderColor: `#006574`,
+                  }}
+                >
+                  Find Out More
+                </Button>
+              </Tab.Pane>
+            );
+          })}
+        </Tab.Content>
+      </Tab.Container>
     </main>
   );
 };

@@ -13,6 +13,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
     name,
     video_url: videoUrl,
     lmi_code: lmiCode,
+    career_progression,
   } = data?.careers?.edges[0]?.node;
 
   const courses = (data?.careers?.edges[0]?.node.courses).map((a) => {
@@ -23,7 +24,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
 
   return (
     <main>
-      <CareerPathDetail path={{ name, videoUrl, lmiCode, description }} />
+      <CareerPathDetail path={{ name, videoUrl, lmiCode, description, career_progression }} />
       <div className="mb-5">
         <h2 className="mb-4">Career Path Courses:</h2>
         <CoursesWrapper courseData={courses} />
@@ -51,6 +52,7 @@ export const query = graphql`
             link
             description
           }
+          career_progression
         }
       }
     }

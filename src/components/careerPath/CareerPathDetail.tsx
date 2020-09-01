@@ -14,6 +14,7 @@ interface CareerPath {
   name: string;
   strapiId: number;
   video_url: string;
+  career_progressioion: string;
 }
 
 const ReverseCardGroupStyle = styled(CardGroupStyle)`
@@ -31,7 +32,7 @@ const Video = styled.iframe`
 `;
 
 const CareerPathDetail: React.FC<CareerPath> = ({
-  path: { description, lmiCode, name, videoUrl },
+  path: { description, lmiCode, name, videoUrl, career_progression },
 }) => {
   return (
     <main>
@@ -41,14 +42,10 @@ const CareerPathDetail: React.FC<CareerPath> = ({
           <StyledCard>
             <Card.Body>
               <Card.Title className="mb-4">
-                <strong>Skills You will acquire:</strong>
+                <strong>Career progression</strong>
               </Card.Title>
               <Card.Text>
-                <li>User research</li>
-                <li>Finding the Colors in Nature</li>
-                <li>Time Managment</li>
-                <li>{lmiCode}</li>
-                <li>This section is hardcoded we need to update schema on the backend</li>
+                <ReactMarkdown source={career_progression} />
               </Card.Text>
             </Card.Body>
           </StyledCard>
