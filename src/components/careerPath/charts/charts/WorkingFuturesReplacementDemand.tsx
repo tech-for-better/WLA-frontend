@@ -4,12 +4,17 @@ import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const WorkingFuturesReplacementDemand: React.FC<SOCChart> = ({ soc, name }) => {
   const [wfData, setWfData] = useState(``);
-  const [, setError] = useState(false);
+  const [error, setError] = useState(false);
 
   useSOC({ soc, endpoint: `/wf/replacement_demand`, setter: setWfData, setError });
 
+  if (error) {
+    return <></>;
+  }
+
   if (wfData) {
     const { start_year, end_year, rate } = wfData?.data;
+
     return (
       <p>
         Between {start_year} and {end_year} the rate of replacement for {correctVowelGrammar(name)}

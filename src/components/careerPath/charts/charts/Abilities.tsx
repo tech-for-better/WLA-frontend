@@ -5,7 +5,7 @@ import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
   const [skills, setSkills] = useState(``);
-  const [, setError] = useState(false);
+  const [error, setError] = useState(false);
   const data = skills?.data?.scales[0]?.abilities;
   useONET({ onetCode, endpoint: `/abilities`, setter: setSkills, setError });
 
@@ -14,6 +14,10 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
   }, 0);
 
   const upperBound = Math.round(highestValue) + 1;
+
+  if (error) {
+    return <></>;
+  }
   return (
     <>
       <h3>Average abilities of {correctVowelGrammar(name)}</h3>

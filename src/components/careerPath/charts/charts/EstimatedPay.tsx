@@ -5,11 +5,14 @@ import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);
-  const [, setError] = useState(``);
+  const [error, setError] = useState(``);
 
   useSOC({ soc, endpoint: `/ashe/estimatePay`, setter: setEstimatedPay, setError });
 
   const data = estimatedPay?.data?.series;
+  if (error) {
+    return <></>;
+  }
   return (
     <>
       <h3>Average weekly pay for {correctVowelGrammar(name)}</h3>

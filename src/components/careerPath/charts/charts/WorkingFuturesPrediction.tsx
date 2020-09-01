@@ -5,14 +5,16 @@ import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [wfData, setWfData] = useState(``);
-  const [, setError] = useState(false);
+  const [error, setError] = useState(false);
   useSOC({ soc, endpoint: `/wf/predict`, setter: setWfData, setError });
   const data = wfData?.data?.predictedEmployment;
   const highestValue = data?.reduce((acc, el) => {
     return Math.max(acc, el.employment);
   }, 0);
   const upperBound = Math.round(highestValue / 10000) * 10000;
-
+  if (error) {
+    return <></>;
+  }
   return (
     <div>
       <h3>Predicted number of people working as {correctVowelGrammar(name)}</h3>
