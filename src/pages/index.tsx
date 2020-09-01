@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import Search from '../components/Search/Search';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home: React.FC<PageProps> = ({ data }) => {
   return (
