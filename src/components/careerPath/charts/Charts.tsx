@@ -22,9 +22,13 @@ import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
 const Charts: React.FC<{ soc: string; name: string }> = ({ soc, name }) => {
   return (
     <div>
-      <WorkingFuturesPrediction soc={soc} />
+      <WorkingFuturesPrediction soc={soc} name={name} />
       <WorkingFuturesReplacemendDemand soc={soc} />
-      <EstimatedPay soc={soc} />
+      <EstimatedPay soc={soc} name={name} />
+      {/*
+      -
+
+      */}
     </div>
   );
   // );
