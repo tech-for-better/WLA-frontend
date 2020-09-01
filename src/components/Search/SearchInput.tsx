@@ -14,28 +14,55 @@ const LandingWrapper = styled.div`
   height: 50vh;
 `;
 
+const LandingText = styled.h1`
+  color: #2d2d2d;
+  font-weight: bold;
+  font-size: ${styles.font[4]};
+  width: 60%;
+  float: right;
+  margin-top: 10%;
+  align-items: center;
+  text-align: right;
+  ${mediaQuery(`{
+  font-size: ${styles.font[2]};
+  margin-right: 10%;
+  // width: %;
+  }`)}
+`;
+
 const FormWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 0.2fr;
   width: 50%;
-  height: 100%;
   margin: 0 auto;
   gap: 5%;
   justify-content: center;
   align-items: start;
+  border: none;
   ${mediaQuery(`{
-    width: 90%
+    width: 90%;
+    height: 40%
   }`)}
 `;
 
 const SearchBar = styled(InputGroup)`
   grid-area: 1 / 1 / 2 / 4;
   align-self: end;
+  border: none;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 `;
 
 const SearchBarIcon = styled(InputGroup.Text)`
   background-color: transparent;
+  border: none;
+`;
+
+const FormLabels = styled(Form.Label)`
+  color: #666666;
+`;
+const FormControls = styled(Form.Control)`
+  // border-color: red;
 `;
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -47,17 +74,20 @@ const SearchInput: React.FC<SearchInputProps> = ({
 }) => {
   return (
     <LandingWrapper>
+      <LandingText>
+        Find local training that will help you develop a career in construction
+      </LandingText>
       <FormWrapper>
         <SearchBar className="mb-3">
           <Form.Control
             type="text"
-            placeholder="Search"
+            placeholder="Search for the course"
             onChange={(e) => {
               return setSearchTerm(e.target.value);
             }}
             aria-describedby="basic-addon2"
             aria-label="Search the course"
-            style={{ borderRight: `none` }}
+            style={{ border: `none` }}
           />
           <InputGroup.Append>
             <SearchBarIcon id="basic-addon2">
@@ -83,7 +113,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         </SearchBar>
 
         <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Sort By:</Form.Label>
+          <FormLabels>Sort By:</FormLabels>
           <Form.Control
             as="select"
             onChange={(e) => {
@@ -96,12 +126,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
           </Form.Control>
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Career path:</Form.Label>
+        <Form.Group as={Col} controlId="formGridState">
+          <FormLabels>Career path:</FormLabels>
           <Form.Control
             as="select"
-            className="mr-sm-2"
-            custom
             onChange={(e) => {
               setSelectedCareer(e.currentTarget.value);
             }}
@@ -117,7 +145,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Remote</Form.Label>
+          <FormLabels>Remote</FormLabels>
           <Form.Check
             type="switch"
             id="custom-switch"
