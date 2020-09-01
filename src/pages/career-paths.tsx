@@ -15,6 +15,7 @@ const CareerPaths: React.FC<PageProps> = () => {
           node {
             color
             description
+            career_progression
             icon_url
             name
             strapiId

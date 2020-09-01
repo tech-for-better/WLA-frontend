@@ -33,6 +33,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
     name,
     video_url: videoUrl,
     lmi_code: lmiCode,
+    career_progression,
   } = data?.careers?.edges[0]?.node;
 
   const courses = (data?.careers?.edges[0]?.node.courses).map((a) => {
@@ -42,14 +43,12 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
   });
 
   useEffect(() => {
-    return setLmiData({ loading: false, lmiData: lmi4AllData(lmiCode, name) });
+    // return setLmiData({ loading: false, lmiData: lmi4AllData(lmiCode, name) });
   }, []);
-
-  console.log(lmiData.lmiData.estimatePay);
 
   return (
     <main>
-      <CareerPathDetail path={{ name, videoUrl, lmiCode, description }} />
+      <CareerPathDetail path={{ name, videoUrl, lmiCode, description, career_progression }} />
       <div className="mb-5">
         <h2 className="mb-4">Career Path Courses:</h2>
         <CoursesWrapper courseData={courses} />
@@ -138,6 +137,7 @@ export const query = graphql`
             link
             description
           }
+          career_progression
         }
       }
     }
