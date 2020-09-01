@@ -13,7 +13,7 @@ interface FetchedData {
 }
 
 function lmi4AllData(lmiCode, name) {
-  const lmiData: FetchedData = {};
+  const lmiData = {};
 
   function getSkills() {
     return axios
