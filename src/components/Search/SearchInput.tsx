@@ -61,9 +61,6 @@ const SearchBarIcon = styled(InputGroup.Text)`
 const FormLabels = styled(Form.Label)`
   color: #666666;
 `;
-const FormControls = styled(Form.Control)`
-  // border-color: red;
-`;
 
 const SearchInput: React.FC<SearchInputProps> = ({
   setSearchTerm,
