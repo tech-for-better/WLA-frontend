@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useSOC from './useSOC';
+import useSOC from './hooks/useSOC';
 
 const EstimatedPay: React.FC<{ soc: string }> = ({ soc }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);

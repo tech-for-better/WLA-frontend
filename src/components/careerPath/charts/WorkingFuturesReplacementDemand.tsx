@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useSOC from './useSOC';
+import useSOC from './hooks/useSOC';
 
 const WorkingFuturesReplacementDemand: React.FC<{ soc: string }> = ({ soc }) => {
   const [wfData, setWfData] = useState(``);
-  const [, setError] = useState(``);
+  const [, setError] = useState(false);
 
   useSOC({ soc, endpoint: `/wf/replacement_demand`, setter: setWfData, setError });
 

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area, linearGradient } from 'recharts';
-import useSOC from './useSOC';
+import React, { useState } from 'react';
+import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import useSOC from './hooks/useSOC';
+import correctVowelGrammar from '../../../utils/correctVowelGrammar';
 
 const WorkingFuturesPrediction: React.FC<{ soc: string; name: string }> = ({ soc, name }) => {
   const [wfData, setWfData] = useState(``);
@@ -12,13 +13,9 @@ const WorkingFuturesPrediction: React.FC<{ soc: string; name: string }> = ({ soc
   }, 0);
   const upperBound = Math.round(highestValue / 10000) * 10000;
 
-  const job = [`a`, `e`, `i`, `o`, `u`].includes(name[0].toLowerCase())
-    ? `an ${name.toLowerCase()}`
-    : `a ${name.toLowerCase()}`;
-
   return (
     <div>
-      <h3>Predicted number of people working as {job}</h3>
+      <h3>Predicted number of people working as {correctVowelGrammar(name)}</h3>
       <AreaChart
         width={730}
         height={250}

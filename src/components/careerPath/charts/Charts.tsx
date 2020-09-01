@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import EstimatedPay from './EstimatedPay';
 import WorkingFuturesPrediction from './WorkingFuturesPrediction';
 import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
-
+import Abilities from './Abilities';
 // const ReverseCardGroupStyle = styled(CardGroupStyle)`
 //   grid-template-columns: 35% 60%;
 // `;
@@ -20,11 +20,13 @@ import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
 //   width: 100%;
 // `;
 const Charts: React.FC<{ soc: string; name: string }> = ({ soc, name }) => {
+  const onetCode = `15-1133.00`;
   return (
     <div>
       <WorkingFuturesPrediction soc={soc} name={name} />
       <WorkingFuturesReplacemendDemand soc={soc} />
       <EstimatedPay soc={soc} name={name} />
+      <Abilities onetCode={onetCode} name={name} />
       {/*
       -
 
