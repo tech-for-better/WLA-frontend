@@ -13,6 +13,27 @@ const Logo = styled.img`
   width: auto;
   max-height: 1.5em;
 `;
+const Navitem = styled(Nav)`
+  :after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 3px;
+    content: '';
+    color: transparent;
+  }
+`;
+const LinkItem = styled(Link)`
+  font-weight: bold;
+
+  :hover {
+    border-bottom: 3px solid #006574;
+    color: #006574;
+  }
+`;
 
 const CustomNav: React.FC<{}> = () => {
   return (
@@ -23,21 +44,21 @@ const CustomNav: React.FC<{}> = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
-          <Link to="/course-search/" className="nav-link">
+          <LinkItem to="/course-search/" className="nav-link">
             SEARCH COURSES
-          </Link>
+          </LinkItem>
 
-          <Link to="/career-paths/" className="nav-link">
+          <LinkItem to="/career-paths/" className="nav-link">
             CAREER PATHS
-          </Link>
+          </LinkItem>
 
-          <Link to="/about-us/" className="nav-link">
+          <LinkItem to="/about-us/" className="nav-link">
             ABOUT US
-          </Link>
+          </LinkItem>
 
-          <Link to="/contact-us/" className="nav-link">
+          <LinkItem to="/contact-us/" className="nav-link">
             CONTACT US
-          </Link>
+          </LinkItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

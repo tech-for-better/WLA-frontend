@@ -1,6 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 import * as SC from './styled-components';
+import footerDecoration from '../../../assets/footerDecoration.svg';
 
 type page = {
   node: {
@@ -28,7 +30,11 @@ const reducer = (arr: Element[], page: page) => {
     </SC.InternalLink>,
   ];
 };
-
+const FooterLinksDecor = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
 const InternalLinks: React.FC<{}> = () => {
   const pages = useStaticQuery(graphql`
     query {
@@ -46,7 +52,12 @@ const InternalLinks: React.FC<{}> = () => {
   `);
 
   const newPages = pages?.allSitePage?.edges?.reduce(reducer, []);
-  return <SC.LinksList>{newPages}</SC.LinksList>;
+  return (
+    <FooterLinksDecor>
+      <SC.LinksList>{newPages}</SC.LinksList>
+      <img src={footerDecoration} alt="footer decoration" />
+    </FooterLinksDecor>
+  );
 };
 
 export default InternalLinks;

@@ -12,9 +12,8 @@ interface CareerProps {
 }
 
 const Image = styled.img`
-  width: 3em;
-  height: auto;
-  float: right;
+  width: 5em;
+  height: 5em;
 `;
 
 const Subtitle = styled(Card.Subtitle)`
@@ -26,12 +25,14 @@ const Title = styled(Card.Title)`
 `;
 
 const Body = styled(Card.Body)`
+  display: flex;
+  justify-content: space-between;
   padding: 0;
 `;
 
 const StyledCard = styled(Card)`
   width: 15em;
-  height: 7em;
+  height: 10em;
   margin: 0 auto;
   color: ${styles.white};
   background-color: ${(props) => {

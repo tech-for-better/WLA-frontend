@@ -10,7 +10,7 @@ grid-template-columns: 1fr;
 `;
 
 export const FirstBox = styled.div`
-  background-color: ${styles.lightBlue};
+  background-color: ${styles.aqua};
   color: ${styles.white};
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ export const Input = styled.input`
 
 export const Subtitle = styled.p`
   font-size: ${styles.font[2]};
-  color: ${styles.lightBlue};
+  color: ${styles.aqua};
   font-weight: 900;
 `;
 
@@ -66,7 +66,7 @@ export const MessageBox = styled.textarea`
 `;
 
 export const Submit = styled.button`
-  border: 2px solid ${styles.lightBlue};
+  border: 2px solid ${styles.aqua};
   border-radius: 5px;
   box-shadow: 0;
   background-color: rgba(0, 0, 0, 0);

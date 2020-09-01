@@ -1,11 +1,13 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import Search from '../components/Search/Search';
+import PageBackground from '../components/layouts/PageBackground';
+import Searchcourses from '../assets/pagebackgrounds/searchcoursebg.svg';
 
 const CourseDetails: React.FC<PageProps> = ({ data }) => {
   return (
     <main className="mt-5">
-      <h1>Find Your Course</h1>
+      <PageBackground imgsrc={Searchcourses} text="Find the Course you always wanted to take" />
       <Search courseCatalogue={data.allStrapiCourse.edges} careerCatalogue={[]} />
     </main>
   );

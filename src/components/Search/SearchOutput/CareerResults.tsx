@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import CareerCard from '../../cards/CareerCard';
 
 const CareerResults: React.FC<{ careerResults: CareerPathCatalogue }> = ({ careerResults }) => {
