@@ -4,7 +4,7 @@ import * as SC from './styled-components';
 
 const Contact: React.FC<{}> = () => {
   return (
-    <SC.OverallBox className="mb">
+    <SC.OverallBox className="mb-5">
       <SC.FirstBox>
         <SC.TextOne>Talk to us.</SC.TextOne>
         <SC.TextTwo>Let us know if you also have courses to offer.</SC.TextTwo>

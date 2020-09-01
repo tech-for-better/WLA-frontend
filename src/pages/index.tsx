@@ -3,12 +3,21 @@ import { PageProps, graphql } from 'gatsby';
 import Search from '../components/Search/Search';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import PageBackground from '../components/layouts/PageBackground';
+import LandingPageBg from '../assets/pagebackgrounds/landingpagebg.svg';
+
 const Home: React.FC<PageProps> = ({ data }) => {
   return (
-    <Search
-      courseCatalogue={data.allStrapiCourse.edges}
-      careerCatalogue={data.allStrapiCareerPath.edges}
-    />
+    <main className="mt-5">
+      <PageBackground
+        imgsrc={LandingPageBg}
+        text="Find local training that will help you develop a career in construction"
+      />
+      <Search
+        courseCatalogue={data.allStrapiCourse.edges}
+        careerCatalogue={data.allStrapiCareerPath.edges}
+      />
+    </main>
   );
 };
 

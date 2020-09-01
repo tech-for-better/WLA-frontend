@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
+import PageBackground from '../components/layouts/PageBackground';
+import Careersbg from '../assets/pagebackgrounds/careersbg.svg';
 
 const CareerPaths: React.FC<PageProps> = () => {
   const {
@@ -27,7 +29,7 @@ const CareerPaths: React.FC<PageProps> = () => {
   `);
   return (
     <main>
-      <h1 className="mt-5">Career Paths</h1>
+      <PageBackground text="Explore Our Career options for you" imgsrc={Careersbg} />
       <Tabs defaultActiveKey={careerPaths[0].node.name}>
         {careerPaths.map((careerPath) => {
           const { name } = careerPath.node;

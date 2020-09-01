@@ -8,7 +8,7 @@ import CourseCard from '../../cards/CourseCard';
 const CourseResults: React.FC<{ courseResults: CourseCatalogue }> = ({ courseResults }) => {
   return (
     <Container fluid className="mb-5">
-      <h2>Course results</h2>
+      <h2>Courses</h2>
       <Row noGutters>
         {courseResults.map((course) => {
           const { strapiId, career_paths, online_only, name, description, provider } = course.node;
