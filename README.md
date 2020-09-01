@@ -6,7 +6,6 @@
 
 - Career path data
   - Information to be uploaded to strapi admin site
-  - Supply a 70x70 .png image for the card/link
   - It should have a white forefront and a transparent background. We recommend getting images from https://www.flaticon.com/
 
 
