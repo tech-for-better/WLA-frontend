@@ -3,7 +3,10 @@ module.exports = {
   about: {
     strapline: 'Find local training that will help you develop a career in construction.',
     details:
-      'Tackling climate change means growing demand for jobs that will make our homes and other buildings environmentally-friendly. These jobs are more wide-ranging than you might think, covering everything from installing external wall insulation and plumbing to sales and accounts.',
+      'Tackling climate change means a growing demand for jobs that will make our homes and other buildings environmentally-friendly. These jobs are more wide-ranging than you might think, covering everything from installing external wall insulation and plumbing to sales and accounts.',
+    expandedDetails: [
+      'Tackling climate change means a growing demand for jobs that will make our homes and other buildings environmentally-friendly. These jobs are more wide-ranging than you might think, covering everything from installing external wall insulation and plumbing to sales and accounts. SkillsWest.London exists to help you get the skills needed to enter the environmental workforce, by directing you to courses provided by West London institutions and providing career advice.',
+    ],
     bannerImage:
       'https://res.cloudinary.com/dza4tzyey/image/upload/v1598196432/jens-behrmann-Iy3OdKaszJs-unsplash_vusoen.jpg',
   },
@@ -24,7 +27,7 @@ module.exports = {
       {
         title: 'WLB',
         text: [
-          'WLB is a business-led non-profit established in 1994 with members including blue-chip firms such as PwC and Heathrow, as well as Fullers, Brompton Bicycle, micro enterprises and leading education institutions.',
+          'West London Business (WLB) is a business-led non-profit established in 1994 with members including blue-chip firms such as PwC and Heathrow, as well as Fullers, Brompton Bicycle, micro enterprises and leading education institutions.',
         ],
         image: {
           link:

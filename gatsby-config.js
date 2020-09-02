@@ -4,6 +4,13 @@ module.exports = {
   siteMetadata,
   plugins: [
     {
+      resolve: 'gatsby-plugin-schema-snapshot',
+      options: {
+        path: 'schema.gql',
+      },
+      update: process.env.GATSBY_UPDATE_SCHEMA_SNAPSHOT,
+    },
+    {
       resolve: 'gatsby-plugin-layout',
       options: {
         component: require.resolve('./src/components/layouts/layout.tsx'),
@@ -23,5 +30,6 @@ module.exports = {
         // Add any options here
       },
     },
+    `gatsby-plugin-react-helmet`
   ],
 };
