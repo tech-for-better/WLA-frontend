@@ -26,13 +26,20 @@ const Copy: React.FC<{}> = () => {
               title
             }
           }
+          about {
+            expandedDetails
+          }
+          title
         }
       }
     }
   `);
+  const siteTitle = copy?.site?.siteMetadata?.title;
+  const siteDescription = copy?.site?.siteMetadata?.about?.expandedDetails;
   const refinedCopy = copy?.site?.siteMetadata?.aboutPage?.copy;
   return (
     <section>
+      <Article title={siteTitle} text={[siteDescription]} />
       {refinedCopy.map((article: article, index: number) => {
         const { image, text, title } = article;
         return <Article alignment={Boolean(index % 2)} title={title} image={image} text={text} />;

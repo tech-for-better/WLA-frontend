@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import Search from '../components/Search/Search';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PageBackground from '../components/layouts/PageBackground';
 import LandingPageBg from '../assets/pagebackgrounds/landingpagebg.svg';
