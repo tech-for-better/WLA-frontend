@@ -31,7 +31,7 @@ const CareerPaths: React.FC<PageProps> = () => {
   `);
   return (
     <main>
-      <PageBackground text="Explore Our Career options for you" imgsrc={Careersbg} />
+      <PageBackground text="Explore our career options for you" imgsrc={Careersbg} />
       <Tab.Container defaultActiveKey={careerPaths[0]?.node?.strapiId}>
         <Nav>
           {careerPaths.map((edge) => {

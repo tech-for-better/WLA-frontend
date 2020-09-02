@@ -9,7 +9,7 @@ const ContactUs: React.FC<PageProps> = () => {
     <main className="mt-5">
       <PageBackground
         imgsrc={contactusbg}
-        text="If You Have Questions or Just want to talk with us please Get in Touch "
+        text="If you have questions or just want to talk with us please get in touch "
       />
       <Contact />
     </main>
