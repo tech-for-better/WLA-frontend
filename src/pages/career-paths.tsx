@@ -3,10 +3,15 @@ import { PageProps, graphql, useStaticQuery } from 'gatsby';
 import Button from 'react-bootstrap/Button';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
+import styled from 'styled-components';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
 import PageBackground from '../components/layouts/PageBackground';
 import Careersbg from '../assets/pagebackgrounds/careersbg.svg';
 import CareerCard from '../components/cards/CareerCard';
+
+const CenteredNav = styled(Nav)`
+  justify-content: center;
+`;
 
 const CareerPaths: React.FC<PageProps> = () => {
   const {
@@ -34,7 +39,7 @@ const CareerPaths: React.FC<PageProps> = () => {
     <main>
       <PageBackground text="Explore our career options for you" imgsrc={Careersbg} />
       <Tab.Container defaultActiveKey={careerPaths[0]?.node?.strapiId}>
-        <Nav>
+        <CenteredNav>
           {careerPaths.map((edge) => {
             const { strapiId, name, icon_url, color } = edge?.node;
             return (
@@ -50,7 +55,7 @@ const CareerPaths: React.FC<PageProps> = () => {
               </Nav.Item>
             );
           })}
-        </Nav>
+        </CenteredNav>
         <Tab.Content ref={fieldRef}>
           {careerPaths.map((careerPath) => {
             return (
