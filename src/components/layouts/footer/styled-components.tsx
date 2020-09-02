@@ -5,6 +5,10 @@ import styles, { mediaQuery } from '../../../styles';
 export const StyledFooterBox = styled.div`
   padding: 2em;
   background-color: ${styles.darkGrey};
+  background-image: url(https://res.cloudinary.com/dza4tzyey/image/upload/v1599041415/footerDecoration_nghnmz.png);
+  background-repeat: no-repeat;
+  background-position: 80% 70%;
+  background-size: 7%;
   color: #fff;
 `;
 

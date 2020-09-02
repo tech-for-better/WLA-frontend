@@ -21,7 +21,9 @@ const LandingText = styled.h1`
   font-weight: bold;
   font-size: ${styles.font[4]};
   width: 60%;
-  align-self: flex-end;
+  align-self: ${(props) => {
+    return props.alignTextVertically ? `center;` : `flex-end`;
+  }};
   margin-top: 10%;
   margin: 0;
   text-align: right;
@@ -32,10 +34,10 @@ const LandingText = styled.h1`
   }`)}
 `;
 
-function PageBackground({ imgsrc, text }) {
+function PageBackground({ imgsrc, text, alignTextVertically = false }) {
   return (
     <PicBackground imgsrc={imgsrc}>
-      <LandingText>{text}</LandingText>
+      <LandingText alignTextVertically={alignTextVertically}>{text}</LandingText>
     </PicBackground>
   );
 }
