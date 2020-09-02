@@ -45,7 +45,7 @@ const CareerPaths: React.FC<PageProps> = () => {
                 }}
               >
                 <Nav.Link eventKey={strapiId}>
-                  <CareerCard colour={color} name={name} link={`#${name}`} image={icon_url} />
+                  <CareerCard colour={color} name={name} link="" image={icon_url} />
                 </Nav.Link>
               </Nav.Item>
             );
@@ -54,11 +54,7 @@ const CareerPaths: React.FC<PageProps> = () => {
         <Tab.Content ref={fieldRef}>
           {careerPaths.map((careerPath) => {
             return (
-              <Tab.Pane
-                key={careerPath.node.strapiId}
-                eventKey={careerPath.node.strapiId}
-                id={`#${careerPath.node.name}`}
-              >
+              <Tab.Pane key={careerPath.node.strapiId} eventKey={careerPath.node.strapiId}>
                 <CareerPathDetail path={careerPath.node} />
                 <Button
                   className="mt-5 mb-5"
