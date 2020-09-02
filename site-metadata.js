@@ -4,8 +4,9 @@ module.exports = {
     strapline: 'Find local training that will help you develop a career in construction.',
     details:
       'Tackling climate change means a growing demand for jobs that will make our homes and other buildings environmentally-friendly. These jobs are more wide-ranging than you might think, covering everything from installing external wall insulation and plumbing to sales and accounts.',
-    expandedDetails:
+    expandedDetails: [
       'Tackling climate change means a growing demand for jobs that will make our homes and other buildings environmentally-friendly. These jobs are more wide-ranging than you might think, covering everything from installing external wall insulation and plumbing to sales and accounts. SkillsWest.London exists to help you get the skills needed to enter the environmental workforce, by directing you to courses provided by West London institutions and providing career advice.',
+    ],
     bannerImage:
       'https://res.cloudinary.com/dza4tzyey/image/upload/v1598196432/jens-behrmann-Iy3OdKaszJs-unsplash_vusoen.jpg',
   },
