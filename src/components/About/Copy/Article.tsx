@@ -62,7 +62,7 @@ const Article: React.FC<ArticleProps> = ({ title, text, image = null, alignment 
       <div>
         <Title>{title}</Title>
         {text.map((p) => {
-          return <p>{p}</p>;
+          return <p key={Math.random()}>{p}</p>;
         })}
       </div>
     </StyledArticle>

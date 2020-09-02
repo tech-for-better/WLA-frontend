@@ -8802,12 +8802,19 @@ gatsby-plugin-page-creator@^2.3.22:
     lodash "^4.17.15"
     slugify "^1.4.4"
 
+
 gatsby-plugin-react-helmet@^3.3.10:
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.3.10.tgz#ba2f84715cc2471606b90327c7c3ba11c5287bc7"
   integrity sha512-AcXYwmS3r298JWs6iQ3OLNxIe8L8i5a2iSdLr/SDMpHqumYm7q/vB9kCX0et5wM7DIuZ7aPXDrdi5yDCAvU5lg==
   dependencies:
     "@babel/runtime" "^7.10.3"
+
+gatsby-plugin-schema-snapshot@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-schema-snapshot/-/gatsby-plugin-schema-snapshot-1.0.0.tgz#78e6c9b23c55028237251b7daec94fe834b656c4"
+  integrity sha512-Gf/otsntsTPVl/bG2mK/Y2yuYufhm9PFvmV8yMia2KckrFs1jjofPugYUjpBIGm9RDrtYeLCcZhw057GbQrbeA==
+
 
 gatsby-plugin-styled-components@^3.3.10:
   version "3.3.10"
