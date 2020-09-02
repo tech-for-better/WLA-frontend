@@ -11,7 +11,7 @@ const Home: React.FC<PageProps> = ({ data }) => {
     <main className="mt-5">
       <PageBackground
         imgsrc={LandingPageBg}
-        text="Find local training that will help you develop a career in construction"
+        text="Find local training to help you develop a career in construction"
       />
       <Search
         courseCatalogue={data.allStrapiCourse.edges}
