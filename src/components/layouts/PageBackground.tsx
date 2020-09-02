@@ -34,7 +34,7 @@ const LandingText = styled.h1`
   }`)}
 `;
 
-function PageBackground({ imgsrc, text, alignTextVertically }) {
+function PageBackground({ imgsrc, text, alignTextVertically = false }) {
   return (
     <PicBackground imgsrc={imgsrc}>
       <LandingText alignTextVertically={alignTextVertically}>{text}</LandingText>
