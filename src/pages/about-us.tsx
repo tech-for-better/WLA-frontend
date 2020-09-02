@@ -1,21 +1,16 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
-import styled from 'styled-components';
-
-import styles from '../styles';
+import PageBackground from '../components/layouts/PageBackground';
+import contactusbg from '../assets/pagebackgrounds/contactusbg.svg';
 
 import Copy from '../components/About/Copy/Copy';
 import Partners from '../components/About/Partners/Partners';
 import ContactUs from '../components/Contact/Contact';
 
-const Title = styled.h1`
-  font-size: ${styles.font[4]};
-`;
-
 const AboutUs: React.FC<PageProps> = () => {
   return (
     <main className="mt-5">
-      <Title>About</Title>
+      <PageBackground text="Who are we?" imgsrc={contactusbg} />
       <Copy />
       <Partners />
       <ContactUs />
