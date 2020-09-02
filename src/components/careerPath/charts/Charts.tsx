@@ -5,8 +5,8 @@ import { mediaQuery } from '../../../styles';
 import EstimatedPay from './charts/EstimatedPay';
 import EmploymentRate from './charts/EmploymentRate';
 import WorkingFuturesPrediction from './charts/WorkingFuturesPrediction';
-import WorkingFuturesReplacemendDemand from './charts/WorkingFuturesReplacementDemand';
 import Abilities from './charts/Abilities';
+import ExtraInfo from './charts/ExtraInfo';
 
 const GraphGrid = styled.div`
   display: grid;
@@ -28,11 +28,7 @@ const Charts: React.FC<MotherChart> = ({ soc, name, color }) => {
         </div>
         <Abilities onetCode={onetCode} name={name} color={color} />
       </GraphGrid>
-      <div>
-        <h1>vacancies availble at the moment</h1>
-        <h2>courses taken by others</h2>
-        <WorkingFuturesReplacemendDemand soc={soc} name={name} color={color} />
-      </div>
+      <ExtraInfo soc={soc} name={name} color={color} />
       <WorkingFuturesPrediction soc={soc} name={name} color={color} />
     </div>
   );

@@ -13,19 +13,7 @@ const Logo = styled.img`
   width: auto;
   max-height: 1.5em;
 `;
-const Navitem = styled(Nav)`
-  :after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 100%;
-    height: 3px;
-    content: '';
-    color: transparent;
-  }
-`;
+
 const LinkItem = styled(Link)`
   font-weight: bold;
 
