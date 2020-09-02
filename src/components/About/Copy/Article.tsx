@@ -13,6 +13,7 @@ interface ArticleProps {
 }
 
 const StyledArticle = styled.article`
+  margin-top: 1em;
   display: flex;
   flex-direction: ${(props) => {
     return props.alignment ? `row-reverse` : `row`;
