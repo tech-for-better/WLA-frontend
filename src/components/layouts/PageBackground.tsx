@@ -11,6 +11,9 @@ const PicBackground = styled.div`
   ${mediaQuery(`{
       height: 20vh;
   }`)}
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2em;
 `;
 
 const LandingText = styled.h1`
@@ -18,9 +21,9 @@ const LandingText = styled.h1`
   font-weight: bold;
   font-size: ${styles.font[4]};
   width: 60%;
-  float: right;
+  align-self: flex-end;
   margin-top: 10%;
-  align-items: center;
+  margin: 0;
   text-align: right;
   ${mediaQuery(`{
     font-size: ${styles.font[2]};
