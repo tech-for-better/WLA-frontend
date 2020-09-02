@@ -1,0 +1,186 @@
+### Type definitions saved at 2020-09-02T12:05:27.064Z ###
+
+type File implements Node  {
+  sourceInstanceName: String!
+  absolutePath: String!
+  relativePath: String!
+  extension: String!
+  size: Int!
+  prettySize: String!
+  modifiedTime: Date! @dateformat
+  accessTime: Date! @dateformat
+  changeTime: Date! @dateformat
+  birthTime: Date! @dateformat
+  root: String!
+  dir: String!
+  base: String!
+  ext: String!
+  name: String!
+  relativeDirectory: String!
+  dev: Int!
+  mode: Int!
+  nlink: Int!
+  uid: Int!
+  gid: Int!
+  rdev: Int!
+  ino: Float!
+  atimeMs: Float!
+  mtimeMs: Float!
+  ctimeMs: Float!
+  atime: Date! @dateformat
+  mtime: Date! @dateformat
+  ctime: Date! @dateformat
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+}
+
+type Directory implements Node  {
+  sourceInstanceName: String!
+  absolutePath: String!
+  relativePath: String!
+  extension: String!
+  size: Int!
+  prettySize: String!
+  modifiedTime: Date! @dateformat
+  accessTime: Date! @dateformat
+  changeTime: Date! @dateformat
+  birthTime: Date! @dateformat
+  root: String!
+  dir: String!
+  base: String!
+  ext: String!
+  name: String!
+  relativeDirectory: String!
+  dev: Int!
+  mode: Int!
+  nlink: Int!
+  uid: Int!
+  gid: Int!
+  rdev: Int!
+  ino: Float!
+  atimeMs: Float!
+  mtimeMs: Float!
+  ctimeMs: Float!
+  atime: Date! @dateformat
+  mtime: Date! @dateformat
+  ctime: Date! @dateformat
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+}
+
+type SitePage implements Node  {
+  path: String!
+  component: String!
+  internalComponentName: String!
+  componentChunkName: String!
+  matchPath: String
+}
+
+type StrapiCareerPath implements Node @derivedTypes  {
+  name: String
+  description: String
+  lmi_code: String
+  created_by: StrapiCareerPathCreated_by
+  updated_by: StrapiCareerPathUpdated_by
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+  video_url: String
+  icon_url: String
+  color: String
+  career_progression: String
+  courses: [StrapiCareerPathCourses]
+  strapiId: Int
+}
+
+type StrapiCareerPathCreated_by {
+  id: Int
+  firstname: String
+  lastname: String
+}
+
+type StrapiCareerPathUpdated_by {
+  id: Int
+  firstname: String
+  lastname: String
+}
+
+type StrapiCareerPathCourses {
+  id: Int
+  name: String
+  description: String
+  created_by: Int
+  updated_by: Int
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+  link: String
+  online_only: Boolean
+  start_date: Date @dateformat
+  provider: Int
+  total_price: Int
+}
+
+type StrapiCourse implements Node @derivedTypes  {
+  name: String
+  description: String
+  created_by: StrapiCourseCreated_by
+  updated_by: StrapiCourseUpdated_by
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+  link: String
+  online_only: Boolean
+  start_date: Date @dateformat
+  provider: StrapiCourseProvider
+  total_price: Int
+  career_paths: [StrapiCourseCareer_paths]
+  modules: [StrapiCourseModules]
+  strapiId: Int
+}
+
+type StrapiCourseCreated_by {
+  id: Int
+  firstname: String
+  lastname: String
+}
+
+type StrapiCourseUpdated_by {
+  id: Int
+  firstname: String
+  lastname: String
+}
+
+type StrapiCourseProvider {
+  id: Int
+  name: String
+  postcode: String
+  created_by: Int
+  updated_by: Int
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+}
+
+type StrapiCourseCareer_paths {
+  id: Int
+  name: String
+  description: String
+  lmi_code: String
+  created_by: Int
+  updated_by: Int
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+  video_url: String
+  icon_url: String
+  color: String
+}
+
+type StrapiCourseModules {
+  id: Int
+  course: Int
+  order: Int
+  name: String
+  description: String
+  link: String
+  created_by: Int
+  updated_by: Int
+  created_at: Date @dateformat
+  updated_at: Date @dateformat
+}
