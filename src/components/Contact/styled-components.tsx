@@ -16,6 +16,9 @@ export const FirstBox = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding: 1em 25%;
+  ${mediaQuery(`
+  padding: 1em;
+  `)}
 `;
 
 export const TextOne = styled.p`
