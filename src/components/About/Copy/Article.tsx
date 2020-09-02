@@ -13,7 +13,7 @@ interface ArticleProps {
 }
 
 const StyledArticle = styled.article`
-  margin-top: 1em;
+  margin-top: 5em;
   display: flex;
   flex-direction: ${(props) => {
     return props.alignment ? `row-reverse` : `row`;
@@ -32,11 +32,19 @@ const Image = styled.img`
   }}
 `;
 
-const Article: React.FC<ArticleProps> = ({ alignment, title, text, image }) => {
-  const { link, description } = image;
+const Article: React.FC<ArticleProps> = ({ title, text, image = null, alignment = null }) => {
+  // const { link, description } = image;
   return (
     <StyledArticle alignment={alignment}>
-      <Image src={link} alt={description} width={300} height={300} alignment={alignment} />
+      {image && (
+        <Image
+          src={image.link}
+          alt={image.description}
+          width={300}
+          height={300}
+          alignment={alignment}
+        />
+      )}
       <div>
         <Title>{title}</Title>
         {text.map((p) => {
