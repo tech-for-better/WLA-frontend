@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 import useSOC from '../hooks/useSOC';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
@@ -9,21 +17,36 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
 
   useSOC({ soc, endpoint: `/ashe/estimatePay`, setter: setEstimatedPay, setError });
 
-  const data = estimatedPay?.data?.series;
+  const data = estimatedPay?.data?.series.sort((a, b) => {
+    return a.year - b.year;
+  });
+
   if (error) {
     return <></>;
   }
   return (
-    <>
+    <div>
       <h3>Average weekly pay for {correctVowelGrammar(name)}</h3>
-      <BarChart width={200} height={250} data={data}>
-        <CartesianGrid strokeDasharray="0" />
-        <XAxis dataKey="year" />
-        <YAxis dataKey="estpay" />
-        <Tooltip />
-        <Bar dataKey="estpay" fill={color} />
-      </BarChart>
-    </>
+      <div style={{ width: `100%`, height: 200 }}>
+        <ResponsiveContainer>
+          <AreaChart
+            data={data}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis label={{ value: `£`, position: `insideTopLeft` }} />
+            <Tooltip />
+            <Area type="monotone" dataKey="estpay" stroke={color} fill={color} />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 };
 
