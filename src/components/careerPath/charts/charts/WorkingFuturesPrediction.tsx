@@ -41,8 +41,8 @@ const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name, color }) => {
             <Area
               type="monotone"
               dataKey="employment"
-              stroke="#8884d8"
-              fillOpacity={0.5}
+              stroke={color}
+              fillOpacity={0.3}
               fill="url(#colorUv)"
             />
           </AreaChart>

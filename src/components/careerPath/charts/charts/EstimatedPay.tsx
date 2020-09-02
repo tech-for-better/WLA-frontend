@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+
 import useSOC from '../hooks/useSOC';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
@@ -40,7 +41,7 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis label={{ value: `£`, position: `insideTopLeft` }} />
+            <YAxis label={{ value: `£ per week`, angle: -90, position: `insideLeft` }} />
             <Tooltip />
             <Area type="monotone" dataKey="estpay" stroke={color} fill={color} />
           </AreaChart>
