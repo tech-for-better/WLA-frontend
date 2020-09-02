@@ -1,4 +1,5 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const fs = require('fs');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
