@@ -36,7 +36,7 @@
     "arrow-body-style": ["error", "always"],
     "camelcase": "off",
 
-    "@typescript-eslint/camelcase": ["error", {"allow": ["online_only", "career_paths", "soc_code", "total_price", "career_progression", "start_year", "end_year"]}]
+    "@typescript-eslint/camelcase": ["error", {"allow": ["online_only", "icon_url", "career_paths", "soc_code", "total_price", "career_progression", "start_year", "end_year"]}]
 
   },
   "overrides": [

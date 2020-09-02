@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
 import CareerPathDetail from '../components/careerPath/CareerPathDetail';
+import PageBackground from '../components/layouts/PageBackground';
+import Careersbg from '../assets/pagebackgrounds/careersbg.svg';
 import CareerCard from '../components/cards/CareerCard';
 
 const CareerPaths: React.FC<PageProps> = () => {
@@ -29,7 +31,7 @@ const CareerPaths: React.FC<PageProps> = () => {
   `);
   return (
     <main>
-      <h1 className="mt-5">Career Paths</h1>
+      <PageBackground text="Explore Our Career options for you" imgsrc={Careersbg} />
       <Tab.Container defaultActiveKey={careerPaths[0]?.node?.strapiId}>
         <Nav>
           {careerPaths.map((edge) => {
@@ -53,10 +55,14 @@ const CareerPaths: React.FC<PageProps> = () => {
               >
                 <CareerPathDetail path={careerPath.node} />
                 <Button
-                  variant="primary"
                   className="mt-5 mb-5"
                   href={`/career/${careerPath.node.name.replace(/ /g, `-`)}`}
-                  style={{ marginLeft: `50%`, transform: `translateX(-50%)` }}
+                  style={{
+                    marginLeft: `50%`,
+                    transform: `translateX(-50%)`,
+                    backgroundColor: `#006574`,
+                    borderColor: `#006574`,
+                  }}
                 >
                   Find Out More
                 </Button>
