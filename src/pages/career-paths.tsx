@@ -29,6 +29,7 @@ const CareerPaths: React.FC<PageProps> = () => {
       }
     }
   `);
+  const fieldRef = React.useRef<HTMLElement>(null);
   return (
     <main>
       <PageBackground text="Explore our career options for you" imgsrc={Careersbg} />
@@ -37,7 +38,12 @@ const CareerPaths: React.FC<PageProps> = () => {
           {careerPaths.map((edge) => {
             const { strapiId, name, icon_url, color } = edge?.node;
             return (
-              <Nav.Item key={strapiId}>
+              <Nav.Item
+                key={strapiId}
+                onClick={() => {
+                  fieldRef.current.scrollIntoView({ behavior: `smooth` });
+                }}
+              >
                 <Nav.Link eventKey={strapiId}>
                   <CareerCard colour={color} name={name} link={`#${name}`} image={icon_url} />
                 </Nav.Link>
@@ -45,7 +51,7 @@ const CareerPaths: React.FC<PageProps> = () => {
             );
           })}
         </Nav>
-        <Tab.Content>
+        <Tab.Content ref={fieldRef}>
           {careerPaths.map((careerPath) => {
             return (
               <Tab.Pane

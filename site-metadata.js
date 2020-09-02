@@ -17,8 +17,7 @@ module.exports = {
           'One of our central priorities is delivering the skills the economy needs to grow and supporting people of all backgrounds into work.',
         ],
         image: {
-          link:
-            'https://res.cloudinary.com/dza4tzyey/image/upload/v1599044539/wla_gfr1ci.png',
+          link: 'https://res.cloudinary.com/dza4tzyey/image/upload/v1599044539/wla_gfr1ci.png',
           description: 'The West London boroughs.',
         },
       },
