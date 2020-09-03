@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-09-02T12:05:27.064Z ###
+### Type definitions saved at 2020-09-03T10:50:10.631Z ###
 
 type File implements Node  {
   sourceInstanceName: String!
@@ -88,6 +88,8 @@ type StrapiCareerPath implements Node @derivedTypes  {
   icon_url: String
   color: String
   career_progression: String
+  ONET_code: String
+  SOC_code: Date @dateformat
   courses: [StrapiCareerPathCourses]
   strapiId: Int
 }
