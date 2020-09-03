@@ -13,6 +13,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
     name,
     video_url: videoUrl,
     SOC_code,
+    ONET_code,
     career_progression,
   } = data?.careers?.edges[0]?.node;
 
@@ -29,7 +30,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
         <h2 className="mb-4">Career Path Courses:</h2>
         <CoursesWrapper courseData={courses} />
       </div>
-      {SOC_code && <Charts soc={SOC_code} name={name} color={color} />}
+      {SOC_code && <Charts soc={SOC_code} onet={ONET_code} name={name} color={color} />}
     </main>
   );
 };
@@ -46,6 +47,7 @@ export const query = graphql`
           name
           video_url
           SOC_code
+          ONET_code
           courses {
             name
             strapiId: id

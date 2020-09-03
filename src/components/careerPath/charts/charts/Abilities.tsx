@@ -67,7 +67,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
+const Abilities: React.FC<ONETChart> = ({ onet, name, color }) => {
   const [skills, setSkills] = useState(``);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -78,8 +78,7 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
     })
     .slice(0, 10);
 
-  useONET({ onetCode, endpoint: `/abilities`, setter: setSkills, setError });
-
+  useONET({ onet, endpoint: `/abilities`, setter: setSkills, setError });
   if (error) {
     return <></>;
   }
