@@ -28,7 +28,7 @@ const CareerPaths: React.FC<PageProps> = () => {
             name
             strapiId
             videoUrl: video_url
-            lmiCode: lmi_code
+            SOC_code
           }
         }
       }

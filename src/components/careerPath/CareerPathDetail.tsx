@@ -7,14 +7,16 @@ import { mediaQuery } from '../../styles';
 import { StyledCard, CardGroupStyle } from '../../templates/sharedStyles.styles';
 
 interface CareerPath {
-  color: string;
-  description: string;
-  icon_url: string;
-  lmi_code: string;
-  name: string;
-  strapiId: number;
-  video_url: string;
-  career_progressioion: string;
+  path: {
+    color: string;
+    description: string;
+    icon_url: string;
+    SOC_code: string;
+    name: string;
+    strapiId: number;
+    videoUrl: string;
+    career_progression: string;
+  };
 }
 
 const ReverseCardGroupStyle = styled(CardGroupStyle)`
@@ -32,7 +34,7 @@ const Video = styled.iframe`
 `;
 
 const CareerPathDetail: React.FC<CareerPath> = ({
-  path: { description, lmiCode, name, videoUrl, career_progression },
+  path: { description, name, videoUrl, career_progression },
 }) => {
   return (
     <main>
