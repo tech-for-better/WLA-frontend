@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { mediaQuery } from '../../styles';
 import { StyledCard, CardGroupStyle } from '../../templates/sharedStyles.styles';
 
+import correctVowelGrammar from '../../utils/correctVowelGrammar';
+
 interface CareerPath {
   path: {
     color: string;
@@ -65,7 +67,7 @@ const CareerPathDetail: React.FC<CareerPath> = ({
       </ReverseCardGroupStyle>
       {videoUrl ? (
         <div className="mb-5">
-          <h2 className="mb-4">What is like being a {name}</h2>
+          <h2 className="mb-4">What is like being {correctVowelGrammar(name)}</h2>
           <div>
             <Video
               src={videoUrl.replace(`watch?v=`, `embed/`)}
