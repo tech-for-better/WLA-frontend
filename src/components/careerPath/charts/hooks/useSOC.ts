@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 
-const apiBaseUrl = `http://api.lmiforall.org.uk/api/v1`;
+const apiBaseUrl = `https://api.lmiforall.org.uk/api/v1`;
 
 export default function useSOC({ endpoint, soc, setter, setError }) {
   useEffect(() => {
