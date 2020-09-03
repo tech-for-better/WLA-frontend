@@ -21,14 +21,14 @@ const Charts: React.FC<MotherChart> = ({ soc, onet, name, color }) => {
   return (
     <div>
       <GraphGrid>
-        <div>
+        <div className="mb-5">
           <EstimatedPay soc={soc} name={name} color={color} />
           <EmploymentRate soc={soc} name={name} color={color} />
         </div>
         <Abilities onet={onet} name={name} color={color} />
       </GraphGrid>
-      <ExtraInfo soc={soc} name={name} color={color} />
       <WorkingFuturesPrediction soc={soc} name={name} color={color} />
+      <ExtraInfo soc={soc} name={name} color={color} />
     </div>
   );
 };

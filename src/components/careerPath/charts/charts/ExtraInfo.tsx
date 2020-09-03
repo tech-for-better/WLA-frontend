@@ -5,7 +5,7 @@ import WorkingFuturesReplacemendDemand from './WorkingFuturesReplacementDemand';
 function ExtraInfo({ soc, name, color }) {
   return (
     <div>
-      <h2>courses taken by others</h2>
+      {/* <h2>courses taken by others</h2> */}
       {/* <CoursesChart soc={soc} /> */}
       <WorkingFuturesReplacemendDemand soc={soc} name={name} color={color} />
     </div>
