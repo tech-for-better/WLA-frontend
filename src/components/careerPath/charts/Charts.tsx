@@ -17,8 +17,7 @@ const GraphGrid = styled.div`
     }`)}
 `;
 
-const Charts: React.FC<MotherChart> = ({ soc, name, color }) => {
-  const onetCode = `15-1133.00`;
+const Charts: React.FC<MotherChart> = ({ soc, onet, name, color }) => {
   return (
     <div>
       <GraphGrid>
@@ -26,7 +25,7 @@ const Charts: React.FC<MotherChart> = ({ soc, name, color }) => {
           <EstimatedPay soc={soc} name={name} color={color} />
           <EmploymentRate soc={soc} name={name} color={color} />
         </div>
-        <Abilities onetCode={onetCode} name={name} color={color} />
+        <Abilities onet={onet} name={name} color={color} />
       </GraphGrid>
       <ExtraInfo soc={soc} name={name} color={color} />
       <WorkingFuturesPrediction soc={soc} name={name} color={color} />

@@ -6,7 +6,7 @@ interface SOCChart {
 
 interface ONETChart {
   name: string;
-  onetCode: string;
+  onet: string;
   color: string;
 }
 
