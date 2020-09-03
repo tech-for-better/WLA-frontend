@@ -1,12 +1,17 @@
-import React from 'react';
-import { PageProps, graphql } from 'gatsby';
+import React, { useEffect } from 'react';
+import { PageProps, graphql, navigate } from 'gatsby';
 import Search from '../components/Search/Search';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PageBackground from '../components/layouts/PageBackground';
 import LandingPageBg from '../assets/pagebackgrounds/landingpagebg.svg';
 
 const Home: React.FC<PageProps> = ({ data }) => {
+  useEffect(() => {
+    if (typeof window !== `undefined`) {
+      navigate(window.location.pathname);
+    }
+  }, []);
+
   return (
     <main className="mt-5">
       <PageBackground
