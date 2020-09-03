@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageProps, graphql, useStaticQuery } from 'gatsby';
+import { PageProps, graphql, useStaticQuery, Link } from 'gatsby';
 import Button from 'react-bootstrap/Button';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
@@ -61,18 +61,19 @@ const CareerPaths: React.FC<PageProps> = () => {
             return (
               <Tab.Pane key={careerPath.node.strapiId} eventKey={careerPath.node.strapiId}>
                 <CareerPathDetail path={careerPath.node} />
-                <Button
-                  className="mt-5 mb-5"
-                  href={`/career/${careerPath.node.name.replace(/ /g, `-`)}`}
-                  style={{
-                    marginLeft: `50%`,
-                    transform: `translateX(-50%)`,
-                    backgroundColor: `#006574`,
-                    borderColor: `#006574`,
-                  }}
-                >
-                  Find Out More
-                </Button>
+                <Link to={`/career/${careerPath.node.name.replace(/ /g, `-`)}`}>
+                  <Button
+                    className="mt-5 mb-5"
+                    style={{
+                      marginLeft: `50%`,
+                      transform: `translateX(-50%)`,
+                      backgroundColor: `#006574`,
+                      borderColor: `#006574`,
+                    }}
+                  >
+                    Find Out More
+                  </Button>
+                </Link>
               </Tab.Pane>
             );
           })}
