@@ -29,7 +29,7 @@ const CareerPath: React.FC<PageProps> = ({ data }) => {
         <h2 className="mb-4">Career Path Courses:</h2>
         <CoursesWrapper courseData={courses} />
       </div>
-      {lmiCode && <Charts soc={lmiCode} name={name} />}
+      {lmiCode && <Charts soc={lmiCode} name={name} color={color} />}
     </main>
   );
 };

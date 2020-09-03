@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import * as SC from './styled-components';
 import { mediaQuery } from '../../../styles';
-import footerDecoration from '../../../assets/footerDecoration.png';
 
 type page = {
   node: {
@@ -39,12 +38,6 @@ const FooterLinksDecor = styled.div`
     flex-direction: column;
     align-items: center;
   }`)}
-`;
-
-const Image = styled.img`
-  height: 50%;
-  width: auto;
-  align-self: flex-end;
 `;
 
 const InternalLinks: React.FC<{}> = () => {
