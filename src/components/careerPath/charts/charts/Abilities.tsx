@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer, Legend } from 'recharts';
 
 import useONET from '../hooks/useONET';
-import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const COLORS = [`#0088FE`, `#00C49F`, `#FFBB28`, `#FF8042`];
 const renderActiveShape = (props) => {
@@ -78,15 +77,13 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
       return b.value - a.value;
     })
     .slice(0, 10);
-
   useONET({ onetCode, endpoint: `/abilities`, setter: setSkills, setError });
-
   if (error) {
     return <></>;
   }
   return (
     <div>
-      <h3>Top 10 skills of {correctVowelGrammar(name)}</h3>
+      <h3>Top 10 skills</h3>
       <div style={{ width: `100%`, height: 600 }}>
         <ResponsiveContainer>
           <PieChart>
@@ -104,9 +101,6 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
                 return setActiveIndex(index);
               }}
             />
-            {/* {newData.map((entry, index) => (
-              <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
-            ))} */}
             <Legend legendType="circle" verticalAlign="top" height={36} />
           </PieChart>
         </ResponsiveContainer>

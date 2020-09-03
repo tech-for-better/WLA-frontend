@@ -17,11 +17,11 @@ function CoursesChart({ soc }) {
   }, [setCourses, soc, setError]);
 
   const processedData = [];
-  const fakeData = courses?.data.years;
+  // const fakeData = courses?.data.years;
 
-  const keys = [];
-  const subjects = [];
-  const subjectPercentageByYear = [];
+  // const keys = [];
+  // const subjects = [];
+  // const subjectPercentageByYear = [];
 
   // fakeData.map((e) => {
   //   keys.push(e.year);
