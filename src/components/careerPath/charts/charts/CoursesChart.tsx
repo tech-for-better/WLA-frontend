@@ -17,47 +17,47 @@ function CoursesChart({ soc }) {
   }, [setCourses, soc, setError]);
 
   const processedData = [];
-    const fakeData = courses?.data.years;
- 
+  const fakeData = courses?.data.years;
+
   const keys = [];
   const subjects = [];
   const subjectPercentageByYear = [];
 
-  fakeData.map((e) => {
-    keys.push(e.year);
-    const sortedCourses = e.courses
-      .sort((a, b) => {
-        return b.percentage - a.percentage;
-      })
-      .slice(0, 6);
-    sortedCourses.map((a) => {
-      subjectPercentageByYear.push({ name: a.name, [e.year]: a.percentage });
-      return !subjects.includes(a.name) ? subjects.push(a.name) : 1;
-    });
-  });
-  subjects.map((e) => {
-    const dataEntry = keys.reduce(
-      (a, b) => {
-        // eslint-disable-next-line no-return-assign
-        return (a[b] = 0), a;
-      },
-      {
-        subject: e.replace(/\(\w+\)\s+/gi, ``),
-        fullMark: 100,
-      },
-    );
-    processedData.push(dataEntry);
-  });
+  // fakeData.map((e) => {
+  //   keys.push(e.year);
+  //   const sortedCourses = e.courses
+  //     .sort((a, b) => {
+  //       return b.percentage - a.percentage;
+  //     })
+  //     .slice(0, 6);
+  //   sortedCourses.map((a) => {
+  //     subjectPercentageByYear.push({ name: a.name, [e.year]: a.percentage });
+  //     return !subjects.includes(a.name) ? subjects.push(a.name) : 1;
+  //   });
+  // });
+  // subjects.map((e) => {
+  //   const dataEntry = keys.reduce(
+  //     (a, b) => {
+  //       // eslint-disable-next-line no-return-assign
+  //       return (a[b] = 0), a;
+  //     },
+  //     {
+  //       subject: e.replace(/\(\w+\)\s+/gi, ``),
+  //       fullMark: 100,
+  //     },
+  //   );
+  //   processedData.push(dataEntry);
+  // });
 
-  processedData.map((e) => {
-    const filteredYears = subjectPercentageByYear.filter((a) => {
-      return a.name.replace(/\(\w+\)\s+/gi, ``) === e.subject;
-    });
-    filteredYears.map((a) => {
-      e[Object.keys(a)[1]] = a[Object.keys(a)[1]];
-    });
-    return filteredYears;
-  });
+  // processedData.map((e) => {
+  //   const filteredYears = subjectPercentageByYear.filter((a) => {
+  //     return a.name.replace(/\(\w+\)\s+/gi, ``) === e.subject;
+  //   });
+  //   filteredYears.map((a) => {
+  //     e[Object.keys(a)[1]] = a[Object.keys(a)[1]];
+  //   });
+  //   return filteredYears;
+  // });
 
   if (error) {
     return <></>;

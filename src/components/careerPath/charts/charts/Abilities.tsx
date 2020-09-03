@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector, ResponsiveContainer, Legend } from 'recharts';
 
 import useONET from '../hooks/useONET';
 import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
+const COLORS = [`#0088FE`, `#00C49F`, `#FFBB28`, `#FF8042`];
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
@@ -41,7 +42,7 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius}
         startAngle={startAngle}
         endAngle={endAngle}
-        fill={fill}
+        fill={COLORS[10 % COLORS.length]}
       />
       <Sector
         cx={cx}
@@ -50,7 +51,7 @@ const renderActiveShape = (props) => {
         endAngle={endAngle}
         innerRadius={outerRadius + 6}
         outerRadius={outerRadius + 10}
-        fill={fill}
+        fill={COLORS[10 % COLORS.length]}
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
@@ -103,6 +104,10 @@ const Abilities: React.FC<ONETChart> = ({ onetCode, name, color }) => {
                 return setActiveIndex(index);
               }}
             />
+            {/* {newData.map((entry, index) => (
+              <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
+            ))} */}
+            <Legend legendType="circle" verticalAlign="top" height={36} />
           </PieChart>
         </ResponsiveContainer>
       </div>
