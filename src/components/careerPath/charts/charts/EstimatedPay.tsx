@@ -10,7 +10,6 @@ import {
 } from 'recharts';
 
 import useSOC from '../hooks/useSOC';
-import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);
@@ -26,8 +25,8 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
     return <></>;
   }
   return (
-    <div>
-      <h3>Average weekly pay for {correctVowelGrammar(name)}</h3>
+    <div className="mb-5">
+      <h3>Average weekly pay</h3>
       <div style={{ width: `100%`, height: 200 }}>
         <ResponsiveContainer>
           <AreaChart
@@ -41,7 +40,7 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis label={{ value: `£ per week`, angle: -90, position: `insideLeft` }} />
+            <YAxis />
             <Tooltip />
             <Area type="monotone" dataKey="estpay" stroke={color} fill={color} />
           </AreaChart>
