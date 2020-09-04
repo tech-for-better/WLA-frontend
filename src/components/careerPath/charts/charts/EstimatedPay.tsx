@@ -26,7 +26,7 @@ const EstimatedPay: React.FC<SOCChart> = ({ soc, color }) => {
   }
   return (
     <div className="mb-5">
-      <h3>Average weekly pay</h3>
+      <h3>Average weekly pay (£)</h3>
       <div style={{ width: `100%`, height: 200 }}>
         <ResponsiveContainer>
           <AreaChart

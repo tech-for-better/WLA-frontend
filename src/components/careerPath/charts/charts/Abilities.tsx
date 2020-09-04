@@ -93,16 +93,16 @@ const Abilities: React.FC<ONETChart> = ({ onet, color }) => {
               activeShape={renderActiveShape}
               data={data}
               cx="50%"
-              cy={300}
+              cy="40%"
               innerRadius={70}
               outerRadius={100}
               fill={color}
               dataKey="value"
-              onMouseEnter={(d, index) => {
+              onMouseEnter={(_, index) => {
                 return setActiveIndex(index);
               }}
             />
-            <Legend legendType="circle" verticalAlign="top" height={36} />
+            <Legend legendType="circle" verticalAlign="top" height={1} />
           </PieChart>
         </ResponsiveContainer>
       </div>
