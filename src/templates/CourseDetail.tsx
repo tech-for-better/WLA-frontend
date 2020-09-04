@@ -39,6 +39,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     start_date: startDate,
     modules,
     career_paths,
+    strapiId,
   } = data.course.edges[0].node;
   const otherCourses = data.similarCourses.edges;
   // 'internal' meaning the career paths of this course, not another course
@@ -48,7 +49,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
 
   let counter = 0;
   const similarCourses = otherCourses.filter((externalCourse) => {
-    if (counter > 7) {
+    if (counter > 7 || strapiId === externalCourse?.node?.strapiId) {
       return false;
     }
     const externalCourseCareers = externalCourse.node.career_paths.map(
