@@ -42,7 +42,6 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
   } = data.course.edges[0].node;
 
   const similarCourses = data.similarCourses.edges;
-
   return (
     <section>
       <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
@@ -149,7 +148,10 @@ export const query = graphql`
         }
       }
     }
-    similarCourses: allStrapiCourse(filter: { name: { regex: "design/gi" } }) {
+    similarCourses: allStrapiCourse(
+      filter: { career_paths: { elemMatch: { color: { nin: "" } } } }
+      limit: 8
+    ) {
       edges {
         node {
           name
@@ -163,7 +165,7 @@ export const query = graphql`
             name
           }
           online_only
-          start_date(formatString: "DD MMM, YY")
+          start_date(formatString: "D MMM YYYY")
           modules {
             description
             link
