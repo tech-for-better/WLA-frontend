@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import useSOC from '../hooks/useSOC';
-import correctVowelGrammar from '../../../../utils/correctVowelGrammar';
 
 const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name, color }) => {
   const [wfData, setWfData] = useState(``);
@@ -25,7 +24,7 @@ const WorkingFuturesPrediction: React.FC<SOCChart> = ({ soc, name, color }) => {
   }
   return (
     <div>
-      <h3>Predicted number of people working as {correctVowelGrammar(name)}</h3>
+      <h3>Estimated number of people working in {name.toLowerCase()}</h3>
       <div style={{ width: `100%`, height: 300 }}>
         <ResponsiveContainer>
           <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

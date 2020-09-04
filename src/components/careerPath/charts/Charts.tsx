@@ -6,7 +6,7 @@ import EstimatedPay from './charts/EstimatedPay';
 import EmploymentRate from './charts/EmploymentRate';
 import WorkingFuturesPrediction from './charts/WorkingFuturesPrediction';
 import Abilities from './charts/Abilities';
-import ExtraInfo from './charts/ExtraInfo';
+// import ExtraInfo from './charts/ExtraInfo';
 
 const GraphGrid = styled.div`
   display: grid;
@@ -28,7 +28,7 @@ const Charts: React.FC<MotherChart> = ({ soc, onet, name, color }) => {
         <Abilities onet={onet} name={name} color={color} />
       </GraphGrid>
       <WorkingFuturesPrediction soc={soc} name={name} color={color} />
-      <ExtraInfo soc={soc} name={name} color={color} />
+      {/* <ExtraInfo soc={soc} name={name} color={color} /> */}
     </div>
   );
 };

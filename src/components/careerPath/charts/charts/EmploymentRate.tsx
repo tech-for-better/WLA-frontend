@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar, ResponsiveContainer } from 'recharts';
 import useSOC from '../hooks/useSOC';
 
-const EmploymentRate: React.FC<SOCChart> = ({ soc, name, color }) => {
+const EmploymentRate: React.FC<SOCChart> = ({ soc, color }) => {
   const [unemployment, setUnemployment] = useState(``);
   const [error, setError] = useState(``);
 

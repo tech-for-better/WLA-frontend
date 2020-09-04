@@ -67,7 +67,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-const Abilities: React.FC<ONETChart> = ({ onet, name, color }) => {
+const Abilities: React.FC<ONETChart> = ({ onet, color }) => {
   const [skills, setSkills] = useState(``);
   const [activeIndex, setActiveIndex] = useState(0);
 

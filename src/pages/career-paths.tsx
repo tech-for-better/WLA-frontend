@@ -37,7 +37,7 @@ const CareerPaths: React.FC<PageProps> = () => {
   const fieldRef = React.useRef<HTMLElement>(null);
   return (
     <main>
-      <PageBackground text="Explore our career options for you" imgsrc={Careersbg} />
+      <PageBackground text="Explore a range of career paths" imgsrc={Careersbg} />
       <Tab.Container defaultActiveKey={careerPaths[0]?.node?.strapiId}>
         <CenteredNav>
           {careerPaths.map((edge) => {

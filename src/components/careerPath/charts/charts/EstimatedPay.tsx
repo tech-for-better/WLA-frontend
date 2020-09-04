@@ -11,7 +11,7 @@ import {
 
 import useSOC from '../hooks/useSOC';
 
-const EstimatedPay: React.FC<SOCChart> = ({ soc, name, color }) => {
+const EstimatedPay: React.FC<SOCChart> = ({ soc, color }) => {
   const [estimatedPay, setEstimatedPay] = useState(``);
   const [error, setError] = useState(``);
 
