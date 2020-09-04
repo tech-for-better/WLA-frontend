@@ -39,7 +39,6 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     start_date: startDate,
     modules,
   } = data.course.edges[0].node;
-
   const similarCourses = data.similarCourses.edges;
   return (
     <section>
@@ -92,19 +91,23 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
           <h2 className="mt-5 mb-3">Modules To Cover</h2>
           <Card style={{ width: `80%`, margin: `0 auto` }}>
             <ListGroupWrapper variant="flush">
-              {modules.map((module) => {
-                return (
-                  <ModuleListItem key={`module${module.order}`}>
-                    <ModuleOrder>{module.order}</ModuleOrder>
-                    <div>
-                      <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
-                        {module.name}
-                      </BigStyledText>
-                      <SubStyledText>{module.description}</SubStyledText>
-                    </div>
-                  </ModuleListItem>
-                );
-              })}
+              {modules
+                .sort((moduleA, moduleB) => {
+                  return moduleB - moduleA;
+                })
+                .map((module) => {
+                  return (
+                    <ModuleListItem key={`module${module.order}`}>
+                      <ModuleOrder>{module.order}</ModuleOrder>
+                      <div>
+                        <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
+                          {module.name}
+                        </BigStyledText>
+                        <SubStyledText>{module.description}</SubStyledText>
+                      </div>
+                    </ModuleListItem>
+                  );
+                })}
             </ListGroupWrapper>
           </Card>
         </div>
