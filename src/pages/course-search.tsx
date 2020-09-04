@@ -7,7 +7,10 @@ import Searchcourses from '../assets/pagebackgrounds/searchcoursebg.svg';
 const CourseDetails: React.FC<PageProps> = ({ data }) => {
   return (
     <main className="mt-5">
-      <PageBackground imgsrc={Searchcourses} text="Find the course you always wanted to take" />
+      <PageBackground
+        imgsrc={Searchcourses}
+        text="Find the course you have always wanted to take"
+      />
       <Search courseCatalogue={data.allStrapiCourse.edges} careerCatalogue={[]} />
     </main>
   );
