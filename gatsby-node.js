@@ -1,5 +1,4 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const fs = require('fs');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -9,7 +8,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPagesStatefully = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(
     `
