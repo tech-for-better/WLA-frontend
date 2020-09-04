@@ -20,7 +20,7 @@ const EmploymentRate: React.FC<SOCChart> = ({ soc, color }) => {
     <div>
       <h3>Unemployment Rate</h3>
       <div style={{ width: `100%`, height: 300 }}>
-        <ResponsiveContainer>
+        <ResponsiveContainer width="90%">
           <BarChart width={400} height={250} data={data}>
             <CartesianGrid strokeDasharray="0" />
             <XAxis dataKey="year" />
