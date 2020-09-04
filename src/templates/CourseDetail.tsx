@@ -38,8 +38,35 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     provider,
     start_date: startDate,
     modules,
+    career_paths,
   } = data.course.edges[0].node;
-  const similarCourses = data.similarCourses.edges;
+  const otherCourses = data.similarCourses.edges;
+  // 'internal' meaning the career paths of this course, not another course
+  const internalCareerPaths = career_paths.map((path) => {
+    return path.id;
+  });
+
+  let counter = 0;
+  const similarCourses = otherCourses.filter((externalCourse) => {
+    if (counter > 7) {
+      return false;
+    }
+    const externalCourseCareers = externalCourse.node.career_paths.map(
+      (path: { id: string; color: string }) => {
+        return path.id;
+      },
+    );
+
+    // cries in time complexity
+    const sisterCourse: boolean = internalCareerPaths.some((internalPath: string) => {
+      return externalCourseCareers.includes(internalPath);
+    });
+    if (sisterCourse) {
+      counter += 1;
+    }
+    return sisterCourse;
+  });
+
   return (
     <section>
       <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
@@ -134,7 +161,7 @@ export const query = graphql`
           total_price
           link
           description
-          id
+          strapiId
           online_only
           start_date(formatString: "D MMM YYYY")
           modules {
@@ -147,13 +174,14 @@ export const query = graphql`
             postcode
             name
           }
+          career_paths {
+            id
+            color
+          }
         }
       }
     }
-    similarCourses: allStrapiCourse(
-      filter: { career_paths: { elemMatch: { color: { nin: "" } } } }
-      limit: 8
-    ) {
+    similarCourses: allStrapiCourse {
       edges {
         node {
           name
@@ -175,6 +203,7 @@ export const query = graphql`
             order
           }
           career_paths {
+            id
             color
           }
         }
