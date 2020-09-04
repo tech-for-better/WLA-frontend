@@ -14,6 +14,7 @@ module.exports = {
     copy: [
       {
         title: 'West London Alliance',
+        logo: 'https://res.cloudinary.com/dza4tzyey/image/upload/v1599237075/WLA_logo_2019_bosbj9.jpg',
         text: [
           'The West London Alliance (WLA) is a public sector partnership between seven West London local authorities of Barnet, Brent, Ealing, Hammersmith & Fulham, Harrow, Hillingdon and Hounslow. Our team delivers initiatives in the sub-region, working across borough boundaries and focussing on the priority areas of: economy and skills, employment support, mobility and transport, housing, health and care, and digital.',
           'As WLA boroughs we work together and form partnerships to develop, drive and deliver improvements for everyone that lives, works, learns, visits and invests in West London.',
@@ -26,12 +27,13 @@ module.exports = {
       },
       {
         title: 'West London Business',
+        logo: 'https://res.cloudinary.com/dza4tzyey/image/upload/v1599237046/WLB_Lockup_LScape_150RGB_highres_cropped_umhdj6.jpg',
         text: [
           'West London Business (WLB) is a business-led non-profit established in 1994 with members including blue-chip firms such as PwC and Heathrow, as well as Fullers, Brompton Bicycle, micro enterprises and leading education institutions.',
         ],
         image: {
           link:
-            'https://res.cloudinary.com/dza4tzyey/image/upload/v1596397257/rrnemumawow9jpn92wra.jpg',
+            'https://res.cloudinary.com/dza4tzyey/image/upload/v1599236563/Wembley_construction_skyline_wzqfkm.jpg',
           description: 'A cool parrot',
         },
       },

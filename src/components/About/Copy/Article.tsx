@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import styles, { mediaQuery } from '../../../styles';
+import { mediaQuery } from '../../../styles';
 
 interface ArticleProps {
   alignment: boolean;
   title: string;
+  logo: string;
   text: string[];
   image: {
     link: string;
@@ -22,14 +23,14 @@ const StyledArticle = styled.article`
   ${mediaQuery(`
   flex-direction: column;
 
-  `)}/* flex-wrap: wrap; */
+  `)}
 `;
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: ${styles.font[3]};
-  padding-bottom: 0.5em;
-`;
+// const Title = styled.h1`
+//   text-align: center;
+//   font-size: ${styles.font[3]};
+//   padding-bottom: 0.5em;
+// `;
 
 const ImageBox = styled.div`
   width: 100%;
@@ -44,8 +45,25 @@ const Image = styled.img`
   }}
 `;
 
-const Article: React.FC<ArticleProps> = ({ title, text, image = null, alignment = false }) => {
-  // const { link, description } = image;
+const LogoStrip = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Logo = styled.img`
+  height: 10em;
+  margin: 1em 0;
+  flex-shrink: 1;
+  width: auto;
+`;
+
+const Article: React.FC<ArticleProps> = ({
+  title,
+  logo,
+  text,
+  image = null,
+  alignment = false,
+}) => {
   return (
     <StyledArticle alignment={alignment}>
       {image && (
@@ -60,7 +78,9 @@ const Article: React.FC<ArticleProps> = ({ title, text, image = null, alignment 
         </ImageBox>
       )}
       <div>
-        <Title>{title}</Title>
+        <LogoStrip>
+          <Logo src={logo} alt={title} />
+        </LogoStrip>
         {text.map((p) => {
           return <p key={Math.random()}>{p}</p>;
         })}

@@ -36,7 +36,6 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     link,
     description,
     provider,
-    online_only: onlineOnly,
     start_date: startDate,
     modules,
   } = data.course.edges[0].node;

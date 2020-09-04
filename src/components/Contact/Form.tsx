@@ -32,7 +32,7 @@ const Form: React.FC = () => {
           <SC.FormError>{nameError}</SC.FormError>
         </SC.Label>
         <SC.Label htmlFor="email">
-          <SC.Subtitle>email*</SC.Subtitle>
+          <SC.Subtitle>E-mail*</SC.Subtitle>
           <SC.Input
             type="text"
             id="email"
@@ -60,7 +60,7 @@ const Form: React.FC = () => {
           <SC.FormError>{numberError}</SC.FormError>
         </SC.Label>
         <SC.Label htmFor="organisation">
-          <SC.Subtitle>Organisation*</SC.Subtitle>
+          <SC.Subtitle>Organisation</SC.Subtitle>
           <SC.Input
             type="text"
             id="organisation"

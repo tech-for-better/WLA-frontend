@@ -25,6 +25,7 @@ const Copy: React.FC<{}> = () => {
               }
               text
               title
+              logo
             }
           }
           about {
@@ -41,12 +42,13 @@ const Copy: React.FC<{}> = () => {
     <section>
       <LogoBanner text={siteDescription} />
       {refinedCopy.map((article: article, index: number) => {
-        const { image, text, title } = article;
+        const { image, text, title, logo } = article;
         return (
           <Article
             key={title}
             alignment={Boolean(index % 2)}
             title={title}
+            logo={logo}
             image={image}
             text={text}
           />
