@@ -27,6 +27,10 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               name
               strapiId
+              c: career_paths {
+                color
+                id
+              }
             }
           }
         }
