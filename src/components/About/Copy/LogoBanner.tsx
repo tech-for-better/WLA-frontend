@@ -8,6 +8,10 @@ const ImageBox = styled.div`
   margin: 3em;
 `;
 
+const Logo = styled.img`
+  flex-shrink: 1;
+`;
+
 const AboutText = styled.div`
   margin-top: 3em;
   padding: 0 1em;
@@ -17,7 +21,7 @@ const LogoBanner: React.FC<{ text: string[] }> = ({ text }) => {
   return (
     <article>
       <ImageBox>
-        <img src={logo} alt="SkillsWest.London logo" />
+        <Logo src={logo} alt="SkillsWest.London logo" />
       </ImageBox>
       <AboutText>
         {text.map((paragraph) => {
