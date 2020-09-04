@@ -61,7 +61,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
             <CardBodyStyle>
               <div className="mb-4">
                 <BigStyledText>{total_price ? `£${total_price}` : `Free`}</BigStyledText>
-                <SubStyledText>{onlineOnly ? `Online` : `On Campus`}</SubStyledText>
+                <SubStyledText>Cost</SubStyledText>
               </div>
               <div>
                 <BigStyledText>{startDate || `Unknown`}</BigStyledText>
@@ -69,9 +69,9 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
               </div>
               <div>
                 <BigStyledText>
-                  {provider?.postcode ? provider.postcode.toUpperCase() : `Unknown`}
+                  {provider?.postcode ? provider.postcode.toUpperCase() : `Online`}
                 </BigStyledText>
-                <SubStyledText>The Postcode</SubStyledText>
+                <SubStyledText>Location</SubStyledText>
               </div>
               {modules.length > 0 ? (
                 <div>
@@ -84,7 +84,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
             </CardBodyStyle>
           </StyledCard>
           <Button block variant="primary" className="mt-5" href={link} target="blank">
-            Get The course
+            Find out more
           </Button>
         </div>
       </CardGroupStyle>
@@ -134,7 +134,7 @@ export const query = graphql`
           description
           id
           online_only
-          start_date(formatString: "DD MMM, YY")
+          start_date(formatString: "D MMM YYYY")
           modules {
             description
             link
@@ -148,7 +148,10 @@ export const query = graphql`
         }
       }
     }
-    similarCourses: allStrapiCourse(filter: { name: { regex: "design/gi" } }) {
+    similarCourses: allStrapiCourse(
+      filter: { career_paths: { elemMatch: { color: { nin: "" } } } }
+      limit: 8
+    ) {
       edges {
         node {
           name
@@ -156,12 +159,13 @@ export const query = graphql`
           link
           description
           id
+          strapiId
           provider {
             postcode
             name
           }
           online_only
-          start_date(formatString: "DD MMM, YY")
+          start_date(formatString: "D MMM YYYY")
           modules {
             description
             link
