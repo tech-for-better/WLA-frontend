@@ -10,7 +10,7 @@ const Form: React.FC = () => {
   const [number, setNumber] = useState(``);
   const [numberError, setNumberError] = useState(``);
   const [organisation, setOrganisation] = useState(``);
-  const [organisationError, setOrganisationError] = useState(``);
+  // const [organisationError, setOrganisationError] = useState(``);
   const [message, setMessage] = useState(``);
   const [messageError, setMessageError] = useState(``);
   const [formState, setFormState] = useState({ message: ``, error: true });
@@ -70,7 +70,7 @@ const Form: React.FC = () => {
               setOrganisation(e.currentTarget.value);
             }}
           />
-          <SC.FormError>{organisationError}</SC.FormError>
+          {/* <SC.FormError>{organisationError}</SC.FormError> */}
         </SC.Label>
       </SC.SmallInputs>
       <SC.Label htmlFor="message">
@@ -97,7 +97,7 @@ const Form: React.FC = () => {
             number,
             setNumberError,
             organisation,
-            setOrganisationError,
+            // setOrganisationError,
             message,
             setMessageError,
             setFormState,

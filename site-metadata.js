@@ -13,7 +13,7 @@ module.exports = {
   aboutPage: {
     copy: [
       {
-        title: 'WLA',
+        title: 'West London Alliance',
         text: [
           'The West London Alliance (WLA) is a public sector partnership between seven West London local authorities of Barnet, Brent, Ealing, Hammersmith & Fulham, Harrow, Hillingdon and Hounslow. Our team delivers initiatives in the sub-region, working across borough boundaries and focussing on the priority areas of: economy and skills, employment support, mobility and transport, housing, health and care, and digital.',
           'As WLA boroughs we work together and form partnerships to develop, drive and deliver improvements for everyone that lives, works, learns, visits and invests in West London.',
@@ -25,7 +25,7 @@ module.exports = {
         },
       },
       {
-        title: 'WLB',
+        title: 'West London Business',
         text: [
           'West London Business (WLB) is a business-led non-profit established in 1994 with members including blue-chip firms such as PwC and Heathrow, as well as Fullers, Brompton Bicycle, micro enterprises and leading education institutions.',
         ],
