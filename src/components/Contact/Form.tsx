@@ -10,7 +10,7 @@ const Form: React.FC = () => {
   const [number, setNumber] = useState(``);
   const [numberError, setNumberError] = useState(``);
   const [organisation, setOrganisation] = useState(``);
-  const [organisationError, setOrganisationError] = useState(``);
+  // const [organisationError, setOrganisationError] = useState(``);
   const [message, setMessage] = useState(``);
   const [messageError, setMessageError] = useState(``);
   const [formState, setFormState] = useState({ message: ``, error: true });
@@ -32,7 +32,7 @@ const Form: React.FC = () => {
           <SC.FormError>{nameError}</SC.FormError>
         </SC.Label>
         <SC.Label htmlFor="email">
-          <SC.Subtitle>email*</SC.Subtitle>
+          <SC.Subtitle>E-mail*</SC.Subtitle>
           <SC.Input
             type="text"
             id="email"
@@ -60,7 +60,7 @@ const Form: React.FC = () => {
           <SC.FormError>{numberError}</SC.FormError>
         </SC.Label>
         <SC.Label htmFor="organisation">
-          <SC.Subtitle>Organisation*</SC.Subtitle>
+          <SC.Subtitle>Organisation</SC.Subtitle>
           <SC.Input
             type="text"
             id="organisation"
@@ -70,7 +70,7 @@ const Form: React.FC = () => {
               setOrganisation(e.currentTarget.value);
             }}
           />
-          <SC.FormError>{organisationError}</SC.FormError>
+          {/* <SC.FormError>{organisationError}</SC.FormError> */}
         </SC.Label>
       </SC.SmallInputs>
       <SC.Label htmlFor="message">
@@ -97,7 +97,7 @@ const Form: React.FC = () => {
             number,
             setNumberError,
             organisation,
-            setOrganisationError,
+            // setOrganisationError,
             message,
             setMessageError,
             setFormState,

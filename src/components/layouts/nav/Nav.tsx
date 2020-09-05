@@ -16,6 +16,7 @@ const Logo = styled.img`
 
 const LinkItem = styled(Link)`
   font-weight: bold;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
 
   :hover {
     border-bottom: 3px solid #006574;

@@ -71,7 +71,7 @@ const CareerPaths: React.FC<PageProps> = () => {
                       borderColor: `#006574`,
                     }}
                   >
-                    Find Out More
+                    Find out more
                   </Button>
                 </Link>
               </Tab.Pane>

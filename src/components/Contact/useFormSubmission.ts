@@ -19,7 +19,7 @@ interface FormSubmission {
   setNameError: Function;
   setEmailError: Function;
   setNumberError: Function;
-  setOrganisationError: Function;
+  // setOrganisationError: Function;
   setMessageError: Function;
   setFormState: Function;
 }
@@ -32,7 +32,7 @@ export default function useFormSubmission({
   number,
   setNumberError,
   organisation,
-  setOrganisationError,
+  // setOrganisationError,
   message,
   setMessageError,
   setFormState,
@@ -43,7 +43,7 @@ export default function useFormSubmission({
   setNameError(``);
   setEmailError(``);
   setNumberError(``);
-  setOrganisationError(``);
+  // setOrganisationError(``);
   setMessageError(``);
 
   // check errors and set exitCode
@@ -59,10 +59,10 @@ export default function useFormSubmission({
     setNumberError(`A valid phone number is required`);
     exitCode = 1;
   }
-  if (!organisation) {
-    setOrganisationError(`Please specify your organisation`);
-    exitCode = 1;
-  }
+  // if (!organisation) {
+  //   setOrganisationError(`Please specify your organisation`);
+  //   exitCode = 1;
+  // }
   if (!message) {
     setMessageError(`A message is required`);
     exitCode = 1;

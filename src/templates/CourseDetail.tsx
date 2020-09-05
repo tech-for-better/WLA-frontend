@@ -36,12 +36,38 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
     link,
     description,
     provider,
-    online_only: onlineOnly,
     start_date: startDate,
     modules,
+    career_paths,
+    strapiId,
   } = data.course.edges[0].node;
+  const otherCourses = data.similarCourses.edges;
+  // 'internal' meaning the career paths of this course, not another course
+  const internalCareerPaths = career_paths.map((path) => {
+    return path.id;
+  });
 
-  const similarCourses = data.similarCourses.edges;
+  let counter = 0;
+  const similarCourses = otherCourses.filter((externalCourse) => {
+    if (counter > 7 || strapiId === externalCourse?.node?.strapiId) {
+      return false;
+    }
+    const externalCourseCareers = externalCourse.node.career_paths.map(
+      (path: { id: string; color: string }) => {
+        return path.id;
+      },
+    );
+
+    // cries in time complexity
+    const sisterCourse: boolean = internalCareerPaths.some((internalPath: string) => {
+      return externalCourseCareers.includes(internalPath);
+    });
+    if (sisterCourse) {
+      counter += 1;
+    }
+    return sisterCourse;
+  });
+
   return (
     <section>
       <h1 className="mt-5 mb-3">{name.toUpperCase()}</h1>
@@ -93,19 +119,23 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
           <h2 className="mt-5 mb-3">Modules To Cover</h2>
           <Card style={{ width: `80%`, margin: `0 auto` }}>
             <ListGroupWrapper variant="flush">
-              {modules.map((module) => {
-                return (
-                  <ModuleListItem key={`module${module.order}`}>
-                    <ModuleOrder>{module.order}</ModuleOrder>
-                    <div>
-                      <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
-                        {module.name}
-                      </BigStyledText>
-                      <SubStyledText>{module.description}</SubStyledText>
-                    </div>
-                  </ModuleListItem>
-                );
-              })}
+              {modules
+                .sort((moduleA, moduleB) => {
+                  return moduleB - moduleA;
+                })
+                .map((module) => {
+                  return (
+                    <ModuleListItem key={`module${module.order}`}>
+                      <ModuleOrder>{module.order}</ModuleOrder>
+                      <div>
+                        <BigStyledText style={{ color: `${styles.lightBlue}` }} className="mb-2">
+                          {module.name}
+                        </BigStyledText>
+                        <SubStyledText>{module.description}</SubStyledText>
+                      </div>
+                    </ModuleListItem>
+                  );
+                })}
             </ListGroupWrapper>
           </Card>
         </div>
@@ -132,7 +162,7 @@ export const query = graphql`
           total_price
           link
           description
-          id
+          strapiId
           online_only
           start_date(formatString: "D MMM YYYY")
           modules {
@@ -145,13 +175,14 @@ export const query = graphql`
             postcode
             name
           }
+          career_paths {
+            id
+            color
+          }
         }
       }
     }
-    similarCourses: allStrapiCourse(
-      filter: { career_paths: { elemMatch: { color: { nin: "" } } } }
-      limit: 8
-    ) {
+    similarCourses: allStrapiCourse {
       edges {
         node {
           name
@@ -173,6 +204,7 @@ export const query = graphql`
             order
           }
           career_paths {
+            id
             color
           }
         }

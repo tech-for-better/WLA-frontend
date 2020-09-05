@@ -1,7 +1,39 @@
 import React, { useState } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer, Legend } from 'recharts';
+import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import styled from 'styled-components';
+import { mediaQuery } from '../../../../styles';
 
 import useONET from '../hooks/useONET';
+
+const Legend = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  ${mediaQuery(`
+  flex-direction: column;
+  align-items: center;
+`)}
+`;
+
+const LegendItem = styled.span`
+  margin: 0 0.25em;
+  display: flex;
+  align-items: center;
+`;
+
+const LegendSwatch = styled.span`
+  margin: 0.25em;
+  height: 1em;
+  width: 1em;
+  background-color: ${(props) => {
+    return props.colour;
+  }};
+  border-radius: 5px;
+`;
+
+const LegendText = styled.p`
+  margin: 0;
+`;
 
 const COLORS = [`#0088FE`, `#00C49F`, `#FFBB28`, `#FF8042`];
 const renderActiveShape = (props) => {
@@ -77,7 +109,6 @@ const Abilities: React.FC<ONETChart> = ({ onet, color }) => {
       return b.value - a.value;
     })
     .slice(0, 10);
-
   useONET({ onet, endpoint: `/abilities`, setter: setSkills, setError });
   if (error) {
     return <></>;
@@ -85,24 +116,35 @@ const Abilities: React.FC<ONETChart> = ({ onet, color }) => {
   return (
     <div>
       <h3>Top 10 skills</h3>
-      <div style={{ width: `100%`, height: 600 }}>
-        <ResponsiveContainer>
+      {data && (
+        <Legend>
+          {data.map((datapoint) => {
+            return (
+              <LegendItem>
+                <LegendSwatch colour={color} />
+                <LegendText>{datapoint.name}</LegendText>
+              </LegendItem>
+            );
+          })}
+        </Legend>
+      )}
+      <div style={{ width: `100%` }}>
+        <ResponsiveContainer width="100%" height={350}>
           <PieChart>
             <Pie
               activeIndex={activeIndex}
               activeShape={renderActiveShape}
               data={data}
               cx="50%"
-              cy={300}
+              cy="50%"
               innerRadius={70}
               outerRadius={100}
               fill={color}
               dataKey="value"
-              onMouseEnter={(d, index) => {
+              onMouseEnter={(_, index) => {
                 return setActiveIndex(index);
               }}
             />
-            <Legend legendType="circle" verticalAlign="top" height={36} />
           </PieChart>
         </ResponsiveContainer>
       </div>

@@ -10,7 +10,7 @@ import ContactUs from '../components/Contact/Contact';
 const AboutUs: React.FC<PageProps> = () => {
   return (
     <main className="mt-5">
-      <PageBackground text="Who are we?" imgsrc={contactusbg} alignTextVertically />
+      <PageBackground text="About us" imgsrc={contactusbg} alignTextVertically />
       <Copy />
       <Partners />
       <ContactUs />
