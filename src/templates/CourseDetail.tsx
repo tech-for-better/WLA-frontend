@@ -121,7 +121,7 @@ const CourseDetail: React.FC<CourseDetails> = ({ data }) => {
             <ListGroupWrapper variant="flush">
               {modules
                 .sort((moduleA, moduleB) => {
-                  return moduleB - moduleA;
+                  return moduleA.order - moduleB.order;
                 })
                 .map((module) => {
                   return (
